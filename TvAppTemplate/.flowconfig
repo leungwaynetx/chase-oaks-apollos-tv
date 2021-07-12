@@ -21,6 +21,12 @@ node_modules/react-native/interface.js
 node_modules/react-native/flow/
 
 [options]
+# Alias the package name
+module.name_mapper='^react-native$' -> 'react-native-web'
+# Point flow to the 'module' field by default
+module.system.node.main_field=module
+module.system.node.main_field=main
+
 emoji=true
 
 esproposal.optional_chaining=enable
