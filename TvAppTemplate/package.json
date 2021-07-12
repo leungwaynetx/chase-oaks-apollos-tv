@@ -5,7 +5,8 @@
   "scripts": {
     "android": "react-native run-android",
     "ios": "react-native run-ios",
-    "web": "cd web && webpack server",
+    "web": "webpack serve -d source-map --mode development --config \"./web/webpack.config.js\" --inline --color --hot",
+    "build:web": "webpack --mode production --config \"./web/webpack.config.js\" --hot",
     "start": "react-native start",
     "test": "jest",
     "lint": "eslint ."
@@ -17,8 +18,7 @@
     "react": "17.0.1",
     "react-dom": "17.0.1",
     "react-native": "npm:react-native-tvos@latest",
-    "react-native-web": "0.17.1",
-    "typescript": "^4.3.5"
+    "react-native-web": "^0.17.1"
   },
   "devDependencies": {
     "@babel/core": "^7.14.6",
@@ -36,12 +36,12 @@
     "metro-react-native-babel-preset": "^0.66.1",
     "react-native-typescript-transformer": "^1.2.13",
     "react-test-renderer": "17.0.1",
-    "ts-loader": "^9.2.3",
+    "url-loader": "^4.1.1",
     "webpack": "^5.44.0",
     "webpack-cli": "^4.7.2",
     "webpack-dev-server": "^3.11.2"
   },
   "jest": {
-    "preset": "react-native"
+    "preset": "react-native-web"
   }
 }
