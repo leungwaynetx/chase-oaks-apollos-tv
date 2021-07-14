@@ -5,18 +5,23 @@
   "scripts": {
     "android": "react-native run-android",
     "ios": "react-native run-ios",
-    "web": "webpack serve -d source-map --mode development --config \"./web/webpack.config.js\" --inline --color --hot",
-    "build:web": "webpack --mode production --config \"./web/webpack.config.js\" --hot",
-    "start": "react-native start",
+    "web:dev": "next dev",
+    "web:build": "next build",
+    "web:start": "next start",
+    "web:lint": "next lint",
+    "rn:start": "react-native start",
     "test": "jest",
-    "lint": "eslint ."
+    "lint": "eslint .",
+    "dev": "run-p web:dev rn:start"
   },
   "dependencies": {
     "babel-plugin-react-native-web": "^0.17.1",
+    "next": "^11.0.1",
     "react": "17.0.1",
     "react-dom": "17.0.1",
     "react-native": "npm:react-native-tvos@latest",
-    "react-native-web": "^0.17.1"
+    "react-native-web": "^0.17.1",
+    "styled-components": "^5.3.0"
   },
   "devDependencies": {
     "@babel/core": "^7.14.6",
@@ -27,9 +32,11 @@
     "babel-jest": "^27.0.6",
     "babel-loader": "^8.2.2",
     "eslint": "^7.30.0",
+    "eslint-config-next": "^11.0.1",
     "html-webpack-plugin": "^5.3.2",
     "jest": "^27.0.6",
     "metro-react-native-babel-preset": "^0.66.1",
+    "npm-run-all": "^4.1.5",
     "react-native-typescript-transformer": "^1.2.13",
     "react-test-renderer": "17.0.1",
     "url-loader": "^4.1.1",

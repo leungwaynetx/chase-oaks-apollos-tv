@@ -1,5 +1,6 @@
 import React from 'react';
 import {Dimensions, StyleSheet, Text, View} from 'react-native';
+import Demo from './Demo';
 
 const {height} = Dimensions.get('screen');
 
@@ -7,6 +8,7 @@ const App = () => (
   <View style={styles.container}>
     <View style={styles.center}>
       <Text>Hello React Native Web!!!</Text>
+      <Demo />
     </View>
   </View>
 );
