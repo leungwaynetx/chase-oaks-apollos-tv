@@ -1,17 +1,9 @@
 import React from 'react';
-import {Dimensions, StyleSheet, Text, View} from 'react-native';
+import { Dimensions, StyleSheet, Text, View } from 'react-native';
 import Demo from './Demo';
 
-const {height} = Dimensions.get('screen');
+const { height } = Dimensions.get('screen');
 
-const App = () => (
-  <View style={styles.container}>
-    <View style={styles.center}>
-      <Text>Hello React Native Web!!!</Text>
-      <Demo />
-    </View>
-  </View>
-);
 const styles = StyleSheet.create({
   container: {
     height,
@@ -22,5 +14,14 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
 });
+
+const App = () => (
+  <View style={styles.container}>
+    <View style={styles.center}>
+      <Text>Hello React Native Web!!!</Text>
+      <Demo />
+    </View>
+  </View>
+);
 
 export default App;
