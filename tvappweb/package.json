@@ -1,0 +1,36 @@
+{
+  "name": "tvappweb",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint"
+  },
+  "dependencies": {
+    "next": "^11.0.1",
+    "react": "17.0.1",
+    "react-dom": "17.0.1",
+    "react-native-web": "^0.17.1"
+  },
+  "devDependencies": {
+    "@apollosproject/eslint-config": "^2.26.0",
+    "babel-plugin-module-resolver": "^4.1.0",
+    "babel-plugin-react-native-web": "^0.17.1",
+    "eslint": "7.30.0",
+    "eslint-config-airbnb": "^18.2.1",
+    "eslint-config-next": "11.0.1",
+    "eslint-config-prettier": "^8.3.0",
+    "eslint-import-resolver-babel-module": "^5.3.1",
+    "eslint-plugin-babel": "^5.3.1",
+    "eslint-plugin-import": "^2.23.4",
+    "eslint-plugin-jest": "^24.3.6",
+    "eslint-plugin-jsx-a11y": "^6.4.1",
+    "eslint-plugin-prettier": "^3.4.0",
+    "eslint-plugin-react": "^7.24.0",
+    "eslint-plugin-react-hooks": "^4.2.0",
+    "eslint-plugin-react-native": "^3.11.0",
+    "prettier": "^2.3.2"
+  }
+}
