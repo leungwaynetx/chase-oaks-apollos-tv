@@ -1,6 +1,12 @@
 const path = require('path');
 
-module.exports = {
+const withTM = require('next-transpile-modules')([
+  'react-native',
+  'styled-components',
+  'styled-components/native',
+]);
+
+module.exports = withTM({
   webpack: (config, { buildId, dev, isServer, defaultLoaders, webpack }) => {
     config.resolve = {
       ...config.resolve,
@@ -13,7 +19,7 @@ module.exports = {
         ...config.resolve.modules,
         path.resolve(__dirname, 'node_modules'),
       ],
-      symlinks: false,
+      symlinks: true,
     };
     config.module.rules.push({
       test: /\.+(js)|(jsx)$/,
@@ -23,4 +29,4 @@ module.exports = {
 
     return config;
   },
-};
+});

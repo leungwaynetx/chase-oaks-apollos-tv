@@ -1,16 +1,21 @@
-/* eslint-disable react/prop-types */
-import * as React from 'react';
-import Head from 'next/head';
+import { createGlobalStyle, ThemeProvider } from 'styled-components';
+import { theme } from 'shared';
 
-function MyApp({ Component, pageProps }) {
+const GlobalStyle = createGlobalStyle`
+  body {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+`;
+
+export default function App({ Component, pageProps }) {
   return (
     <>
-      <Head>
-        <meta name="viewport" content="width=device-width, initial-scale=1" />
-      </Head>
-      <Component {...pageProps} />
+      <GlobalStyle />
+      <ThemeProvider theme={theme}>
+        <Component {...pageProps} />
+      </ThemeProvider>
     </>
   );
 }
-
-export default MyApp;

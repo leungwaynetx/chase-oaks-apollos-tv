@@ -1,6 +1,17 @@
 import React from 'react';
-import App from '../../shared/components/App';
+import { App } from 'shared';
+import styled from 'styled-components';
 
-const Home = () => <App />;
+const Title = styled.h1`
+  font-size: 50px;
+  color: ${({ theme }) => theme.colors.primary};
+`;
 
-export default Home;
+export default function Home() {
+  return (
+    <>
+      <Title>Styled Component in Next.js App</Title>
+      <App />
+    </>
+  );
+}
