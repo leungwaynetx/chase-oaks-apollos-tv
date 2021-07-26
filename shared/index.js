@@ -1,4 +1,29 @@
-import { App, Demo } from './components';
-import theme from './theme';
+import { App, Demo } from "./components";
 
-export { App, Demo, theme };
+import {
+  // ====================
+  ThemeProvider,
+  // ====================
+
+  // ====================
+  icons,
+  theme,
+  system,
+  systemPropTypes,
+  utils,
+  // ====================
+} from "./ui-kit";
+
+export {
+  // ====================
+  ThemeProvider,
+  // ====================
+  App,
+  Demo,
+  // ====================
+  icons,
+  theme,
+  system,
+  systemPropTypes,
+  utils,
+};

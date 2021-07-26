@@ -1,10 +1,10 @@
 import React from 'react';
-import { App } from 'shared';
 import styled from 'styled-components/native';
+import { themeGet } from '@styled-system/theme-get';
 
 const Title = styled.Text`
   font-size: 50px;
-  color: ${({ theme }) => theme.colors.secondary};
+  color: ${themeGet('colors.secondary')};
 `;
 
 export default function DemoNative() {

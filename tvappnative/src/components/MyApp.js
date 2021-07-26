@@ -1,12 +1,11 @@
 import React from 'react';
+import { App, ThemeProvider } from 'shared';
 import DemoNative from './DemoNative';
-import { App, theme } from 'shared';
-import { ThemeProvider } from 'styled-components';
 
 const MyApp = () => {
   return (
     <>
-      <ThemeProvider theme={theme}>
+      <ThemeProvider>
         <DemoNative />
         <App />
       </ThemeProvider>
