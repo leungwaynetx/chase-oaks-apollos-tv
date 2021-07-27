@@ -1,9 +1,11 @@
-import { ThemeProvider } from 'shared';
+import { ThemeProvider, Layout } from 'shared';
 
 export default function App({ Component, pageProps }) {
   return (
     <ThemeProvider>
-      <Component {...pageProps} />
+      <Layout>
+        <Component {...pageProps} />
+      </Layout>
     </ThemeProvider>
   );
 }

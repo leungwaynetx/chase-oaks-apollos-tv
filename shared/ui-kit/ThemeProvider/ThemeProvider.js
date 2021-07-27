@@ -1,9 +1,9 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import { ThemeProvider as SCThemeProvider, withTheme } from 'styled-components';
-import defaultTheme from '../_config/theme';
+import React from "react";
+import PropTypes from "prop-types";
+import { ThemeProvider as SCThemeProvider, withTheme } from "styled-components";
+import defaultTheme from "../_config/theme";
 
-const DEFAULT_MODE = 'light';
+const DEFAULT_MODE = "dark";
 
 function ThemeProvider(props) {
   const theme = {
@@ -17,7 +17,7 @@ function ThemeProvider(props) {
 ThemeProvider.propTypes = {
   children: PropTypes.node.isRequired,
   theme: PropTypes.object,
-  mode: PropTypes.oneOf(['light', 'dark']),
+  mode: PropTypes.oneOf(["light", "dark"]),
 };
 
 ThemeProvider.defaultProps = {

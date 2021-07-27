@@ -1,10 +1,11 @@
-import { App, Demo } from "./components";
+import { App, DemoTypography, LoginForm } from "./components";
 
 import {
   // ====================
   ThemeProvider,
   // ====================
-
+  Box,
+  Layout,
   // ====================
   icons,
   theme,
@@ -19,7 +20,11 @@ export {
   ThemeProvider,
   // ====================
   App,
-  Demo,
+  DemoTypography,
+  LoginForm,
+  // ====================
+  Box,
+  Layout,
   // ====================
   icons,
   theme,

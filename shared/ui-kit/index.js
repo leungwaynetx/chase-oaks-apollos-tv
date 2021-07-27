@@ -8,12 +8,43 @@ import ThemeProvider from "./ThemeProvider";
 
 // UI Kit components
 import Box from "./Box";
+import Button from "./Button";
+import Card from "./Card";
+import Layout from "./Layout";
+import {
+  BodyText,
+  H1,
+  H2,
+  H3,
+  H4,
+  H5,
+  H6,
+  LargeSystemText,
+  SmallBodyText,
+  SmallSystemText,
+  SystemText,
+} from "./Typography";
 
 export {
   // ====================
   ThemeProvider,
   // ====================
   Box,
+  Button,
+  Card,
+  Layout,
+  // Typography
+  BodyText,
+  H1,
+  H2,
+  H3,
+  H4,
+  H5,
+  H6,
+  LargeSystemText,
+  SmallBodyText,
+  SmallSystemText,
+  SystemText,
   // ====================
   icons,
   theme,
