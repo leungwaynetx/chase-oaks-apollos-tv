@@ -1,11 +1,12 @@
-import { ThemeProvider, Layout } from 'shared';
+import { AppProvider } from 'shared/providers';
+import { Layout } from 'shared/ui-kit';
 
 export default function App({ Component, pageProps }) {
   return (
-    <ThemeProvider>
+    <AppProvider initialApolloState={pageProps.initialApolloState}>
       <Layout>
         <Component {...pageProps} />
       </Layout>
-    </ThemeProvider>
+    </AppProvider>
   );
 }

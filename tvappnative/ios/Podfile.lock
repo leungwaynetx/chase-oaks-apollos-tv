@@ -239,6 +239,8 @@ PODS:
     - React-cxxreact (= 0.64.2-0)
     - React-jsi (= 0.64.2-0)
     - React-perflogger (= 0.64.2-0)
+  - RNDefaultPreference (1.4.3):
+    - React
   - Yoga (1.14.0)
 
 DEPENDENCIES:
@@ -269,6 +271,7 @@ DEPENDENCIES:
   - React-RCTText (from `../node_modules/react-native/Libraries/Text`)
   - React-runtimeexecutor (from `../node_modules/react-native/ReactCommon/runtimeexecutor`)
   - ReactCommon/turbomodule/core (from `../node_modules/react-native/ReactCommon`)
+  - RNDefaultPreference (from `../node_modules/react-native-default-preference`)
   - Yoga (from `../node_modules/react-native/ReactCommon/yoga`)
 
 SPEC REPOS:
@@ -326,6 +329,8 @@ EXTERNAL SOURCES:
     :path: "../node_modules/react-native/ReactCommon/runtimeexecutor"
   ReactCommon:
     :path: "../node_modules/react-native/ReactCommon"
+  RNDefaultPreference:
+    :path: "../node_modules/react-native-default-preference"
   Yoga:
     :path: "../node_modules/react-native/ReactCommon/yoga"
 
@@ -333,7 +338,7 @@ SPEC CHECKSUMS:
   boost-for-react-native: 39c7adb57c4e60d6c5479dd8623128eb5b3f0f2c
   DoubleConversion: cde416483dac037923206447da6e1454df403714
   FBLazyVector: 0b831bc84e23eba71f4bfa92cd084fa6ba557bce
-  FBReactNativeSpec: 44a19167f87d6f8737e950147fb7d7739e1dcc27
+  FBReactNativeSpec: b58929b83e32de526690d3e131700a0134765019
   glog: 40a13f7840415b9a77023fbcae0f1e6f43192af3
   RCT-Folly: ec7a233ccc97cc556cf7237f0db1ff65b986f27c
   RCTRequired: dd6448628b6a10ba27c218db57c1e856c8739550
@@ -356,6 +361,7 @@ SPEC CHECKSUMS:
   React-RCTText: e39b9f770ab48b74865762b7e592aecf4e396d61
   React-runtimeexecutor: 76f65a1fe4458e5a88698acce9000568d14c6c64
   ReactCommon: c74175fa67bf0fe1d4ff1100fc3de56f0dcce9c1
+  RNDefaultPreference: 2f8d6d54230edbd78708ada8d63bb275e5a8415b
   Yoga: fab3dd0deab5c5c18ed2948c8c5d43648daa7225
 
 PODFILE CHECKSUM: 2a03547aa29ce78e34e663ea057999876de255c5

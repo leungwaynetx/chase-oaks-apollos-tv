@@ -1,4 +1,5 @@
-import { App, DemoTypography, LoginForm } from "./components";
+import { App, DemoTypography, LoginForm } from './components';
+import { AppProvider } from './providers';
 
 import {
   // ====================
@@ -13,9 +14,10 @@ import {
   systemPropTypes,
   utils,
   // ====================
-} from "./ui-kit";
+} from './ui-kit';
 
 export {
+  AppProvider,
   // ====================
   ThemeProvider,
   // ====================
