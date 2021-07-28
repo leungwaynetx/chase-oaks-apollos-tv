@@ -1,16 +1,16 @@
-import icons from "./_config/icons";
-import theme from "./_config/theme";
+import icons from './_config/icons';
+import theme from './_config/theme';
 
-import { system, propTypes as systemPropTypes } from "./_lib/system";
-import * as utils from "./_utils";
+import { system, systemPropTypes } from './_lib/system';
+import * as utils from './_utils';
 
-import ThemeProvider from "./ThemeProvider";
+import ThemeProvider from './ThemeProvider';
 
 // UI Kit components
-import Box from "./Box";
-import Button from "./Button";
-import Card from "./Card";
-import Layout from "./Layout";
+import Box from './Box';
+import Button from './Button';
+import Card from './Card';
+import Layout from './Layout';
 import {
   BodyText,
   H1,
@@ -23,7 +23,7 @@ import {
   SmallBodyText,
   SmallSystemText,
   SystemText,
-} from "./Typography";
+} from './Typography';
 
 export {
   // ====================

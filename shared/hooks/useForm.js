@@ -1,7 +1,12 @@
-import { useState } from "react";
+import { useState } from 'react';
 
 const useForm = (callback) => {
   const [values, setValues] = useState({});
+
+  function handleChange(event, name = '') {
+    const { value } = event.target;
+    setValues((currentValues) => ({ ...currentValues, [name]: value }));
+  }
 
   // React Native doesn't use `name` props/attributes on input elements,
   // so we can't easily pull them off the change events. This works around
@@ -10,13 +15,10 @@ const useForm = (callback) => {
     return (event) => handleChange(event, inputName);
   }
 
-  function handleChange(event, name = "") {
-    const { value, type } = event.target;
-    setValues((values) => ({ ...values, [name]: value }));
-  }
-
   function handleSubmit(event) {
-    callback && callback();
+    if (typeof callback === 'function') {
+      callback();
+    }
   }
 
   function reset() {

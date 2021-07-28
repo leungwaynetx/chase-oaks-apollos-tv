@@ -1,7 +1,7 @@
-import styled from "styled-components/native";
-import { withTheme } from "styled-components";
+import styled from 'styled-components/native';
+import { withTheme } from 'styled-components';
 
-import { system } from "../_lib/system";
+import { system } from '../_lib/system';
 
 const ViewBox = withTheme(styled.View`
   ${system}

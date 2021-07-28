@@ -14,7 +14,7 @@ export default setContext(async (request, { headers }) => {
       },
     };
   } catch (err) {
-    // eslint-disable-next-line
+    // eslint-disable-next-line no-console
     console.warn('Authorization Failed', err);
     return {};
   }

@@ -189,7 +189,7 @@ export const system = compose(
   misc
 );
 
-export const propTypes = {
+export const systemPropTypes = {
   // Core
   ...color.propTypes,
   ...fontSize.propTypes,

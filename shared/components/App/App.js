@@ -1,7 +1,7 @@
-import React from "react";
+import React from 'react';
 
-import LoginForm from "../LoginForm";
-import DemoTypography from "../DemoTypography";
+import LoginForm from '../LoginForm';
+import DemoTypography from '../DemoTypography';
 
 const App = () => (
   <>

@@ -10,7 +10,7 @@ module.exports = {
       {},
       {
         get: (target, name) => path.join(process.cwd(), `node_modules/${name}`),
-      },
+      }
     ),
   },
   projectRoot: path.resolve(__dirname),

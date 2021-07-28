@@ -1,11 +1,11 @@
-import React from "react";
-import { Alert, Platform } from "react-native";
+import React from 'react';
+import { Alert, Platform } from 'react-native';
 
-import { useForm } from "../../hooks";
+import { useForm } from '../../hooks';
 
-import TextField from "../TextField";
+import TextField from '../TextField';
 
-import { Box, Button, Card, H1 } from "../../ui-kit";
+import { Box, Button, Card, H1 } from '../../ui-kit';
 
 const LoginForm = () => {
   const {
@@ -13,12 +13,14 @@ const LoginForm = () => {
     createChangeHandler,
     handleSubmit,
   } = useForm(async () => {
-    console.log("formValues:", formValues);
+    // eslint-disable-next-line no-console
+    console.log('formValues:', formValues);
 
-    const alertTitle = "handleSubmit()";
-    const alertText = "form values: " + JSON.stringify(formValues, null, 2);
+    const alertTitle = 'handleSubmit()';
+    const alertText = `form values: ${JSON.stringify(formValues, null, 2)}`;
 
-    if (Platform.OS === "web") {
+    if (Platform.OS === 'web') {
+      // eslint-disable-next-line no-alert
       alert(alertText);
     } else {
       Alert.alert(alertTitle, alertText);
@@ -34,18 +36,18 @@ const LoginForm = () => {
           placeholder="Enter email address"
           maxLength="128"
           returnKeyType="next"
-          value={formValues.identity || ""}
-          onChange={createChangeHandler("identity")}
+          value={formValues.identity || ''}
+          onChange={createChangeHandler('identity')}
           mb="base"
         />
         <TextField
           label="Password"
           placeholder="Enter password"
-          secureTextEntry={true}
+          secureTextEntry
           maxLength="128"
           returnKeyType="done"
-          value={formValues.password || ""}
-          onChange={createChangeHandler("password")}
+          value={formValues.password || ''}
+          onChange={createChangeHandler('password')}
           mb="base"
         />
         <Box alignSelf="flex-end">

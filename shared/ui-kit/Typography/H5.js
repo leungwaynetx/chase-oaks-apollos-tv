@@ -1,16 +1,16 @@
-import React from "react";
-import { withTheme } from "styled-components";
-import styled from "styled-components/native";
-import { themeGet } from "@styled-system/theme-get";
+import React from 'react';
+import { withTheme } from 'styled-components';
+import styled from 'styled-components/native';
+import { themeGet } from '@styled-system/theme-get';
 
-import * as utils from "../_utils";
-import { system, systemPropTypes } from "../_lib/system";
+import * as utils from '../_utils';
+import { system, systemPropTypes } from '../_lib/system';
 
 const Text = withTheme(styled.Text`
-  font-size: ${utils.rem("14px")};
-  line-height: ${utils.rem("21px")};
+  font-size: ${utils.rem('14px')};
+  line-height: ${utils.rem('21px')};
   font-weight: 500;
-  color: ${themeGet("colors.text.primary")};
+  color: ${themeGet('colors.text.primary')};
   ${system}
 `);
 

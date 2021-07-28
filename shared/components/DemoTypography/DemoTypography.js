@@ -1,7 +1,4 @@
-import React from "react";
-import { withTheme } from "styled-components";
-import styled from "styled-components/native";
-import { themeGet } from "@styled-system/theme-get";
+import React from 'react';
 
 import {
   BodyText,
@@ -17,7 +14,7 @@ import {
   SmallBodyText,
   SmallSystemText,
   SystemText,
-} from "../../ui-kit";
+} from '../../ui-kit';
 
 const DemoTypography = (props = {}) => (
   <Card flexDirection="row" {...props}>

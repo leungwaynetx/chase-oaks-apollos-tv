@@ -1,13 +1,12 @@
-import React from "react";
-import { View, Text } from "react-native";
+import React from 'react';
+
+import { Box, BodyText } from 'shared/ui-kit';
 
 const TextField = (props = {}) => {
   return (
-    <View>
-      <Text style={{ color: "#fff" }}>
-        Placeholder for TV &lt;TextField /&gt;
-      </Text>
-    </View>
+    <Box>
+      <BodyText>Placeholder for TV &lt;TextField /&gt;</BodyText>
+    </Box>
   );
 };
 
