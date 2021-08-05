@@ -1,7 +1,7 @@
 import React from 'react';
 import { Box, H3 } from 'shared/ui-kit';
 
-export default function DemoWeb() {
+function DemoWeb() {
   return (
     <H3>
       Welcome to the{' '}
@@ -12,3 +12,5 @@ export default function DemoWeb() {
     </H3>
   );
 }
+
+export default DemoWeb;

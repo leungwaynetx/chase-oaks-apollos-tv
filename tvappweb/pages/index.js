@@ -2,7 +2,7 @@ import React from 'react';
 import { App } from 'shared';
 import { Box, Layout } from 'shared/ui-kit';
 
-import { DemoWeb } from '../components';
+import DemoWeb from '../components';
 
 export default function Home(props) {
   return (

@@ -1,3 +1,3 @@
 import DemoWeb from './DemoWeb';
 
-export { DemoWeb };
+export default DemoWeb;
