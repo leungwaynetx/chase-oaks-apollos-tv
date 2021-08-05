@@ -183,6 +183,10 @@ PODS:
     - React-jsi (= 0.64.2-0)
     - React-perflogger (= 0.64.2-0)
   - React-jsinspector (0.64.2-0)
+  - react-native-config (1.4.3):
+    - react-native-config/App (= 1.4.3)
+  - react-native-config/App (1.4.3):
+    - React-Core
   - React-perflogger (0.64.2-0)
   - React-RCTAnimation (0.64.2-0):
     - FBReactNativeSpec (= 0.64.2-0)
@@ -261,6 +265,7 @@ DEPENDENCIES:
   - React-jsi (from `../node_modules/react-native/ReactCommon/jsi`)
   - React-jsiexecutor (from `../node_modules/react-native/ReactCommon/jsiexecutor`)
   - React-jsinspector (from `../node_modules/react-native/ReactCommon/jsinspector`)
+  - react-native-config (from `../node_modules/react-native-config`)
   - React-perflogger (from `../node_modules/react-native/ReactCommon/reactperflogger`)
   - React-RCTAnimation (from `../node_modules/react-native/Libraries/NativeAnimation`)
   - React-RCTBlob (from `../node_modules/react-native/Libraries/Blob`)
@@ -309,6 +314,8 @@ EXTERNAL SOURCES:
     :path: "../node_modules/react-native/ReactCommon/jsiexecutor"
   React-jsinspector:
     :path: "../node_modules/react-native/ReactCommon/jsinspector"
+  react-native-config:
+    :path: "../node_modules/react-native-config"
   React-perflogger:
     :path: "../node_modules/react-native/ReactCommon/reactperflogger"
   React-RCTAnimation:
@@ -351,6 +358,7 @@ SPEC CHECKSUMS:
   React-jsi: daac79dc576288f85bc5350fa3d370411d5f115c
   React-jsiexecutor: a004bb9353d4082afcbc75e85d2d551d62c6c523
   React-jsinspector: c31f312672655971006c562a49629c676bfa0214
+  react-native-config: 387b1ea507bc50a2059e69149dac1342b9532f58
   React-perflogger: 262274e5e18ebd830c3ed7b7613825f700cc204f
   React-RCTAnimation: ef9998e5adb7888aad0829ee8650302287189e6c
   React-RCTBlob: 30af626ffc4a22675e9caab7d49bac3b4b64c348

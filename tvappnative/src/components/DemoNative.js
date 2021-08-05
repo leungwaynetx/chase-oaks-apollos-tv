@@ -1,14 +1,14 @@
 import React from 'react';
-import { Box, H1 } from 'shared/ui-kit';
+import { Box, H3 } from 'shared/ui-kit';
 
 export default function DemoNative() {
   return (
-    <H1 mb="l">
+    <H3>
       Welcome to the{' '}
       <Box as="text" color="base.secondary">
         Apollos+
       </Box>{' '}
       TV app.
-    </H1>
+    </H3>
   );
 }

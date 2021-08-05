@@ -1,12 +1,10 @@
 import { AppProvider } from 'shared/providers';
-import { Layout } from 'shared/ui-kit';
+import '../styles/globals.css';
 
 export default function App({ Component, pageProps }) {
   return (
     <AppProvider initialApolloState={pageProps.initialApolloState}>
-      <Layout>
-        <Component {...pageProps} />
-      </Layout>
+      <Component {...pageProps} />
     </AppProvider>
   );
 }

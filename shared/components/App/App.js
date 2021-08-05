@@ -1,13 +1,19 @@
 import React from 'react';
 
-import LoginForm from '../LoginForm';
+import { BodyText } from '../../ui-kit';
+import AuthManager from '../Auth';
 import DemoTypography from '../DemoTypography';
+import { useAuth } from '../../providers/AuthProvider';
 
-const App = () => (
-  <>
-    <DemoTypography mb="l" />
-    <LoginForm />
-  </>
-);
+const App = () => {
+  const [{ authenticated }] = useAuth();
+  return (
+    <>
+      <AuthManager />
+      <BodyText>{authenticated && 'Success! You are Logged In.'}</BodyText>
+      {/* <DemoTypography mt="xl" /> */}
+    </>
+  );
+};
 
 export default App;

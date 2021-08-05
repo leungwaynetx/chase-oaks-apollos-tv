@@ -10,6 +10,7 @@ const AuthDispatchContext = createContext();
 const initialState = {
   authenticated: false,
   identity: null,
+  step: 0,
   token: null,
   type: null,
   userExists: false,

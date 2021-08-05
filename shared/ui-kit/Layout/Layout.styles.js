@@ -10,7 +10,7 @@ const Styled = withTheme(styled.View`
   justify-content: flex-start;
   width: ${Platform.OS === 'web' ? '100vw' : '100%'};
   max-width: ${Platform.OS === 'web' ? '100vw' : '100%'};
-  height: ${Platform.OS === 'web' ? '100vh' : '100%'};
+  height: ${Platform.OS === 'web' ? 'auto' : '100%'};
   padding: ${themeGet('space.l')};
   ${system}
 `);
