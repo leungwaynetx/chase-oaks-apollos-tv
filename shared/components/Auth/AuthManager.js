@@ -1,7 +1,7 @@
 import React from 'react';
 import { useAuth } from '../../providers/AuthProvider';
 
-import { Box, Card, H1, H5 } from '../../ui-kit';
+import { Box, Card, H1, H4 } from '../../ui-kit';
 
 import Confirm from './AuthConfirm';
 import Details from './AuthDetails';
@@ -30,11 +30,13 @@ function AuthManager(props = {}) {
 
   return (
     <>
-      <H1>Hello 👋</H1>
-      <H5 pb="base" color="neutral.gray">
-        Have we met before?
-      </H5>
-      <Card minWidth="40%" {...props}>
+      <Box mb="base" textAlign="center">
+        <H1>Hello 👋</H1>
+        <H4 pb="base" color="neutral.gray">
+          Have we met before?
+        </H4>
+      </Box>
+      <Card minWidth="50%" {...props}>
         <Box>{render()}</Box>
       </Card>
     </>

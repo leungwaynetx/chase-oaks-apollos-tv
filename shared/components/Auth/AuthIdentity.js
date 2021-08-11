@@ -13,7 +13,8 @@ const AuthIdentity = () => {
   const [checkIfUserExists] = useUserExists({
     fetchPolicy: 'network-only',
     onCompleted: async (data) => {
-      const identity = values.identity;
+      // eslint-disable-next-line no-use-before-define
+      const { identity } = values;
       const userExists = data?.userExists !== 'NONE';
 
       handleAuthIdentity({
@@ -24,7 +25,7 @@ const AuthIdentity = () => {
     },
   });
   const { values, handleSubmit, setFieldValue } = useForm(() => {
-    const identity = values.identity;
+    const { identity } = values;
     const validEmail = validateEmail(identity);
     const validPhoneNumber = validatePhoneNumber(identity);
     const validIdentity = validEmail || validPhoneNumber;
@@ -34,7 +35,7 @@ const AuthIdentity = () => {
       checkIfUserExists({ variables: { identity: values.identity } });
     } else {
       setStatus('ERROR');
-      setError({ identity: 'That is not a valid email or phone number.' });
+      setError({ identity: 'Please enter a valid email or phone number.' });
     }
   });
 
@@ -42,24 +43,22 @@ const AuthIdentity = () => {
 
   return (
     <>
-      <TextField
-        id="identity"
-        label="Enter you email or phone number to login."
-        placeholder="Mobile number or email"
-        maxLength={128}
-        returnKeyType="next"
-        value={values.identity || ''}
-        onChange={(text) => setFieldValue(text, 'identity')}
-        mb="base"
-      />
-      {error?.identity ? (
-        <Box as="text" color="alert" fontSize="s" mt="s">
-          {error.identity}
-        </Box>
-      ) : null}
+      <Box mb="base">
+        <TextField
+          id="identity"
+          placeholder="Enter your email or phone number"
+          maxLength={128}
+          keyboardType="email-address"
+          returnKeyType="next"
+          value={values.identity || ''}
+          error={error?.identity}
+          onChange={(text) => setFieldValue('identity', text)}
+        />
+      </Box>
       <Box alignSelf="flex-end">
         <Button
           title={isLoading ? 'Loading...' : 'Next'}
+          disabled={!values.identity}
           onPress={handleSubmit}
         />
       </Box>

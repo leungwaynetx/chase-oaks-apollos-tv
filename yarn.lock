@@ -2678,6 +2678,14 @@ color@^4.0.0:
     color-convert "^2.0.1"
     color-string "^1.6.0"
 
+color@^4.0.1:
+  version "4.0.1"
+  resolved "https://registry.yarnpkg.com/color/-/color-4.0.1.tgz#21df44cd10245a91b1ccf5ba031609b0e10e7d67"
+  integrity sha512-rpZjOKN5O7naJxkH2Rx1sZzzBgaiWECc6BYXjeCE6kF0kcASJYbUq02u7JqIHwCb/j3NhV+QhRL2683aICeGZA==
+  dependencies:
+    color-convert "^2.0.1"
+    color-string "^1.6.0"
+
 colorette@^1.0.7, colorette@^1.2.2:
   version "1.2.2"
   resolved "https://registry.yarnpkg.com/colorette/-/colorette-1.2.2.tgz#cbcc79d5e99caea2dbf10eb3a26fd8b3e6acfa94"
@@ -6954,10 +6962,10 @@ react-native@^0.64.2:
     whatwg-fetch "^3.0.0"
     ws "^6.1.4"
 
-"react-native@npm:react-native-tvos@0.64.2-0":
-  version "0.64.2-0"
-  resolved "https://registry.yarnpkg.com/react-native-tvos/-/react-native-tvos-0.64.2-0.tgz#077bd127514194f848f0a220f70f6fc1a92449e2"
-  integrity sha512-Eq+8QF87TUV8PYDgMvkHoG7fjOtY8DmM6kyzYDO2v7w6ME2lJpAiaySuPnetYaiCuo/u75kK9ktGslcyQoBTPg==
+"react-native@npm:react-native-tvos@0.64.2-2":
+  version "0.64.2-2"
+  resolved "https://registry.yarnpkg.com/react-native-tvos/-/react-native-tvos-0.64.2-2.tgz#f5f6e7485af03ab01e4fae614c20c856f3112af9"
+  integrity sha512-Om71nkpHDkV9/1sNZKsCFkAk8UNazQb8qQW6cbw8v++U5ZCbG2M0i+hcsWKJbCaXoaZ7f7vmqTIsnnzg9ADbjg==
   dependencies:
     "@jest/create-cache-key-function" "^26.5.0"
     "@react-native-community/cli" "^5.0.1-alpha.1"

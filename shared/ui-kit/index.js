@@ -23,6 +23,7 @@ import {
   SmallBodyText,
   SmallSystemText,
   SystemText,
+  TypeStyles,
 } from './Typography';
 
 export {
@@ -45,6 +46,7 @@ export {
   SmallBodyText,
   SmallSystemText,
   SystemText,
+  TypeStyles,
   // ====================
   icons,
   theme,

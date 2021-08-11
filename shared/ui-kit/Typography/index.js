@@ -9,6 +9,7 @@ import LargeSystemText from './LargeSystemText';
 import SmallBodyText from './SmallBodyText';
 import SmallSystemText from './SmallSystemText';
 import SystemText from './SystemText';
+import TypeStyles from './_typeStyles';
 
 export {
   BodyText,
@@ -22,4 +23,5 @@ export {
   SmallBodyText,
   SmallSystemText,
   SystemText,
+  TypeStyles,
 };

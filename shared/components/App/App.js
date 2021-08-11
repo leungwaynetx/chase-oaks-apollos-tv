@@ -1,17 +1,31 @@
 import React from 'react';
 
-import { BodyText } from '../../ui-kit';
 import AuthManager from '../Auth';
-import DemoTypography from '../DemoTypography';
-import { useAuth } from '../../providers/AuthProvider';
+import { useAuth, logout } from '../../providers/AuthProvider';
+
+import { Button, Card, SystemText } from '../../ui-kit';
+
+// import DemoTypography from '../DemoTypography';
 
 const App = () => {
-  const [{ authenticated }] = useAuth();
+  const [{ authenticated }, dispatch] = useAuth();
+
+  const handleLogout = () => {
+    dispatch(logout());
+  };
+
   return (
     <>
       <AuthManager />
-      <BodyText>{authenticated && 'Success! You are Logged In.'}</BodyText>
-      {/* <DemoTypography mt="xl" /> */}
+      {authenticated && (
+        <Card mt="l" textAlign="center">
+          <SystemText color="base.success" mb="base">
+            {'✅  You are signed in'}
+          </SystemText>
+          <Button title="Sign out" onPress={handleLogout} />
+        </Card>
+      )}
+      {/* <DemoTypography /> */}
     </>
   );
 };

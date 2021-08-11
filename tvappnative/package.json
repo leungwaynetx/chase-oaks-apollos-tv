@@ -18,7 +18,7 @@
     "color": "^4.0.0",
     "graphql": "^15.5.1",
     "react": "17.0.1",
-    "react-native": "npm:react-native-tvos@0.64.2-0",
+    "react-native": "npm:react-native-tvos@0.64.2-2",
     "react-native-config": "^1.4.3",
     "react-native-default-preference": "^1.4.3",
     "shared": "^1.0.0",

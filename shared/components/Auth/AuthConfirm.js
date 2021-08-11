@@ -10,20 +10,18 @@ import {
 } from '../../hooks';
 
 import TextField from '../TextField';
-import { Box, Button } from '../../ui-kit';
+import { Box, Button, SystemText } from '../../ui-kit';
 
 const COPY = {
   DESCRIPTION: {
-    smsNew:
-      'Enter in the Confirmation Code that was texted to your mobile phone number.',
-    smsExisting:
-      'Enter in the Confirmation Code that was texted to your mobile phone number.',
-    passwordExisting: 'Enter in your existing password below.',
-    passwordNew: 'Create your password below.',
+    smsNew: 'Enter the confirmation code',
+    smsExisting: 'Enter the confirmation code',
+    passwordExisting: 'Enter your password',
+    passwordNew: 'Create your password',
   },
   LABEL: {
-    sms: 'Confirmation Code',
-    password: 'Password',
+    sms: 'confirmation code',
+    password: 'password',
   },
 };
 
@@ -81,9 +79,9 @@ const AuthConfirm = () => {
             onError,
           });
         }
-      } catch (error) {
+      } catch (smsError) {
         onError();
-        console.log(error);
+        console.log(smsError);
       }
     }
     if (state.type === 'password') {
@@ -115,9 +113,9 @@ const AuthConfirm = () => {
             onError,
           });
         }
-      } catch (error) {
+      } catch (emailError) {
         onError();
-        console.log(error);
+        console.log(emailError);
       }
     }
   });
@@ -129,19 +127,26 @@ const AuthConfirm = () => {
 
   return (
     <>
-      <TextField
-        label={COPY.DESCRIPTION[descriptionKey]}
-        placeholder="Enter password"
-        secureTextEntry
-        maxLength={128}
-        returnKeyType="done"
-        value={values.password || ''}
-        onChange={(text) => setFieldValue(text, 'password')}
-        mb="base"
-      />
+      <Box mb="base">
+        {state.type === 'sms' && (
+          <SystemText textAlign="center" mb="base">
+            {`We sent a text message with a one-time \nconfirmation code to your phone.`}
+          </SystemText>
+        )}
+        <TextField
+          placeholder={COPY.DESCRIPTION[descriptionKey]}
+          secureTextEntry={state.type === 'password'}
+          maxLength={128}
+          returnKeyType="done"
+          value={values.password || ''}
+          error={error?.passcode}
+          onChange={(text) => setFieldValue('password', text)}
+        />
+      </Box>
       <Box alignSelf="flex-end">
         <Button
-          title={`Submit${isLoading ? 'ting...' : ''}`}
+          title={isLoading ? 'Signing in...' : 'Sign in'}
+          disabled={!values.password}
           onPress={handleSubmit}
         />
       </Box>

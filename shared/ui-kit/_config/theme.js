@@ -4,11 +4,7 @@ import colors from './colors';
 const theme = {
   colors,
   fonts: {
-    body: '-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol"',
-    heading:
-      '-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol"',
-    system:
-      '-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol"',
+    heading: 'Inter',
   },
   radii: {
     s: rem('4px'),
@@ -23,12 +19,17 @@ const theme = {
     high: '0px 20px 48px rgba(0, 0, 0, 0.75)',
   },
   space: {
+    xxs: rem('6px'),
+    xs: rem('12px'),
+    s: rem('18px'),
     base: rem('24px'),
-    xs: rem('6px'),
-    s: rem('12px'),
     l: rem('48px'),
     xl: rem('66px'),
     xxl: rem('108px'),
+  },
+  timing: {
+    base: '0.132s',
+    xl: '0.3s',
   },
 };
 

@@ -36,6 +36,7 @@ function useAuthIdentity() {
       );
     };
 
+    // eslint-disable-next-line no-unused-vars
     const onError = (requestError) => {
       setStatus('ERROR');
       setError({ identity: 'Invalid phone number or email address' });

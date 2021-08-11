@@ -1,20 +1,16 @@
 import React from 'react';
 import { withTheme } from 'styled-components';
 import styled from 'styled-components/native';
-import { themeGet } from '@styled-system/theme-get';
-
-import * as utils from '../_utils';
 import { system, systemPropTypes } from '../_lib/system';
 
+import TypeStyles from './_typeStyles';
+
 const Text = withTheme(styled.Text`
-  font-size: ${utils.rem('14px')};
-  line-height: ${utils.rem('21px')};
-  font-weight: 500;
-  color: ${themeGet('colors.text.primary')};
+  ${TypeStyles.H5}
   ${system}
 `);
 
-const H5 = (props = {}) => <Text {...props} />;
+const H5 = (props = {}) => <Text selectable={false} {...props} />;
 
 H5.propTypes = {
   ...systemPropTypes,
