@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { useNavigation } from '../../router';
 
 import { useAuth, update as updateAuth } from '../../providers/AuthProvider';
 import {
@@ -30,6 +31,7 @@ const AuthConfirm = () => {
   const [error, setError] = useState(null);
   const [state, dispatch] = useAuth();
 
+  const navigation = useNavigation();
   const [registerUserWithSms] = useRegisterWithSms();
   const [registerUserWithEmail] = useRegisterWithEmail();
   const [verifyPin] = useVerifyPin();
@@ -44,7 +46,7 @@ const AuthConfirm = () => {
   const onSuccess = (token) => {
     setStatus('SUCCESS');
     dispatch(updateAuth({ token }));
-    state?.onSuccess();
+    navigation.push('/home');
   };
 
   const { values, setFieldValue, handleSubmit } = useForm(async () => {
