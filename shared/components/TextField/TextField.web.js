@@ -32,7 +32,6 @@ const labelColor = ({ theme, focused, error }) => {
 const labelStateStyle = ({ focused, hasValue }) => css`
   ${focused || hasValue ? TypeStyles.SystemText() : undefined};
   top: ${focused || hasValue ? '7px' : '50%'}; /* // TODO Fix brittle value. */
-  ${labelColor}
 `;
 
 const Label = withTheme(styled(LargeSystemText)`
@@ -41,6 +40,7 @@ const Label = withTheme(styled(LargeSystemText)`
   transition: all ${themeGet('timing.base')} ease-out;
 
   ${labelStateStyle}
+  ${labelColor}
 `);
 
 const textInputStateStyle = ({ theme, focused, error }) => {

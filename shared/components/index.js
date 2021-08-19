@@ -1,5 +1,5 @@
-import App from './App';
 import DemoTypography from './DemoTypography';
+import FeatureFeed from './FeatureFeed';
 import TextField from './TextField';
 
-export { App, DemoTypography, TextField };
+export { DemoTypography, FeatureFeed, TextField };

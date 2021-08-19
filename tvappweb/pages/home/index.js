@@ -1,8 +1,12 @@
 import React from 'react';
-import { useNavigation } from 'shared/router';
 
-import { Card, BodyText, Button, SystemText, Box, Layout } from 'shared/ui-kit';
+import { useNavigation } from 'shared/router';
 import { useAuth, logout } from 'shared/providers/AuthProvider';
+import { TabFeedProvider } from 'shared/providers';
+
+import { FeatureFeed } from 'shared/components';
+// import { FeatureFeedDebugger } from 'shared/components/FeatureFeed';
+import { Card, Button, SystemText, Box, Layout } from 'shared/ui-kit';
 
 const HomeScreen = () => {
   const [{ authenticated }, dispatch] = useAuth();
@@ -17,30 +21,32 @@ const HomeScreen = () => {
     <Box backgroundColor="fill.paper">
       <Layout pt="200px">
         <Box alignItems="center">
-          <BodyText>
-            {authenticated && 'This is the future Home Screen'}
-          </BodyText>
-          <>
-            {authenticated ? (
-              <Card mt="l" textAlign="center">
-                <SystemText color="base.success" mb="base">
-                  {'✅  You are signed in'}
-                </SystemText>
-                <Button title="Sign out" onPress={handleLogout} />
-              </Card>
-            ) : (
-              <Card mt="l" textAlign="center">
-                <SystemText color="base.alert" mb="base">
-                  {'😅 You are not signed in'}
-                </SystemText>
-                <Button
-                  title="Sign In"
-                  onPress={() => navigation.push('/auth')}
-                />
-              </Card>
-            )}
-            {/* <DemoTypography /> */}
-          </>
+          <TabFeedProvider
+            Component={FeatureFeed}
+            options={{
+              variables: {
+                tab: 'WATCH',
+              },
+            }}
+          />
+          {authenticated ? (
+            <Card mt="l" textAlign="center">
+              <SystemText color="base.success" mb="base">
+                {'✅  You are signed in'}
+              </SystemText>
+              <Button title="Sign out" onPress={handleLogout} />
+            </Card>
+          ) : (
+            <Card mt="l" textAlign="center">
+              <SystemText color="base.alert" mb="base">
+                {'😅 You are not signed in'}
+              </SystemText>
+              <Button
+                title="Sign In"
+                onPress={() => navigation.push('/auth')}
+              />
+            </Card>
+          )}
         </Box>
       </Layout>
     </Box>

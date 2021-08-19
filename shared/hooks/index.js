@@ -4,6 +4,7 @@ import useForm from './useForm';
 import useRegisterWithEmail from './useRegisterWithEmail';
 import useRegisterWithSms from './useRegisterWithSms';
 import useRequestPin from './useRequestPin';
+import useTabFeed from './useTabFeed';
 import useUserExists from './useUserExists';
 import useVerifyPin from './useVerifyPin';
 
@@ -14,6 +15,7 @@ export {
   useRegisterWithEmail,
   useRegisterWithSms,
   useRequestPin,
+  useTabFeed,
   useUserExists,
   useVerifyPin,
 };

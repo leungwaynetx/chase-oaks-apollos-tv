@@ -40,7 +40,6 @@ const HomeScreen = () => {
                 />
               </Card>
             )}
-            {/* <DemoTypography /> */}
           </>
         </Box>
       </Layout>
