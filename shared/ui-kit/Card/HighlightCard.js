@@ -26,7 +26,7 @@ function HighlightCard(props = {}) {
 HighlightCard.propTypes = {
   ...systemPropTypes,
   image: Image.propTypes.image,
-  size: Image.propTypes.image,
+  size: Image.propTypes.size,
   title: ContentTitles.propTypes.title,
   body: ContentTitles.propTypes.body,
   featured: ContentTitles.propTypes.featured,
