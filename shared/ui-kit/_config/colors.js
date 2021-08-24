@@ -25,10 +25,17 @@ const colors = {
     fill: {
       paper: '#1C1C1E', // gray6
       screen: '#000000',
-      system: 'rgba(rgba(99, 99, 102, 0.36)', // 36% gray2
+      system: 'rgba(99, 99, 102, 0.36)', // 36% gray2
       system2: 'rgba(99, 99, 102, 0.32)', // 32% gray2
-      system3: 'rgba(rgba(99, 99, 102, 0.24)', // 24% gray2
-      system4: 'rgba(rgba(99, 99, 102, 0.18)', // 18% gray2
+      system3: 'rgba(99, 99, 102, 0.24)', // 24% gray2
+      system4: 'rgba(99, 99, 102, 0.18)', // 18% gray2
+    },
+    material: {
+      thick: 'rgba(28, 28, 30, 0.90)', // 90% paper
+      regular: 'rgba(28, 28, 30, 0.70)', // 70% paper
+      thin: 'rgba(28, 28, 30, 0.50)', // 50% paper
+      ultrathin: 'rgba(28, 28, 30, 0.40)', // 40% paper
+      chrome: 'rgba(28, 28, 30, 0.95)', // 95% paper
     },
     text: {
       primary: '#F4F7F8',

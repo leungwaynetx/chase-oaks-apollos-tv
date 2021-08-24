@@ -14,9 +14,9 @@ const theme = {
     xxl: rem('25px'),
   },
   shadows: {
-    low: '0px 2px 8px rgba(0, 0, 0, 1)',
-    medium: '0px 5px 18px rgba(0, 0, 0, 0.5)',
-    high: '0px 20px 48px rgba(0, 0, 0, 0.75)',
+    low: '0px 2px 8px rgba(0, 0, 0, 0.04);',
+    medium: '0px 5px 24px rgba(0, 0, 0, 0.08);',
+    high: '0px 20px 48px rgba(0, 0, 0, 0.09);',
   },
   space: {
     xxs: rem('6px'),
