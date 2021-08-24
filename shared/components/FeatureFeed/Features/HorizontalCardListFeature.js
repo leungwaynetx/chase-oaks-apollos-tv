@@ -1,18 +1,20 @@
 import { apollosPropTypes } from 'shared/lib';
-import { Card, H3, systemPropTypes } from 'shared/ui-kit';
+import { Box, Card, H3, H4, systemPropTypes, SystemText } from 'shared/ui-kit';
 
 function HorizontalCardListFeature(props = {}) {
+  console.log('props:', props);
   return (
-    <Card
-      {...props}
-      textAlign="center"
-      borderWidth="2px"
-      borderColor="base.success"
-    >
-      <H3 color="base.success" fontWeight="bold" fontFamily="monospace">
-        🚧 &lt;HorizontalCardListFeature /&gt; 🚧
-      </H3>
-    </Card>
+    <Box px="base" {...props}>
+      <H3 mb="base">{props.feature.title}</H3>
+      <Box flexDirection="row">
+        {props.feature.cards?.map((card) => (
+          <Card key={card.id} flex={0.25}>
+            <H4>{card.title}</H4>
+            <SystemText>{card.summary}</SystemText>
+          </Card>
+        ))}
+      </Box>
+    </Box>
   );
 }
 

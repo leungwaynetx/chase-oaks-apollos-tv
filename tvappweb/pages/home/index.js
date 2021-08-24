@@ -1,54 +1,22 @@
 import React from 'react';
 
-import { useNavigation } from 'shared/router';
-import { useAuth, logout } from 'shared/providers/AuthProvider';
 import { TabFeedProvider } from 'shared/providers';
 
 import { FeatureFeed } from 'shared/components';
 // import { FeatureFeedDebugger } from 'shared/components/FeatureFeed';
-import { Card, Button, SystemText, Box, Layout } from 'shared/ui-kit';
+import { Box } from 'shared/ui-kit';
 
 const HomeScreen = () => {
-  const [{ authenticated }, dispatch] = useAuth();
-  const navigation = useNavigation();
-
-  const handleLogout = () => {
-    dispatch(logout());
-    navigation.push('/auth');
-  };
-
   return (
-    <Box backgroundColor="fill.paper">
-      <Layout pt="200px">
-        <Box alignItems="center">
-          <TabFeedProvider
-            Component={FeatureFeed}
-            options={{
-              variables: {
-                tab: 'WATCH',
-              },
-            }}
-          />
-          {authenticated ? (
-            <Card mt="l" textAlign="center">
-              <SystemText color="base.success" mb="base">
-                {'✅  You are signed in'}
-              </SystemText>
-              <Button title="Sign out" onPress={handleLogout} />
-            </Card>
-          ) : (
-            <Card mt="l" textAlign="center">
-              <SystemText color="base.alert" mb="base">
-                {'😅 You are not signed in'}
-              </SystemText>
-              <Button
-                title="Sign In"
-                onPress={() => navigation.push('/auth')}
-              />
-            </Card>
-          )}
-        </Box>
-      </Layout>
+    <Box>
+      <TabFeedProvider
+        Component={FeatureFeed}
+        options={{
+          variables: {
+            tab: 'WATCH',
+          },
+        }}
+      />
     </Box>
   );
 };

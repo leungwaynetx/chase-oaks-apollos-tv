@@ -10,7 +10,10 @@ module.exports = {
       'error',
       { ignore: Object.keys(peerDependencies) },
     ],
-    'no-unused-vars': ['error', { argsIgnorePattern: 'props|payload|event' }],
+    'no-unused-vars': [
+      'error',
+      { argsIgnorePattern: 'props|payload|event|index' },
+    ],
     'react/react-in-jsx-scope': 'off',
   },
   settings: {

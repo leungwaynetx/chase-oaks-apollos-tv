@@ -5,6 +5,7 @@ import PropTypes from 'prop-types';
 
 // interface Node
 const NodePropTypes = {
+  __typename: PropTypes.string,
   id: PropTypes.string,
 };
 export const Node = PropTypes.shape(NodePropTypes);
@@ -26,6 +27,7 @@ export const ImageMedia = PropTypes.shape({
 
 // interface Feature
 const FeaturePropTypes = {
+  __typename: PropTypes.string,
   id: PropTypes.string,
   order: PropTypes.number,
 };
@@ -33,12 +35,14 @@ export const Feature = PropTypes.shape(FeaturePropTypes);
 
 // type FeatureFeed implements Node
 export const FeatureFeed = PropTypes.shape({
+  __typename: PropTypes.string,
   id: PropTypes.string,
   features: PropTypes.arrayOf(Feature),
 });
 
 // type FeatureAction
 export const FeatureAction = PropTypes.shape({
+  __typename: PropTypes.string,
   relatedNode: Node,
   action: PropTypes.string,
   title: PropTypes.string,
@@ -60,6 +64,7 @@ export const CardListItem = PropTypes.shape({
 
 // type ActionListAction
 export const ActionListAction = PropTypes.shape({
+  __typename: PropTypes.string,
   id: PropTypes.string,
   title: PropTypes.string,
   subtitle: PropTypes.string,

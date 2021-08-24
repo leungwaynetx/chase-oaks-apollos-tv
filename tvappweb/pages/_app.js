@@ -2,19 +2,16 @@ import PropTypes from 'prop-types';
 import { AppProvider } from 'shared/providers';
 import '../styles/globals.css';
 
-import { Box } from 'shared/ui-kit';
-
-import DemoWeb from '../components';
+import { AppHeader } from 'shared/components';
+import { Layout } from 'shared/ui-kit';
 
 function App({ Component, pageProps }) {
   return (
     <AppProvider initialApolloState={pageProps.initialApolloState}>
-      <Box height="100vh" backgroundColor="fill.paper">
-        <Box backgroundColor="fill.screen" alignItems="center" p="s">
-          <DemoWeb />
-        </Box>
+      <Layout>
+        <AppHeader />
         <Component {...pageProps} />
-      </Box>
+      </Layout>
     </AppProvider>
   );
 }

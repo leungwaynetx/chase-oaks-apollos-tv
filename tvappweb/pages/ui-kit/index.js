@@ -1,15 +1,15 @@
 import React from 'react';
 
 import { DemoCards, DemoColors, DemoTypography } from 'shared/components';
-import { Layout } from 'shared/ui-kit';
+import { Box } from 'shared/ui-kit';
 
 const UIKit = () => {
   return (
-    <Layout pt="100px">
+    <Box p="l" pt="xl">
       <DemoTypography mb="xxl" />
       <DemoColors mb="xxl" />
       <DemoCards mb="xxl" />
-    </Layout>
+    </Box>
   );
 };
 
