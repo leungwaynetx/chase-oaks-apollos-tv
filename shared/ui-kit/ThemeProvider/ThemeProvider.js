@@ -16,7 +16,9 @@ function ThemeProvider(props) {
 
 ThemeProvider.propTypes = {
   children: PropTypes.node.isRequired,
-  theme: PropTypes.object,
+  theme: PropTypes.shape({
+    colors: PropTypes.shape({}),
+  }),
   mode: PropTypes.oneOf(['light', 'dark']),
 };
 

@@ -8,8 +8,11 @@ import { system, systemPropTypes } from '../_lib/system';
 const Styled = withTheme(styled.View`
   background-color: ${themeGet('colors.fill.screen')};
   border-radius: ${themeGet('radii.base')};
-  padding: ${themeGet('space.base')};
   box-shadow: ${themeGet('shadows.medium')};
+  background-size: cover;
+  background-position: center;
+  overflow: hidden;
+  padding: ${themeGet('space.base')};
   ${system};
 `);
 

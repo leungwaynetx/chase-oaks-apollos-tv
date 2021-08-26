@@ -26,7 +26,7 @@ module.exports = withTM({
       symlinks: true,
     };
     config.module.rules.push({
-      test: /\.+(js)|(jsx)$/,
+      test: /\.js$/,
       use: defaultLoaders.babel,
       include: [path.resolve(__dirname, '..', 'shared')],
     });

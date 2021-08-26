@@ -5,9 +5,10 @@
   "license": "MIT",
   "private": true,
   "scripts": {
-    "dev": "run-p native web:dev",
+    "dev": "run-p prepare native web:dev",
     "native": "cd tvappnative && yarn start",
-    "web:dev": "cd tvappweb && yarn dev"
+    "web:dev": "cd tvappweb && yarn dev",
+    "prepare": "cd shared && node ./scripts/get-introspection-data.js"
   },
   "workspaces": {
     "packages": [

@@ -26,6 +26,8 @@ import {
   TypeStyles,
 } from './Typography';
 
+import Loader from './Loader';
+
 export {
   // ====================
   ThemeProvider,
@@ -34,6 +36,7 @@ export {
   Button,
   Card,
   Layout,
+  Loader,
   // Typography
   BodyText,
   H1,

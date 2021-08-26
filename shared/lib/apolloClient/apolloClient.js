@@ -36,6 +36,10 @@ const client = new ApolloClient({
 });
 
 // Necessary to maintain the same module shape as web version
+export function initializeApollo() {
+  return null;
+}
+
 export function useApollo() {
   return null;
 }

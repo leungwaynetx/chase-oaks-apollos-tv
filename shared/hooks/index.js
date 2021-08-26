@@ -1,5 +1,6 @@
 import useAuthIdentity from './useAuthIdentity';
 import useAuthenticateCredentials from './useAuthenticateCredentials';
+import useContentItem from './useContentItem';
 import useForm from './useForm';
 import useRegisterWithEmail from './useRegisterWithEmail';
 import useRegisterWithSms from './useRegisterWithSms';
@@ -11,6 +12,7 @@ import useVerifyPin from './useVerifyPin';
 export {
   useAuthIdentity,
   useAuthenticateCredentials,
+  useContentItem,
   useForm,
   useRegisterWithEmail,
   useRegisterWithSms,

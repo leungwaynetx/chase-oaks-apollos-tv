@@ -1,3 +1,3 @@
-import client, { useApollo } from './apolloClient';
+import client, { useApollo, initializeApollo } from './apolloClient';
 
-export { client as default, useApollo };
+export { client as default, useApollo, initializeApollo };
