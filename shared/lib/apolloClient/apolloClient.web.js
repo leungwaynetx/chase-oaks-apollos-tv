@@ -29,8 +29,6 @@ function createApolloClient() {
     window.apolloClient = client;
   }
 
-  client.onResetStore(() => cache.writeData({ data: {} }));
-
   return client;
 }
 
