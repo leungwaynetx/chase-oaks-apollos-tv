@@ -3,6 +3,7 @@ import { withTheme } from 'styled-components';
 
 import { apollosPropTypes } from 'shared/lib';
 import { BodyText, Box, Button, H2, systemPropTypes } from 'shared/ui-kit';
+import Card, { ContentTitles, Image, Overlay } from 'shared/ui-kit/Card';
 
 const CoverImage = withTheme(styled(Box)`
   width: 100%;
@@ -24,15 +25,24 @@ function HeroListFeature(props = {}) {
 
   return (
     <Box {...props}>
-      <CoverImage uri={props.feature.heroCard.coverImage?.sources[0]?.uri} />
-      <Box p="base" display="flex" alignItems="flex-start">
-        <H2>{props.feature.heroCard.title}</H2>
-        <BodyText mb="s">{props.feature.heroCard.summary}</BodyText>
-        <Button
-          onPress={handlePrimaryActionClick}
-          title={props.feature.primaryAction.title}
-        />
-      </Box>
+      <Card p="0">
+        <Image image={props.feature.heroCard.coverImage} size="wide" />
+        <Overlay p="l">
+          <Box>
+            <ContentTitles
+              title={props.feature.heroCard.title}
+              body={props.feature.heroCard.summary}
+              featured
+            />
+            <Box mt="base" alignSelf="flex-start">
+              <Button
+                onPress={handlePrimaryActionClick}
+                title={props.feature.primaryAction.title}
+              />
+            </Box>
+          </Box>
+        </Overlay>
+      </Card>
     </Box>
   );
 }
