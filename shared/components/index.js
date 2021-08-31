@@ -5,6 +5,7 @@ import DemoColors from './DemoColors';
 import DemoTypography from './DemoTypography';
 import FeatureFeed from './FeatureFeed';
 import TextField from './TextField';
+import VideoPlayer from './VideoPlayer';
 
 export {
   AppHeader,
@@ -14,4 +15,5 @@ export {
   DemoTypography,
   FeatureFeed,
   TextField,
+  VideoPlayer,
 };
