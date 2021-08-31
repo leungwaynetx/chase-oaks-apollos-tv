@@ -33,6 +33,22 @@ export const TAB_FEED_FEATURES = gql`
               __typename
             }
           }
+          # These can be card-like items, not just buttons
+          actions {
+            id
+            title
+            subtitle
+            action
+            relatedNode {
+              id
+              __typename
+            }
+            image {
+              sources {
+                uri
+              }
+            }
+          }
           primaryAction {
             title
             action
