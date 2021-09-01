@@ -5,12 +5,14 @@ import { systemPropTypes, SystemText } from 'shared/ui-kit';
 import Styled from './Loader.styles';
 
 function Loader(props = {}) {
-  if (!props.text) return <SVG />;
-
   return (
     <Styled {...props}>
       <SVG />
-      <SystemText>{props.text}...</SystemText>
+      {props.text && (
+        <SystemText mt="xs" color="text.secondary">
+          {props.text}&hellip;
+        </SystemText>
+      )}
     </Styled>
   );
 }
@@ -20,10 +22,9 @@ function SVG() {
     <svg
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 24 24"
-      height="24px"
-      width="24px"
+      height="64px"
+      width="64px"
       preserveAspectRatio="xMidYMid meet"
-      x="1124"
       fill="currentColor"
     >
       <g>

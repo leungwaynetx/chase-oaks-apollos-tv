@@ -1,11 +1,12 @@
 import PropTypes from 'prop-types';
 
 import { apollosPropTypes } from 'shared/lib';
-import { SystemText, Box } from 'shared/ui-kit';
+import { Box, Loader } from 'shared/ui-kit';
 
 import FeatureFeedComponentMap from './FeatureFeedComponentMap';
 
 function renderFeature(feature, index) {
+  // Get the component that's mapped to this Feature type
   const FeatureComponent = FeatureFeedComponentMap[feature.__typename];
 
   if (FeatureComponent) {
@@ -21,13 +22,23 @@ function renderFeature(feature, index) {
 }
 
 function FeatureFeed(props = {}) {
+  if (props.loading) {
+    return (
+      <Box
+        display="flex"
+        justifyContent="center"
+        alignContent="center"
+        alignItems="center"
+        width="100%"
+        minHeight="50vh"
+      >
+        <Loader text={false} />
+      </Box>
+    );
+  }
   return (
     <Box color="text.primary" width="100%" overflow="scroll">
-      {props.loading ? (
-        <SystemText>⌛</SystemText>
-      ) : (
-        props.data?.features?.map(renderFeature)
-      )}
+      {props.data?.features?.map(renderFeature)}
     </Box>
   );
 }

@@ -15,7 +15,7 @@ const theme = {
   },
   shadows: {
     low: '0px 2px 8px rgba(0, 0, 0, 0.04);',
-    medium: '0px 5px 24px rgba(0, 0, 0, 0.08);',
+    medium: '0px 5px 24px rgba(0, 0, 0, 0.1);',
     high: '0px 20px 48px rgba(0, 0, 0, 0.09);',
   },
   space: {

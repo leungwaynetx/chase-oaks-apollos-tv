@@ -17,7 +17,7 @@ const Gradient = withTheme(styled.View`
   height: 100%;
   background-image: linear-gradient(
     2deg,
-    ${themeGet('colors.material.thick')},
+    ${themeGet('colors.material.regular')} 33%,
     transparent
   );
 `);
