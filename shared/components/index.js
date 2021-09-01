@@ -1,4 +1,5 @@
 import AppHeader from './AppHeader';
+import DemoButtons from './DemoButtons';
 import ContentSingle from './ContentSingle';
 import DemoCards from './DemoCards';
 import DemoColors from './DemoColors';
@@ -10,8 +11,9 @@ import VideoPlayer from './VideoPlayer';
 export {
   AppHeader,
   ContentSingle,
-  DemoCards,
+  DemoButtons,
   DemoColors,
+  DemoCards,
   DemoTypography,
   FeatureFeed,
   TextField,

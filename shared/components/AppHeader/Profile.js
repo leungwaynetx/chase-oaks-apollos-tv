@@ -1,7 +1,7 @@
 import { logout, useAuth } from 'shared/providers/AuthProvider';
 import { useNavigation } from 'shared/router';
 
-import { Box, Button, SystemText } from 'shared/ui-kit';
+import { Box, Button, SmallSystemText } from 'shared/ui-kit';
 
 function Profile(props = {}) {
   const [{ authenticated }, dispatch] = useAuth();
@@ -26,13 +26,13 @@ function Profile(props = {}) {
     >
       {authenticated ? (
         <>
-          <SystemText>You are signed in.</SystemText>
+          <SmallSystemText>You are signed in.</SmallSystemText>
           <Box ml="s">
-            <Button title="Sign out" onPress={handleLogout} />
+            <Button title="Sign out" size="micro" onPress={handleLogout} />
           </Box>
         </>
       ) : (
-        <Button title="Sign in" onPress={handleLogin} />
+        <Button title="Sign in" size="micro" onPress={handleLogin} />
       )}
     </Box>
   );
