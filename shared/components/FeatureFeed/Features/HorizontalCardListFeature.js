@@ -2,7 +2,6 @@ import { apollosPropTypes } from 'shared/lib';
 import { Box, Card, H3, H4, systemPropTypes, SystemText } from 'shared/ui-kit';
 
 function HorizontalCardListFeature(props = {}) {
-  console.log('props:', props);
   return (
     <Box px="base" {...props}>
       <H3 mb="base">{props.feature.title}</H3>

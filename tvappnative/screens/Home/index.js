@@ -1,48 +1,41 @@
 import React from 'react';
+import { FlatList } from 'react-native';
 import { useNavigation } from 'shared/router';
 
-import { Card, BodyText, Button, SystemText, Box, Layout } from 'shared/ui-kit';
+import { Button, Box } from 'shared/ui-kit';
 import { useAuth, logout } from 'shared/providers/AuthProvider';
 
+import useWatchFeed from 'shared/hooks/useWatchFeed';
+
 const HomeScreen = () => {
-  const [{ authenticated }, dispatch] = useAuth();
-  const navigation = useNavigation();
+  const [dispatch] = useAuth();
+  const { edges } = useWatchFeed();
+  const router = useNavigation();
 
   const handleLogout = () => {
     dispatch(logout());
-    navigation.push('/auth');
+    router.push('/auth');
   };
+
+  const handleOnPress = (node) => {
+    router.push('/content-item', {
+      itemId: node.id,
+    });
+  };
+
+  const renderItem = ({ item: { node = {} } }) => (
+    <Box key={node.id}>
+      <Button title={node.title} onPress={() => handleOnPress(node)} />
+    </Box>
+  );
 
   return (
     <Box backgroundColor="fill.paper">
-      <Layout pt="200px">
-        <Box alignItems="center">
-          <BodyText>
-            {authenticated &&
-              'Success! You are Logged In. This is the future Home Screen'}
-          </BodyText>
-          <>
-            {authenticated ? (
-              <Card mt="l" textAlign="center">
-                <SystemText color="base.success" mb="base">
-                  {'✅  You are signed in'}
-                </SystemText>
-                <Button title="Sign out" onPress={handleLogout} />
-              </Card>
-            ) : (
-              <Card mt="l" textAlign="center">
-                <SystemText color="base.alert" mb="base">
-                  {'😅 You are not signed in'}
-                </SystemText>
-                <Button
-                  title="Sign In"
-                  onPress={() => navigation.push('/auth')}
-                />
-              </Card>
-            )}
-          </>
-        </Box>
-      </Layout>
+      <FlatList
+        data={edges}
+        renderItem={renderItem}
+        keyExtractor={(item) => item.node.id}
+      />
     </Box>
   );
 };

@@ -31,7 +31,7 @@ const AuthConfirm = () => {
   const [error, setError] = useState(null);
   const [state, dispatch] = useAuth();
 
-  const navigation = useNavigation();
+  const router = useNavigation();
   const [registerUserWithSms] = useRegisterWithSms();
   const [registerUserWithEmail] = useRegisterWithEmail();
   const [verifyPin] = useVerifyPin();
@@ -46,7 +46,7 @@ const AuthConfirm = () => {
   const onSuccess = (token) => {
     setStatus('SUCCESS');
     dispatch(updateAuth({ token }));
-    navigation.push('/home');
+    router.push('/home');
   };
 
   const { values, setFieldValue, handleSubmit } = useForm(async () => {

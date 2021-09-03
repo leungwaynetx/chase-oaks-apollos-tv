@@ -4,7 +4,7 @@ import { useNavigation } from 'shared/router';
 import { Box, Button } from 'shared/ui-kit';
 import { getURLFromType } from 'shared/utils';
 
-import useWatchFeed from '../../hooks/useWatchFeed';
+import useWatchFeed from 'shared/hooks/useWatchFeed';
 
 const WatchFeed = () => {
   const { edges } = useWatchFeed();

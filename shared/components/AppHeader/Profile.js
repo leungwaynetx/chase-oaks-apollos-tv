@@ -5,15 +5,15 @@ import { Box, Button, SmallSystemText } from 'shared/ui-kit';
 
 function Profile(props = {}) {
   const [{ authenticated }, dispatch] = useAuth();
-  const navigation = useNavigation();
+  const router = useNavigation();
 
   const handleLogin = () => {
-    navigation.push('/auth');
+    router.push('/auth');
   };
 
   const handleLogout = () => {
     dispatch(logout());
-    navigation.push('/auth');
+    router.push('/auth');
   };
 
   return (

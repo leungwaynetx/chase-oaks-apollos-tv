@@ -8,6 +8,7 @@ import useRequestPin from './useRequestPin';
 import useTabFeed from './useTabFeed';
 import useUserExists from './useUserExists';
 import useVerifyPin from './useVerifyPin';
+import useWatchFeed from './useWatchFeed';
 
 export {
   useAuthIdentity,
@@ -20,4 +21,5 @@ export {
   useTabFeed,
   useUserExists,
   useVerifyPin,
+  useWatchFeed,
 };
