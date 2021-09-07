@@ -1,26 +1,68 @@
 import React from 'react';
-import { useAuth, update as updateAuth } from '../../providers/AuthProvider';
 
-import { Box, Button, SystemText, H3 } from '../../ui-kit';
+import { useAuthIdentity, useForm } from 'shared/hooks';
 
-const AuthDetails = () => {
-  const [, dispatch] = useAuth();
+import { TextField } from 'shared/components';
+import { H5, Box, Button } from 'shared/ui-kit';
 
-  const handleTryAgain = () => dispatch(updateAuth({ step: 0 }));
+function upperFirst(string) {
+  return string.charAt(0).toUpperCase() + string.slice(1);
+}
+
+function AuthDetails() {
+  const { error, status, setStatus, handleAuthIdentity } = useAuthIdentity();
+  const { values, handleSubmit, setFieldValue } = useForm(() => {
+    if (!error) {
+      setStatus('LOADING');
+
+      const userProfile = Object.keys(values).map((key) => ({
+        field: upperFirst(key),
+        value: values[key],
+      }));
+      handleAuthIdentity({ nextStep: 2, userProfile });
+    }
+  });
+
+  const isLoading = status === 'LOADING';
 
   return (
-    <Box flexDirection="column" alignItems="center">
-      <H3>Oops!</H3>
-      <SystemText color="base.alert" textAlign="center">
-        We could not find your account.{'\n'}Please create one from the mobile
-        app first.
-      </SystemText>
-
-      <Box mt="base" mx="auto" alignSelf="flex-start">
-        <Button title="Try again" onPress={handleTryAgain} />
+    <>
+      <H5 mb="base">
+        Help us learn a little more about you so we can connect you with the
+        best ministries and events.
+      </H5>
+      <Box mb="l" textAlign="left">
+        <Box mb="base">
+          <TextField
+            id="firstName"
+            placeholder="First Name"
+            onChange={(text) => setFieldValue('firstName', text)}
+            required
+            autoFocus
+            error={error?.firstName}
+          />
+        </Box>
+        <Box>
+          <TextField
+            id="lastName"
+            placeholder="Last Name"
+            onChange={(text) => setFieldValue('lastName', text)}
+            required
+            error={error?.lastName}
+          />
+        </Box>
       </Box>
-    </Box>
+      <Box flexDirection="row" justifyContent="flex-end">
+        <Button
+          status={status}
+          mb="base"
+          title={`Finish${isLoading ? 'ing...' : ''}`}
+          onPress={handleSubmit}
+          disabled={!(values.firstName && values.lastName) || isLoading}
+        />
+      </Box>
+    </>
   );
-};
+}
 
 export default AuthDetails;
