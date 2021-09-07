@@ -1,10 +1,13 @@
-import { View } from 'react-native';
+import { Pressable, View } from 'react-native';
 import styled from 'styled-components/native';
 import { withTheme } from 'styled-components';
 import { themeGet } from '@styled-system/theme-get';
 
+import { useNavigation } from 'shared/router';
+import { getURLFromType } from 'shared/utils';
+
 import { apollosPropTypes } from 'shared/lib';
-import { Box, Button, systemPropTypes } from 'shared/ui-kit';
+import { Box, Button, H1, H3, systemPropTypes } from 'shared/ui-kit';
 import Card, { ContentTitles, Image, Overlay } from 'shared/ui-kit/Card';
 
 const ActionsContainer = withTheme(styled(View)`
@@ -12,55 +15,64 @@ const ActionsContainer = withTheme(styled(View)`
   flex-direction: row;
   justify-content: space-between;
   margin-top: ${themeGet('space.base')};
-  padding: 0 ${themeGet('space.base')};
+  padding: 0 ${themeGet('space.s')};
   position: absolute;
   width: 100%;
 `);
 
 function HeroListFeature(props = {}) {
+  const router = useNavigation();
+
+  const handleWatchNowPress = () => {
+    router.push(getURLFromType(props.feature.heroCard.relatedNode));
+  };
+
   const handlePrimaryActionClick = () => {
-    const { primaryAction } = props.feature;
-    /* eslint-disable no-console */
-    console.log(`%chandlePrimaryActionClick()`, 'color: cyan');
-    console.log(`--> action: "${primaryAction.action}"`);
-    console.log(`--> relatedNode: "${primaryAction.relatedNode.id}"`);
-    /* eslint-enable no-console */
+    router.push(getURLFromType(props.feature.primaryAction.relatedNode));
+  };
+
+  const handleActionPress = (action) => {
+    router.push(getURLFromType(action.relatedNode));
   };
 
   return (
     /* The percentage padding lets the action row cards overlap the bottom edge */
     <Box pb={props.feature.actions?.length >= 1 ? '16.8%' : null} {...props}>
-      <Card p="0">
+      <Box>
         <Image image={props.feature.heroCard.coverImage} size="wide" />
         <Overlay p="l" pb="xxl">
           <Box>
-            <ContentTitles
-              title={props.feature.heroCard.title}
-              body={props.feature.heroCard.summary}
-              featured
-            />
-            <Box mt="base" alignSelf="flex-start">
+            <Box>
+              <H1>{props.feature.heroCard.title}</H1>
+              <H3 fontWeight="400">{props.feature.heroCard.summary}</H3>
+            </Box>
+            <Box mt="base" alignSelf="flex-start" flexDirection="row">
+              <Box mr="xs">
+                <Button onPress={handleWatchNowPress} title="Watch now" />
+              </Box>
               <Button
                 onPress={handlePrimaryActionClick}
                 title={props.feature.primaryAction.title}
+                type="secondary"
               />
             </Box>
           </Box>
         </Overlay>
-      </Card>
+      </Box>
 
       {Boolean(props.feature.actions?.length) && (
         <ActionsContainer>
-          {props.feature.actions.map((action) => (
-            <Card
+          {props.feature.actions.slice(0, 3).map((action) => (
+            <Pressable
               key={action.id}
-              p="0"
-              width="calc(33.33% - 12px)" /* // TODO Check native handling */
-              bg="fill.system"
+              onPress={() => handleActionPress(action)}
+              style={{ width: 'calc(33.33% - 12px)' }}
             >
-              <Image image={action.image} size="wide" />
-              <ContentTitles py="xs" px="s" title={action.title} micro />
-            </Card>
+              <Card p="0" bg="fill.system">
+                <Image image={action.image} size="wide" />
+                <ContentTitles py="xs" px="s" title={action.title} micro />
+              </Card>
+            </Pressable>
           ))}
         </ActionsContainer>
       )}

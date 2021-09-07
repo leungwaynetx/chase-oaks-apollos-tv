@@ -57,7 +57,8 @@ const buttonTypeProp = ({ type }) => {
 
     case 'secondary':
       return css`
-        background-color: ${themeGet('colors.text.primary')};
+        border-width: 2px;
+        border-color: ${themeGet('colors.base.secondary')};
         border-radius: ${themeGet('radii.base')};
       `;
   }
@@ -83,6 +84,8 @@ const buttonSizeProp = ({ size }) => {
 
 const Button = withTheme(styled.View`
   align-self: flex-start;
+  border-width: 2px;
+  border-color: transparent;
   ${buttonTypeProp}
   ${webTransition}
   ${buttonState}

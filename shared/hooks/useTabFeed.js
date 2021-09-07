@@ -31,6 +31,9 @@ export const TAB_FEED_FEATURES = gql`
             relatedNode {
               id
               __typename
+              ... on ContentItem {
+                title
+              }
             }
           }
           # These can be card-like items, not just buttons
@@ -42,6 +45,9 @@ export const TAB_FEED_FEATURES = gql`
             relatedNode {
               id
               __typename
+              ... on ContentItem {
+                title
+              }
             }
             image {
               sources {
@@ -80,6 +86,9 @@ export const TAB_FEED_FEATURES = gql`
             relatedNode {
               id
               __typename
+              ... on ContentItem {
+                title
+              }
             }
           }
           primaryAction {
@@ -88,6 +97,9 @@ export const TAB_FEED_FEATURES = gql`
             relatedNode {
               id
               __typename
+              ... on ContentItem {
+                title
+              }
             }
           }
         }

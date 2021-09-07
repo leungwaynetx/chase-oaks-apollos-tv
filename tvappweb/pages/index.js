@@ -1,7 +1,7 @@
 import React from 'react';
 
-import AuthScreen from './auth';
+import HomeScreen from './home';
 
 export default function Home(props) {
-  return <AuthScreen />;
+  return <HomeScreen />;
 }

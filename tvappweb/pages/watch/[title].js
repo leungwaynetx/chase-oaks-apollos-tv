@@ -1,6 +1,8 @@
 import { useNavigation } from 'shared/router';
 import { ContentItemProvider } from 'shared/providers';
+
 import { ContentSingle } from 'shared/components';
+import { Box } from 'shared/ui-kit';
 
 function getItemId(slug) {
   if (slug) {
@@ -20,5 +22,9 @@ export default function WatchSingle(props) {
     variables: { id: itemId },
   };
 
-  return <ContentItemProvider Component={ContentSingle} options={options} />;
+  return (
+    <Box pt="xl">
+      <ContentItemProvider Component={ContentSingle} options={options} />
+    </Box>
+  );
 }

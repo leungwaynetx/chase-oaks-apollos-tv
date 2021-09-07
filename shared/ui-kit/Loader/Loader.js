@@ -51,7 +51,7 @@ Loader.propTypes = {
 };
 
 Loader.defaultProps = {
-  text: 'Loading',
+  text: null,
 };
 
 Loader.SVG = SVG;

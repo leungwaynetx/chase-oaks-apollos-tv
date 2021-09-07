@@ -9,7 +9,7 @@ function App({ Component, pageProps }) {
   return (
     <AppProvider initialApolloState={pageProps.initialApolloState}>
       <Layout>
-        <AppHeader />
+        <AppHeader float />
         <Component {...pageProps} />
       </Layout>
     </AppProvider>

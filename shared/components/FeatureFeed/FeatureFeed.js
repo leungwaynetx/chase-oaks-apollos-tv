@@ -32,7 +32,7 @@ function FeatureFeed(props = {}) {
         width="100%"
         minHeight="50vh"
       >
-        <Loader text={false} />
+        <Loader />
       </Box>
     );
   }
