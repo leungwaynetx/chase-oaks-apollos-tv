@@ -11,6 +11,9 @@ import Box from './Box';
 import Button from './Button';
 import Card from './Card';
 import Layout from './Layout';
+import Loader from './Loader';
+import PressableBox from './PressableBox';
+
 import {
   BodyText,
   H1,
@@ -26,8 +29,6 @@ import {
   TypeStyles,
 } from './Typography';
 
-import Loader from './Loader';
-
 export {
   // ====================
   ThemeProvider,
@@ -37,6 +38,7 @@ export {
   Card,
   Layout,
   Loader,
+  PressableBox,
   // Typography
   BodyText,
   H1,

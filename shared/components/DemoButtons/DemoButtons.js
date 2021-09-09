@@ -17,8 +17,8 @@ import {
 function Section(props = {}) {
   return (
     <Box
-      pb="base"
-      mb="base"
+      pb="l"
+      mb="l"
       borderBottomWidth="1px"
       borderBottomColor="text.quaternary"
       {...props}
@@ -56,7 +56,7 @@ function DemoButtons(props = {}) {
   return (
     <Box {...props}>
       <H1 mb="s">Buttons</H1>
-      <Card>
+      <Card pt="l">
         <Section
           title="Default: Large & Primary"
           titleCode={`<Button title="Sign up" />`}
@@ -65,37 +65,16 @@ function DemoButtons(props = {}) {
             <Button title="Sign up" />
           </Example>
           <Example label="Focused">
-            <Button
-              title="Sign up"
-              forceButtonStates={{
-                focused: true,
-              }}
-            />
+            <Button title="Sign up" focused />
           </Example>
           <Example label="Hovered">
-            <Button
-              title="Sign up"
-              forceButtonStates={{
-                hovered: true,
-              }}
-            />
+            <Button title="Sign up" hovered />
           </Example>
           <Example label="Pressed">
-            <Button
-              title="Sign up"
-              forceButtonStates={{
-                pressed: true,
-                hovered: true,
-              }}
-            />
+            <Button title="Sign up" pressed hovered />
           </Example>
           <Example label="Disabled">
-            <Button
-              title="Sign up"
-              forceButtonStates={{
-                disabled: true,
-              }}
-            />
+            <Button title="Sign up" disabled />
           </Example>
         </Section>
 
@@ -107,41 +86,16 @@ function DemoButtons(props = {}) {
             <Button title="See more" size="small" />
           </Example>
           <Example label="Focused">
-            <Button
-              title="See more"
-              size="small"
-              forceButtonStates={{
-                focused: true,
-              }}
-            />
+            <Button title="See more" size="small" focused />
           </Example>
           <Example label="Hovered">
-            <Button
-              title="See more"
-              size="small"
-              forceButtonStates={{
-                hovered: true,
-              }}
-            />
+            <Button title="See more" size="small" hovered />
           </Example>
           <Example label="Pressed">
-            <Button
-              title="See more"
-              size="small"
-              forceButtonStates={{
-                pressed: true,
-                hovered: true,
-              }}
-            />
+            <Button title="See more" size="small" pressed hovered />
           </Example>
           <Example label="Disabled">
-            <Button
-              title="See more"
-              size="small"
-              forceButtonStates={{
-                disabled: true,
-              }}
-            />
+            <Button title="See more" size="small" disabled />
           </Example>
         </Section>
 
@@ -153,41 +107,16 @@ function DemoButtons(props = {}) {
             <Button title="Add to list" size="micro" />
           </Example>
           <Example label="Focused">
-            <Button
-              title="Add to list"
-              size="micro"
-              forceButtonStates={{
-                focused: true,
-              }}
-            />
+            <Button title="Add to list" size="micro" focused />
           </Example>
           <Example label="Hovered">
-            <Button
-              title="Add to list"
-              size="micro"
-              forceButtonStates={{
-                hovered: true,
-              }}
-            />
+            <Button title="Add to list" size="micro" hovered />
           </Example>
           <Example label="Pressed">
-            <Button
-              title="Add to list"
-              size="micro"
-              forceButtonStates={{
-                pressed: true,
-                hovered: true,
-              }}
-            />
+            <Button title="Add to list" size="micro" pressed hovered />
           </Example>
           <Example label="Disabled">
-            <Button
-              title="Add to list"
-              size="micro"
-              forceButtonStates={{
-                disabled: true,
-              }}
-            />
+            <Button title="Add to list" size="micro" disabled />
           </Example>
         </Section>
 
@@ -196,46 +125,22 @@ function DemoButtons(props = {}) {
           titleCode={`<Button title="Go back" type="secondary" />`}
           borderBottomWidth="0"
           mb="0"
+          pb="base"
         >
           <Example label="Idle">
             <Button title="Go back" type="secondary" />
           </Example>
           <Example label="Focused">
-            <Button
-              title="Go back"
-              type="secondary"
-              forceButtonStates={{
-                focused: true,
-              }}
-            />
+            <Button title="Go back" type="secondary" focused />
           </Example>
           <Example label="Hovered">
-            <Button
-              title="Go back"
-              type="secondary"
-              forceButtonStates={{
-                hovered: true,
-              }}
-            />
+            <Button title="Go back" type="secondary" hovered />
           </Example>
           <Example label="Pressed">
-            <Button
-              title="Go back"
-              type="secondary"
-              forceButtonStates={{
-                pressed: true,
-                hovered: true,
-              }}
-            />
+            <Button title="Go back" type="secondary" pressed hovered />
           </Example>
           <Example label="Disabled">
-            <Button
-              title="Go back"
-              type="secondary"
-              forceButtonStates={{
-                disabled: true,
-              }}
-            />
+            <Button title="Go back" type="secondary" disabled />
           </Example>
         </Section>
       </Card>

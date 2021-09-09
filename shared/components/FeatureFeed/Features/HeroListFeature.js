@@ -7,7 +7,14 @@ import { useNavigation } from 'shared/router';
 import { getURLFromType } from 'shared/utils';
 
 import { apollosPropTypes } from 'shared/lib';
-import { Box, Button, H1, H3, systemPropTypes } from 'shared/ui-kit';
+import {
+  Box,
+  Button,
+  H1,
+  H3,
+  PressableBox,
+  systemPropTypes,
+} from 'shared/ui-kit';
 import Card, { ContentTitles, Image, Overlay } from 'shared/ui-kit/Card';
 
 const ActionsContainer = withTheme(styled(View)`
@@ -47,9 +54,7 @@ function HeroListFeature(props = {}) {
               <H3 fontWeight="400">{props.feature.heroCard.summary}</H3>
             </Box>
             <Box mt="base" alignSelf="flex-start" flexDirection="row">
-              <Box mr="xs">
-                <Button onPress={handleWatchNowPress} title="Watch now" />
-              </Box>
+              <Button onPress={handleWatchNowPress} title="Watch now" mr="s" />
               <Button
                 onPress={handlePrimaryActionClick}
                 title={props.feature.primaryAction.title}
@@ -63,16 +68,19 @@ function HeroListFeature(props = {}) {
       {Boolean(props.feature.actions?.length) && (
         <ActionsContainer>
           {props.feature.actions.slice(0, 3).map((action) => (
-            <Pressable
+            <Card
               key={action.id}
               onPress={() => handleActionPress(action)}
-              style={{ width: 'calc(33.33% - 12px)' }}
+              pressableContainerProps={{
+                width: 'calc(33.33% - 16px)',
+              }}
+              bg="fill.system"
+              p="0"
+              width="100%"
             >
-              <Card p="0" bg="fill.system">
-                <Image image={action.image} size="wide" />
-                <ContentTitles py="xs" px="s" title={action.title} micro />
-              </Card>
-            </Pressable>
+              <Image image={action.image} size="wide" />
+              <ContentTitles py="xs" px="s" title={action.title} micro />
+            </Card>
           ))}
         </ActionsContainer>
       )}

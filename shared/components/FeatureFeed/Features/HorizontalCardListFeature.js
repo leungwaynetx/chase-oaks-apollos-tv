@@ -1,10 +1,15 @@
-import { Pressable } from 'react-native';
-
 import { useNavigation } from 'shared/router';
 import { getURLFromType } from 'shared/utils';
 
 import { apollosPropTypes } from 'shared/lib';
-import { Box, Card, H3, H4, systemPropTypes, SystemText } from 'shared/ui-kit';
+import {
+  Box,
+  Card,
+  H3,
+  H4,
+  systemPropTypes,
+  SmallBodyText,
+} from 'shared/ui-kit';
 
 function HorizontalCardListFeature(props = {}) {
   const router = useNavigation();
@@ -15,17 +20,20 @@ function HorizontalCardListFeature(props = {}) {
 
   return (
     <Box px="base" {...props}>
-      <H3 mb="base">{props.feature.title}</H3>
-      <Box flexDirection="row">
-        {props.feature.cards?.slice(0, 4).map((card) => (
-          <Box key={card.id} flex={0.25} mr="s">
-            <Pressable onPress={() => handleActionPress(card)}>
-              <Card>
-                <H4>{card.title}</H4>
-                <SystemText>{card.summary}</SystemText>
-              </Card>
-            </Pressable>
-          </Box>
+      <H3>{props.feature.title}</H3>
+      <Box flexDirection="row" overflow="scroll" py="base">
+        {props.feature.cards?.map((card) => (
+          <Card
+            key={card.id}
+            onPress={() => handleActionPress(card)}
+            pressableContainerProps={{
+              width: '22%',
+              mr: 's',
+            }}
+          >
+            <H4 mb="xxs">{card.title}</H4>
+            <SmallBodyText>{card.summary}</SmallBodyText>
+          </Card>
         ))}
       </Box>
     </Box>

@@ -55,7 +55,6 @@ function AuthDetails() {
       <Box flexDirection="row" justifyContent="flex-end">
         <Button
           status={status}
-          mb="base"
           title={`Finish${isLoading ? 'ing...' : ''}`}
           onPress={handleSubmit}
           disabled={!(values.firstName && values.lastName) || isLoading}

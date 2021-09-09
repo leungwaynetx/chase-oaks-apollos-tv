@@ -10,11 +10,16 @@ import { TypeStyles } from '../Typography';
 // Button
 // --------------------------------------------------------
 
-const buttonState = ({ theme, disabled, focused, hovered, pressed }) => {
+const buttonState = ({ theme, type, disabled, focused, hovered, pressed }) => {
   if (disabled) {
     return css`
       opacity: 0.5;
-      background-color: ${theme.colors.base.gray};
+      background-color: ${
+        type === 'secondary' ? 'transparent' : theme.colors.base.gray
+      };
+        border-color: ${
+          type === 'secondary' ? theme.colors.base.gray : 'transparent'
+        }
       cursor: not-allowed;
     `;
   }
@@ -22,6 +27,9 @@ const buttonState = ({ theme, disabled, focused, hovered, pressed }) => {
   if (pressed) {
     return css`
       background-color: ${theme.colors.base.gray};
+      border-color: ${type === 'secondary'
+        ? theme.colors.fill.system
+        : 'transparent'};
       transform: scale(0.98);
     `;
   }
@@ -29,6 +37,7 @@ const buttonState = ({ theme, disabled, focused, hovered, pressed }) => {
   if (focused || hovered) {
     return css`
       background-color: ${theme.colors.text.primary};
+      border-color: transparent;
       transform: scale(1.03);
     `;
   }
@@ -90,7 +99,6 @@ const Button = withTheme(styled.View`
   ${webTransition}
   ${buttonState}
   ${buttonSizeProp}
-  ${system}
 `);
 
 // Title
@@ -148,7 +156,6 @@ const Title = withTheme(styled.Text`
   ${titleTypeProp}
   font-weight: 600;
   ${titleState}
-  ${system}
 `);
 
 export default {

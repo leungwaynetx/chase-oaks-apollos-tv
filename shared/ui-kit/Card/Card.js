@@ -1,30 +1,40 @@
 import React from 'react';
-import { withTheme } from 'styled-components';
-import styled from 'styled-components/native';
-import { themeGet } from '@styled-system/theme-get';
-import { Platform } from 'react-native';
 
-import { system, systemPropTypes } from '../_lib/system';
+import { separatePressableProps } from '../../utils';
+import { systemPropTypes } from '../_lib/system';
+import PressableBox from '../PressableBox';
 
-const platformStyles = Platform.select({
-  web: { backgroundSize: 'cover', backgroundPosition: 'center' },
-});
+import Styled from './Card.styles';
 
-const Styled = withTheme(styled.View`
-  background-color: ${themeGet('colors.fill.screen')};
-  border-radius: ${themeGet('radii.base')};
-  box-shadow: ${themeGet('shadows.medium')};
-  overflow: hidden;
-  padding: ${themeGet('space.base')};
+const Card = (props = {}) => {
+  // If given an `onPress` prop, we'll make the Card pressable.
+  // We'll pluck the `Pressable` props off and put the rest on the Card itself.
+  if (props.onPress) {
+    const { pressableProps, otherProps } = separatePressableProps(props, [
+      'pressableContainerProps',
+    ]);
 
-  ${platformStyles}
-  ${system};
-`);
+    return (
+      <PressableBox {...pressableProps} {...props.pressableContainerProps}>
+        {(pressableStateProps) => (
+          <Styled {...pressableStateProps} {...otherProps} />
+        )}
+      </PressableBox>
+    );
+  }
 
-const Card = (props = {}) => <Styled {...props} />;
+  return <Styled {...props} />;
+};
 
 Card.propTypes = {
   ...systemPropTypes,
+  // Use `pressableContainerProps` to apply styled-system props onto the `<Pressable>` container
+  pressableContainerProps: systemPropTypes,
+  // Note: Card also accepts props intended for Pressable.
+};
+
+Card.defaultProps = {
+  pressableContainerProps: {},
 };
 
 export default Card;

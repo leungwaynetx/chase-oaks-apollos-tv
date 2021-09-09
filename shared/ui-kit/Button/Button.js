@@ -1,43 +1,39 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import { Pressable } from 'react-native';
+import PressableBox from '../PressableBox';
 
+import { separatePressableProps } from '../../utils';
 import { systemPropTypes } from '../_lib/system';
-
 import Styled from './Button.styles';
 
 const Button = (props = {}) => {
-  const { title, ...otherProps } = props;
+  const { otherProps } = separatePressableProps(props);
 
   return (
-    <Pressable
+    <PressableBox
       delayPressIn={0}
       activeOpacity={0.3}
       accessibilityRole="button"
-      {...otherProps}
+      {...props}
     >
-      {(pressableProps) => (
+      {(pressableStateProps) => (
         <Styled.Button
-          size={otherProps.size}
-          type={otherProps.type}
-          disabled={otherProps.disabled}
-          {...pressableProps}
-          {...props.forceButtonStates}
+          disabled={props.disabled}
+          {...pressableStateProps}
+          {...otherProps}
         >
           <Styled.Title
-            disabled={otherProps.disabled}
             selectable={false}
-            size={otherProps.size}
-            type={otherProps.type}
-            {...pressableProps}
-            {...props.forceButtonStates}
+            disabled={props.disabled}
+            {...pressableStateProps}
+            {...otherProps}
           >
-            {title}
+            {props.title}
           </Styled.Title>
         </Styled.Button>
       )}
-    </Pressable>
+    </PressableBox>
   );
 };
 
@@ -48,17 +44,15 @@ Button.propTypes = {
   title: PropTypes.string.isRequired,
   onPress: PropTypes.func,
   // Used for testing/dev purposes only.
-  forceButtonStates: PropTypes.shape({
-    focused: PropTypes.bool,
-    hovered: PropTypes.bool,
-    pressed: PropTypes.bool,
-  }),
+  focused: PropTypes.bool,
+  hovered: PropTypes.bool,
+  pressed: PropTypes.bool,
 };
 
 Button.defaultProps = {
   size: 'large',
   // eslint-disable-next-line no-console
   onPress: () => console.log('Please attach a method to this component'),
-  forceButtonStates: {},
 };
+
 export default Button;

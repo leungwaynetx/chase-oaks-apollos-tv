@@ -27,9 +27,7 @@ function Profile(props = {}) {
       {authenticated ? (
         <>
           <SmallSystemText>You are signed in.</SmallSystemText>
-          <Box ml="s">
-            <Button title="Sign out" size="micro" onPress={handleLogout} />
-          </Box>
+          <Button title="Sign out" ml="s" size="micro" onPress={handleLogout} />
         </>
       ) : (
         <Button title="Sign in" size="micro" onPress={handleLogin} />

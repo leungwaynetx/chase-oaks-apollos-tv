@@ -4,6 +4,7 @@ import getURLFromType from './getURLFromType';
 import slugify from './slugify';
 import validateEmail from './validateEmail';
 import validatePhoneNumber from './validatePhoneNumber';
+import separatePressableProps from './separatePressableProps';
 
 export {
   cleanMarkup,
@@ -12,4 +13,5 @@ export {
   slugify,
   validateEmail,
   validatePhoneNumber,
+  separatePressableProps,
 };

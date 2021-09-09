@@ -44,7 +44,7 @@ const H3 = () => css`
 
 const H4 = () => css`
   font-size: ${utils.rem('16px')};
-  line-height: ${utils.rem('24px')};
+  line-height: ${utils.rem('22px')};
   font-weight: 600;
   ${fontFamily}
   ${color}
