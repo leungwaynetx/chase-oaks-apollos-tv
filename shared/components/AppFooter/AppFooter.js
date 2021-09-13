@@ -7,7 +7,7 @@ function AppFooter(props = {}) {
   return (
     <Box bg="fill.screen" p="xl" pb="l" alignItems="center" {...props}>
       <Box mb="s" opacity="0.3">
-        <Logo size="32px" />
+        <Logo width="60px" />
       </Box>
       <SmallSystemText color="text.secondary">
         Brought to you by Apollos+ and Differential.

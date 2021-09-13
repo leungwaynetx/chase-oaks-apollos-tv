@@ -121,7 +121,7 @@ function ContentSingle(props = {}) {
             display="flex"
             flexDirection="row"
           >
-            <Logo width="28px" mr="base" />
+            <Logo width="60px" mr="base" />
             <Box>
               <SmallBodyText mb="xs">
                 {`To take notes, journal, and more, open the ${'Apollos'} app on your phone.`}
