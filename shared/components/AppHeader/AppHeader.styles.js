@@ -24,7 +24,7 @@ const floatProp = ({ float, theme }) => {
 const Styled = withTheme(styled.View`
   background-color: ${themeGet('colors.fill.screen')};
   flex-direction: row;
-  justify-content: space-between;
+  justify-content: flex-start;
   align-items: center;
   padding: ${themeGet('space.base')} ${themeGet('space.l')};
   width: 100%;

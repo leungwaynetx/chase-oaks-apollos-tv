@@ -22,24 +22,26 @@ function Nav(props = {}) {
   return (
     <Box
       flexDirection="row"
-      ml="l"
+      justifyContent="flex-start"
       alignItems="center"
       textTransform="uppercase"
       letterSpacing="1px"
+      bg="fill.system"
+      borderRadius="xxl"
+      boxShadow="high"
       {...props}
     >
       <Pressable onPress={handleHomePress}>
         <Box
-          mr="base"
-          p="xxs"
-          borderBottomWidth="2px"
-          borderColor={
-            router.pathname === '/home' ? 'text.action' : 'transparent'
-          }
+          mr="xxs"
+          py="xs"
+          px="s"
+          borderRadius="xxl"
+          bg={router.pathname === '/home' ? 'text.primary' : 'transparent'}
         >
           <SmallSystemText
             color={
-              router.pathname === '/home' ? 'text.primary' : 'text.secondary'
+              router.pathname === '/home' ? 'fill.screen' : 'text.secondary'
             }
             fontWeight="bold"
           >
@@ -49,16 +51,15 @@ function Nav(props = {}) {
       </Pressable>
       <Pressable onPress={handleWatchPress}>
         <Box
-          mr="base"
-          p="xxs"
-          borderBottomWidth="2px"
-          borderColor={
-            router.pathname === '/watch' ? 'text.action' : 'transparent'
-          }
+          mr="xxs"
+          py="xs"
+          px="s"
+          borderRadius="xxl"
+          bg={router.pathname === '/watch' ? 'text.primary' : 'transparent'}
         >
           <SmallSystemText
             color={
-              router.pathname === '/watch' ? 'text.primary' : 'text.secondary'
+              router.pathname === '/watch' ? 'fill.screen' : 'text.secondary'
             }
             fontWeight="bold"
           >
@@ -68,16 +69,14 @@ function Nav(props = {}) {
       </Pressable>
       <Pressable onPress={handleUiKitPress}>
         <Box
-          mr="base"
-          p="xxs"
-          borderBottomWidth="2px"
-          borderColor={
-            router.pathname === '/ui-kit' ? 'text.action' : 'transparent'
-          }
+          py="xs"
+          px="s"
+          borderRadius="xxl"
+          bg={router.pathname === '/ui-kit' ? 'text.primary' : 'transparent'}
         >
           <SmallSystemText
             color={
-              router.pathname === '/ui-kit' ? 'text.primary' : 'text.secondary'
+              router.pathname === '/ui-kit' ? 'fill.screen' : 'text.secondary'
             }
             fontWeight="bold"
           >

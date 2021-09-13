@@ -16,7 +16,7 @@ const WatchFeed = () => {
   };
 
   return (
-    <Box pt="200px" px="l">
+    <Box pt="xxl" px="l" pb="xl" mb="xxl">
       {edges.map(({ node }) => (
         <Box key={node.id} mb="xxs" width="50%">
           <Button title={node.title} onPress={handleOnPress(node)} />

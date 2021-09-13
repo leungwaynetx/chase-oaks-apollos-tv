@@ -2,7 +2,7 @@ import { Pressable } from 'react-native';
 import PropTypes from 'prop-types';
 
 import { Logo } from 'shared/components';
-import { Box, H3, systemPropTypes } from 'shared/ui-kit';
+import { Box, systemPropTypes } from 'shared/ui-kit';
 import { useNavigation } from 'shared/router';
 
 import Styled from './AppHeader.styles';
@@ -18,16 +18,16 @@ function AppHeader(props = {}) {
 
   return (
     <Styled {...props}>
-      <Pressable onPress={handleLogoPress}>
-        <Box flexDirection="row" alignItems="center" pr="s">
-          <Logo width="28px" mr="xs" />
-          <H3>
-            Apollos<H3 color="text.action">+</H3>
-          </H3>
-        </Box>
-      </Pressable>
-      <Nav />
-      {typeof window !== 'undefined' && <Profile />}
+      <Box flex={0.33} flexDirection="row" alignItems="center">
+        <Pressable onPress={handleLogoPress}>
+          <Logo width="28px" />
+        </Pressable>
+        <Profile ml="xs" />
+      </Box>
+      <Box flex={1} flexDirection="row" justifyContent="center">
+        <Nav />
+      </Box>
+      <Box flex={0.33} />
     </Styled>
   );
 }

@@ -30,9 +30,7 @@ const Card = (props = {}) => {
 Card.propTypes = {
   ...systemPropTypes,
   // Use `pressableContainerProps` to apply styled-system props onto the `<Pressable>` container
-  pressableContainerProps: PropTypes.shape({
-    ...systemPropTypes,
-  }),
+  pressableContainerProps: PropTypes.shape(systemPropTypes),
   // Note: Card also accepts props intended for Pressable.
 };
 

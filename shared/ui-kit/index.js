@@ -7,6 +7,7 @@ import * as utils from './_utils';
 import ThemeProvider from './ThemeProvider';
 
 // UI Kit components
+import Avatar from './Avatar';
 import Box from './Box';
 import Button from './Button';
 import Card from './Card';
@@ -33,6 +34,7 @@ export {
   // ====================
   ThemeProvider,
   // ====================
+  Avatar,
   Box,
   Button,
   Card,

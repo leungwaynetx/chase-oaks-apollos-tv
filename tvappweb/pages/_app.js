@@ -2,7 +2,7 @@ import PropTypes from 'prop-types';
 import { AppProvider } from 'shared/providers';
 import '../styles/globals.css';
 
-import { AppHeader } from 'shared/components';
+import { AppFooter, AppHeader } from 'shared/components';
 import { Layout } from 'shared/ui-kit';
 
 function App({ Component, pageProps }) {
@@ -11,6 +11,7 @@ function App({ Component, pageProps }) {
       <Layout>
         <AppHeader float />
         <Component {...pageProps} />
+        <AppFooter />
       </Layout>
     </AppProvider>
   );

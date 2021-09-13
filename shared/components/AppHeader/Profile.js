@@ -1,7 +1,7 @@
 import { logout, useAuth } from 'shared/providers/AuthProvider';
 import { useNavigation } from 'shared/router';
 
-import { Box, Button, SmallSystemText } from 'shared/ui-kit';
+import { Avatar, Box, Button } from 'shared/ui-kit';
 
 function Profile(props = {}) {
   const [{ authenticated }, dispatch] = useAuth();
@@ -12,23 +12,19 @@ function Profile(props = {}) {
   };
 
   const handleLogout = () => {
-    dispatch(logout());
-    router.push('/auth');
+    // eslint-disable-next-line no-alert
+    const logoutConfirmed = window.confirm('Do you want to sign out?');
+
+    if (logoutConfirmed) {
+      dispatch(logout());
+      router.push('/auth');
+    }
   };
 
   return (
-    <Box
-      flex={1}
-      flexDirection="row"
-      justifyContent="flex-end"
-      alignItems="center"
-      {...props}
-    >
+    <Box {...props}>
       {authenticated ? (
-        <>
-          <SmallSystemText>You are signed in.</SmallSystemText>
-          <Button title="Sign out" ml="s" size="micro" onPress={handleLogout} />
-        </>
+        <Avatar width="54px" onPress={handleLogout} />
       ) : (
         <Button title="Sign in" size="micro" onPress={handleLogin} />
       )}

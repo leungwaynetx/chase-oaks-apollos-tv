@@ -1,11 +1,22 @@
-import { Pressable } from 'react-native';
+import { Platform, Pressable } from 'react-native';
 
-import styled from 'styled-components/native';
+import styled, { css } from 'styled-components/native';
 import { withTheme } from 'styled-components';
 
 import { system } from '../_lib/system';
 
+const platformStyles = ({ theme }) => {
+  if (Platform.OS === 'web') {
+    return css`
+      transition: all ${theme.timing.base} ease-out;
+    `;
+  }
+
+  return null;
+};
+
 const Styled = withTheme(styled(Pressable)`
+  ${platformStyles}
   ${system}
 `);
 

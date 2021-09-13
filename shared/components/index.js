@@ -1,3 +1,4 @@
+import AppFooter from './AppFooter';
 import AppHeader from './AppHeader';
 import ContentSingle from './ContentSingle';
 import DemoButtons from './DemoButtons';
@@ -10,6 +11,7 @@ import TextField from './TextField';
 import VideoPlayer from './VideoPlayer';
 
 export {
+  AppFooter,
   AppHeader,
   ContentSingle,
   DemoButtons,
