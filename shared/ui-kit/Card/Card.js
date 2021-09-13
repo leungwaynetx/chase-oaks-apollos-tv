@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 import { separatePressableProps } from '../../utils';
 import { systemPropTypes } from '../_lib/system';
@@ -29,7 +30,9 @@ const Card = (props = {}) => {
 Card.propTypes = {
   ...systemPropTypes,
   // Use `pressableContainerProps` to apply styled-system props onto the `<Pressable>` container
-  pressableContainerProps: systemPropTypes,
+  pressableContainerProps: PropTypes.shape({
+    ...systemPropTypes,
+  }),
   // Note: Card also accepts props intended for Pressable.
 };
 

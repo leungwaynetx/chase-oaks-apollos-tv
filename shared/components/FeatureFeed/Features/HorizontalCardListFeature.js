@@ -19,9 +19,9 @@ function HorizontalCardListFeature(props = {}) {
   };
 
   return (
-    <Box px="base" {...props}>
-      <H3>{props.feature.title}</H3>
-      <Box flexDirection="row" overflow="scroll" py="base">
+    <Box p="base" {...props}>
+      <H3 mb="base">{props.feature.title}</H3>
+      <Box flexDirection="row">
         {props.feature.cards?.map((card) => (
           <Card
             key={card.id}

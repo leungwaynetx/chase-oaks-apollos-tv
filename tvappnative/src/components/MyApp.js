@@ -13,15 +13,15 @@ const MyApp = () => {
     <AppProvider>
       <NavigationContainer linking={{ enabled: true }}>
         <Stack.Navigator
-          initialRouteName="/auth"
+          initialRouteName="/home"
           screenOptions={{ headerShown: false }}
         >
+          <Stack.Screen name="/home" component={HomeScreen} />
           <Stack.Screen
             name="/auth"
             component={AuthScreen}
             headerShown={false}
           />
-          <Stack.Screen name="/home" component={HomeScreen} />
           <Stack.Screen
             name="/content-item"
             component={ContentItemSingleScreen}

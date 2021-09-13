@@ -46,6 +46,32 @@ export const GET_CONTENT_ITEM = gql`
             }
           }
         }
+        ... on FeaturesNode {
+          featureFeed {
+            id
+            features {
+              id
+              ... on HorizontalCardListFeature {
+                title
+                cards {
+                  id
+                  title
+                  summary
+                  hasAction
+                  action
+                  actionIcon
+                  relatedNode {
+                    id
+                    __typename
+                    ... on ContentItem {
+                      title
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
       }
     }
   }

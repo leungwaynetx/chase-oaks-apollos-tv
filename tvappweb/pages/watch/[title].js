@@ -7,7 +7,7 @@ import { Box } from 'shared/ui-kit';
 function getItemId(slug) {
   if (slug) {
     const id = slug.split('-').pop();
-    return `MediaContentItem:${id}`;
+    return `WeekendContentItem:${id}`;
   }
 
   return null;

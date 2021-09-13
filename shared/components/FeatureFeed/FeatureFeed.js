@@ -10,7 +10,7 @@ function renderFeature(feature, index) {
   const FeatureComponent = FeatureFeedComponentMap[feature.__typename];
 
   if (FeatureComponent) {
-    return <FeatureComponent key={feature.id} feature={feature} mb="xl" />;
+    return <FeatureComponent key={feature.id} feature={feature} />;
   }
 
   // eslint-disable-next-line no-console
@@ -36,11 +36,7 @@ function FeatureFeed(props = {}) {
       </Box>
     );
   }
-  return (
-    <Box color="text.primary" width="100%" overflow="scroll">
-      {props.data?.features?.map(renderFeature)}
-    </Box>
-  );
+  return props.data?.features?.map(renderFeature);
 }
 
 FeatureFeed.propTypes = {

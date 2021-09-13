@@ -1,4 +1,4 @@
-import { Pressable, View } from 'react-native';
+import { View } from 'react-native';
 import styled from 'styled-components/native';
 import { withTheme } from 'styled-components';
 import { themeGet } from '@styled-system/theme-get';
@@ -7,14 +7,7 @@ import { useNavigation } from 'shared/router';
 import { getURLFromType } from 'shared/utils';
 
 import { apollosPropTypes } from 'shared/lib';
-import {
-  Box,
-  Button,
-  H1,
-  H3,
-  PressableBox,
-  systemPropTypes,
-} from 'shared/ui-kit';
+import { Box, Button, H1, H3, systemPropTypes } from 'shared/ui-kit';
 import Card, { ContentTitles, Image, Overlay } from 'shared/ui-kit/Card';
 
 const ActionsContainer = withTheme(styled(View)`

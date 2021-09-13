@@ -1,17 +1,24 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Pressable } from 'react-native';
+import Image from 'next/image';
+
+import { apollosPropTypes } from 'shared/lib';
 import { initializeApollo } from 'shared/lib/apolloClient';
 import { useNavigation } from 'shared/router';
 import { getURLFromType } from 'shared/utils';
-
-import { SmallBodyText, H2, H5, Card, Box, Loader } from 'shared/ui-kit';
-
 import { GET_CONTENT_ITEM } from 'shared/hooks/useContentItem';
+
+import { FeatureFeed, Logo } from 'shared/components';
+import { SmallBodyText, H3, H2, H5, Card, Box, Loader } from 'shared/ui-kit';
+import VideoPlayer from 'shared/components/VideoPlayer';
+
+import googlePlay from '../../../tvappweb/public/googlePlay.svg';
+import appleStore from '../../../tvappweb/public/appleStore.svg';
 
 function getItemId(slug) {
   const id = slug.split('-').pop();
-  return `MediaContentItem:${id}`;
+  return `WeekendContentItem:${id}`;
 }
 
 function ContentSingle(props = {}) {
@@ -43,23 +50,41 @@ function ContentSingle(props = {}) {
   };
 
   return (
-    <>
-      <Box
-        backgroundSize="cover"
-        paddingBottom="56.25%"
-        backgroundPosition="center"
-        backgroundImage={`url(${coverImage?.sources[0]?.uri})`}
-        mb="l"
-      />
-      <Box px="l" pb="xxl">
-        <Box mb="base">
+    <Box backgroundColor="fill.paper">
+      {edges.length >= 1 ? (
+        <Box
+          backgroundSize="cover"
+          paddingBottom="56.25%"
+          backgroundPosition="center"
+          backgroundImage={`url(${coverImage?.sources[0]?.uri})`}
+        />
+      ) : null}
+      <Box pt="s">
+        {edges?.length === 0 ? (
+          <Box mx="base" mb="base">
+            {props.data?.videos[0]?.embedHtml ? (
+              <VideoPlayer
+                dangerouslySetInnerHTML={props.data?.videos[0]?.embedHtml}
+              />
+            ) : (
+              <Box
+                backgroundSize="cover"
+                paddingBottom="56.25%"
+                backgroundPosition="center"
+                backgroundImage={`url(${coverImage?.sources[0]?.uri})`}
+              />
+            )}
+          </Box>
+        ) : null}
+
+        <Box mx="base">
           {title ? <H2 mb="s">{title}</H2> : null}
           {summary ? (
             <SmallBodyText maxWidth="650px">{summary}</SmallBodyText>
           ) : null}
         </Box>
         {edges ? (
-          <Box display="flex" flexDirection="row">
+          <Box p="base" display="flex" flexDirection="row">
             {edges.map(({ node }) => (
               <Pressable
                 key={node?.id}
@@ -83,7 +108,35 @@ function ContentSingle(props = {}) {
           </Box>
         ) : null}
       </Box>
-    </>
+      {props?.data?.featureFeed?.features && (
+        <FeatureFeed data={props?.data?.featureFeed} />
+      )}
+      {edges?.length === 0 ? (
+        <Box p="base" pb="xxl">
+          <H3 mb="xs">What stands out to you?</H3>
+          <Box
+            bg="neutral.gray5"
+            borderRadius="base"
+            p="base"
+            display="flex"
+            flexDirection="row"
+          >
+            <Logo width="28px" mr="base" />
+            <Box>
+              <SmallBodyText mb="xs">
+                {`To take notes, journal, and more, open the ${'Apollos'} app on your phone.`}
+              </SmallBodyText>
+              <Box display="flex" flexDirection="row">
+                <Box mr="xs">
+                  <Image src={appleStore} alt="Apple App Store" />
+                </Box>
+                <Image src={googlePlay} alt="Apple App Store" />
+              </Box>
+            </Box>
+          </Box>
+        </Box>
+      ) : null}
+    </Box>
   );
 }
 
@@ -108,6 +161,8 @@ ContentSingle.propTypes = {
     summary: PropTypes.string,
     title: PropTypes.string,
     childContentItemsConnection: PropTypes.shape(),
+    videos: PropTypes.arrayOf(PropTypes.shape({ embedHtml: PropTypes.string })),
+    featureFeed: apollosPropTypes.FeatureFeed,
   }),
   loading: PropTypes.bool,
 };

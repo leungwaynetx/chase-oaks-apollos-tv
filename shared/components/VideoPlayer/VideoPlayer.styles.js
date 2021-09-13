@@ -1,8 +1,11 @@
 import styled from 'styled-components';
+import { themeGet } from '@styled-system/theme-get';
 
 import { system } from 'shared/ui-kit';
 
 const VideoPlayer = styled.div`
+  background-color: ${themeGet('colors.fill.screen')};
+  border-radius: ${themeGet('radii.base')};
   display: block;
   overflow: hidden;
   position: relative;
