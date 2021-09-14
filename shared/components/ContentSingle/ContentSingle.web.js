@@ -69,6 +69,7 @@ function ContentSingle(props = {}) {
             ) : (
               <Box
                 backgroundSize="cover"
+                borderRadius="base"
                 paddingBottom="56.25%"
                 backgroundPosition="center"
                 backgroundImage={`url(${coverImage?.sources[0]?.uri})`}
