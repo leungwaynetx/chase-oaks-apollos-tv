@@ -39,6 +39,24 @@ function ContentSingle(props = {}) {
     );
   }
 
+  // note : this means that there is not a valid page found on the API, so we'll redirect home
+
+  if (!props.loading && !props.data) {
+    router.push('/');
+    return (
+      <Box
+        display="flex"
+        justifyContent="center"
+        alignContent="center"
+        alignItems="center"
+        width="100%"
+        minHeight="50vh"
+      >
+        <Loader />
+      </Box>
+    );
+  }
+
   const coverImage = props?.data?.coverImage;
   const summary = props?.data?.summary;
   const title = props?.data?.title;
@@ -51,7 +69,7 @@ function ContentSingle(props = {}) {
 
   return (
     <Box backgroundColor="fill.paper">
-      {edges.length >= 1 ? (
+      {edges?.length >= 1 ? (
         <Box
           backgroundSize="cover"
           paddingBottom="56.25%"
@@ -69,6 +87,7 @@ function ContentSingle(props = {}) {
             ) : (
               <Box
                 backgroundSize="cover"
+                borderRadius="base"
                 paddingBottom="56.25%"
                 backgroundPosition="center"
                 backgroundImage={`url(${coverImage?.sources[0]?.uri})`}

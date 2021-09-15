@@ -2,16 +2,18 @@ import PropTypes from 'prop-types';
 import { AppProvider } from 'shared/providers';
 import '../styles/globals.css';
 
-import { AppFooter, AppHeader } from 'shared/components';
+import { Footer, Header } from 'shared/components';
 import { Layout } from 'shared/ui-kit';
+import { AppHead } from '../components';
 
 function App({ Component, pageProps }) {
   return (
     <AppProvider initialApolloState={pageProps.initialApolloState}>
+      <AppHead />
       <Layout>
-        <AppHeader float />
+        <Header />
         <Component {...pageProps} />
-        <AppFooter />
+        <Footer />
       </Layout>
     </AppProvider>
   );

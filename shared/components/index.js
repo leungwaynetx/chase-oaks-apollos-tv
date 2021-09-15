@@ -1,5 +1,5 @@
-import AppFooter from './AppFooter';
-import AppHeader from './AppHeader';
+import Footer from './Footer';
+import Header from './Header';
 import ContentSingle from './ContentSingle';
 import DemoButtons from './DemoButtons';
 import DemoCards from './DemoCards';
@@ -11,8 +11,8 @@ import TextField from './TextField';
 import VideoPlayer from './VideoPlayer';
 
 export {
-  AppFooter,
-  AppHeader,
+  Footer,
+  Header,
   ContentSingle,
   DemoButtons,
   DemoCards,

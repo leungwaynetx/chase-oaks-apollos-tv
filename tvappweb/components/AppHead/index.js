@@ -1,3 +1,3 @@
 import AppHead from './AppHead';
 
-export { AppHead };
+export default AppHead;
