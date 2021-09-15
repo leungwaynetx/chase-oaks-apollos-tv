@@ -20,7 +20,7 @@ function AppHeader(props = {}) {
     <Styled {...props}>
       <Box flex={0.33} flexDirection="row" alignItems="center">
         <Pressable onPress={handleLogoPress}>
-          <Logo width="60px" />
+          <Logo width="28px" />
         </Pressable>
         <Profile ml="xs" />
       </Box>
