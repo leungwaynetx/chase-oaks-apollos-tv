@@ -1,6 +1,8 @@
 import useAuthIdentity from './useAuthIdentity';
+import useAuthQuery from './useAuthQuery';
 import useAuthenticateCredentials from './useAuthenticateCredentials';
 import useContentItem from './useContentItem';
+import useCurrentUser from './useCurrentUser';
 import useForm from './useForm';
 import useRegisterWithEmail from './useRegisterWithEmail';
 import useRegisterWithSms from './useRegisterWithSms';
@@ -12,8 +14,10 @@ import useWatchFeed from './useWatchFeed';
 
 export {
   useAuthIdentity,
+  useAuthQuery,
   useAuthenticateCredentials,
   useContentItem,
+  useCurrentUser,
   useForm,
   useRegisterWithEmail,
   useRegisterWithSms,
