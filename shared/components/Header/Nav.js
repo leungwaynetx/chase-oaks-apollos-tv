@@ -26,7 +26,7 @@ function Nav(props = {}) {
       alignItems="center"
       textTransform="uppercase"
       letterSpacing="1px"
-      bg="fill.system"
+      bg="fill.paper"
       borderRadius="xxl"
       boxShadow="high"
       {...props}
@@ -37,11 +37,17 @@ function Nav(props = {}) {
           py="xs"
           px="s"
           borderRadius="xxl"
-          bg={router.pathname === '/home' ? 'text.primary' : 'transparent'}
+          bg={
+            router.pathname === '/home' || router.pathname === '/'
+              ? 'text.primary'
+              : 'transparent'
+          }
         >
           <SmallSystemText
             color={
-              router.pathname === '/home' ? 'fill.screen' : 'text.secondary'
+              router.pathname === '/home' || router.pathname === '/'
+                ? 'fill.screen'
+                : 'text.secondary'
             }
             fontWeight="bold"
           >
