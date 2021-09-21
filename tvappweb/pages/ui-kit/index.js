@@ -13,12 +13,12 @@ import { Box } from 'shared/ui-kit';
 const UIKit = () => {
   return (
     <Box py="xxl">
-      <DemoTypography px="l" pt="xl" mb="xxl" />
-      <DemoColors px="l" mb="xxl" />
-      <DemoShadows px="l" mb="xxl" />
-      <DemoButtons px="l" mb="xxl" />
-      <DemoCards px="l" mb="xxl" />
-      <DemoCardCarousel mb="xxl" />
+      <DemoTypography px="xl" pt="xl" pb="xxl" mb="xxl" />
+      <DemoColors px="xl" pb="xxl" mb="xxl" />
+      <DemoShadows px="xl" pb="xxl" mb="xxl" />
+      <DemoButtons px="xl" pb="xxl" mb="xxl" />
+      <DemoCards px="xl" pb="xxl" mb="xxl" />
+      <DemoCardCarousel pb="xxl" mb="xxl" />
     </Box>
   );
 };

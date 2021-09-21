@@ -5,7 +5,7 @@ import { Box, Card, H2, H4, SystemText } from 'shared/ui-kit';
 function CardSection(props = {}) {
   return (
     <Box {...props}>
-      <H2 mb="s">{`<Card>`}</H2>
+      <H2 mb="base">{`<Card>`}</H2>
 
       <Box flexDirection="row" justifyContent="space-between">
         <Box flex={1} mr="s">

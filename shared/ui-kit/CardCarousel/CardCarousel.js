@@ -5,19 +5,23 @@ import { withTheme } from 'styled-components';
 
 import { Box, systemPropTypes, utils } from 'shared/ui-kit';
 
-import DefaultCardCarouselItem from './DefaultCardCarouselItem';
 import PaginationButton from './PaginationButton';
 import { PrevIcon, NextIcon } from './PaginationButtonIcons';
 import Styled from './CardCarousel.styles';
 
 function CardCarousel(props = {}) {
-  const { Component, data, theme, visibleCount } = props;
+  // 👇 This should be extracted to a hook
+  // ✂️ ----------------------------------------------
+  const { data, theme, visibleCount } = props;
 
   // Carousel state
   const [page, setPage] = useState(0);
-  const [lastPage] = useState(Math.ceil(data.length / visibleCount) - 1);
+  const totalPages = Math.ceil(data.length / visibleCount);
+  const lastPage = totalPages - 1; // Zero index offset
 
-  // Custom layout stuff
+  // ℹ️ Since we need to do detailed layout measuring math, important
+  // style values are defined here instead of normal "real" css and props.
+
   const { width: windowWidth } = useWindowDimensions();
   const [containerLayout, setContainerLayout] = useState({
     width: windowWidth,
@@ -25,18 +29,25 @@ function CardCarousel(props = {}) {
   });
   const [itemWidth, setItemWidth] = useState(256); // Arbitrary default
 
-  // ℹ️ Since we need to do detailed layout math, some important
-  // styles are defined here instead of normal "real" css and props.
-
   const outerGap = utils.stripUnit(utils.px(theme.space.xl));
   const innerGap = utils.stripUnit(utils.px(theme.space.xs));
   const pageWidth = containerLayout.width - outerGap * 2 + innerGap;
-  const lastPageEmptyItemsCount = data.length % page;
 
+  // Determine how many empty spots are on the last page.
+  // This lets us decide how far to scroll, so the last item aligns to
+  // the right edge of the container instead of left.
+  const lastPageRemainder = data.length % visibleCount;
+  const lastPageEmptyCount =
+    totalPages >= 2 && lastPageRemainder >= 1
+      ? visibleCount - lastPageRemainder
+      : 0;
+
+  // Determines if a given index is in view, i.e. fully
+  // visible and interactive on the current page.
   const indexIsOnScreen = (index) => {
     if (page === lastPage) {
-      // Account for fact that last page offsets by empty slots
-      return index >= lastPage * visibleCount - lastPageEmptyItemsCount;
+      // Adjust for the last page, which may have empty slots
+      return index >= lastPage * visibleCount - lastPageEmptyCount;
     }
 
     // Standard full pages
@@ -67,12 +78,14 @@ function CardCarousel(props = {}) {
     setPage(Math.min(page + 1, lastPage));
   };
 
+  // ✂️ ----------------------------------------------
+
   return (
     <Styled.Container {...props} onLayout={handleOnLayout}>
       <Styled.ItemsContainer
         page={page}
         lastPage={lastPage}
-        lastPageEmptyItemsCount={lastPageEmptyItemsCount}
+        lastPageEmptyCount={lastPageEmptyCount}
         pageWidth={pageWidth}
         itemWidth={itemWidth}
         innerGap={innerGap}
@@ -84,27 +97,30 @@ function CardCarousel(props = {}) {
             width={`${itemWidth}px`}
             mr={`${innerGap}px`}
           >
-            <Component
-              item={item}
-              index={index}
-              first={index === 0}
-              last={index === data.length - 1}
-              disabled={!indexIsOnScreen(index)}
-            />
+            {props.renderItem({
+              item,
+              index,
+              first: index === 0,
+              last: index === data.length - 1,
+              disabled: !indexIsOnScreen(index),
+            })}
           </Box>
         ))}
       </Styled.ItemsContainer>
 
-      <Styled.ButtonsContainer outerGap={outerGap}>
-        <PaginationButton pr="0" disabled={page === 0} onPress={handlePrevPage}>
-          <PrevIcon height="32px" />
+      <Styled.ButtonsContainer
+        outerGap={outerGap}
+        buttonsContainerBottomOffset={props.buttonsContainerBottomOffset}
+      >
+        <PaginationButton pr="s" disabled={page === 0} onPress={handlePrevPage}>
+          <PrevIcon height="56px" />
         </PaginationButton>
         <PaginationButton
-          pl="0"
+          pl="s"
           disabled={page === lastPage}
           onPress={handleNextPage}
         >
-          <NextIcon height="32px" />
+          <NextIcon height="56px" />
         </PaginationButton>
       </Styled.ButtonsContainer>
     </Styled.Container>
@@ -113,17 +129,23 @@ function CardCarousel(props = {}) {
 
 CardCarousel.propTypes = {
   ...systemPropTypes,
+  // Use to vertically align the pagination arrows to content as desired.
+  // Content rendered could have different heights/compositions.
+  buttonsContainerBottomOffset: PropTypes.oneOfType([
+    PropTypes.number,
+    PropTypes.string,
+  ]),
   data: PropTypes.arrayOf(PropTypes.object),
-  Component: PropTypes.func,
   keyExtractor: PropTypes.func,
+  renderItem: PropTypes.func.isRequired,
   visibleCount: PropTypes.number,
 };
 
 CardCarousel.defaultProps = {
+  buttonsContainerBottomOffset: 'base',
   data: [],
   keyExtractor: (item, index) => item?.id || index,
   visibleCount: 4,
-  Component: DefaultCardCarouselItem,
 };
 
 export default withTheme(CardCarousel);

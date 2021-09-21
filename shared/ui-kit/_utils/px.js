@@ -2,7 +2,7 @@ import { Platform } from 'react-native';
 
 const isWeb = Platform.OS === 'web';
 
-function px(target, context = 12) {
+function px(target, context = 16) {
   const targetValue = target.split('rem')[0];
   const value = targetValue * context;
 

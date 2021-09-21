@@ -10,7 +10,7 @@ import ThemeProvider from './ThemeProvider';
 import Avatar from './Avatar';
 import Box from './Box';
 import Button from './Button';
-import Card from './Card';
+import Card, { ContentItemCard } from './Card';
 import CardCarousel from './CardCarousel';
 import Layout from './Layout';
 import Loader from './Loader';
@@ -40,6 +40,7 @@ export {
   Button,
   Card,
   CardCarousel,
+  ContentItemCard,
   Layout,
   Loader,
   PressableBox,

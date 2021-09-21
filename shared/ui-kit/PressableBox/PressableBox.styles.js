@@ -8,7 +8,7 @@ import { system } from '../_lib/system';
 const platformStyles = ({ theme }) => {
   if (Platform.OS === 'web') {
     return css`
-      transition: all ${theme.timing.base} ease-out;
+      transition: all ${theme.timing.base} ease;
     `;
   }
 

@@ -1,10 +1,23 @@
+import { Platform } from 'react-native';
 import { css } from 'styled-components';
 import { themeGet } from '@styled-system/theme-get';
 
 import * as utils from '../_utils';
 
+const isWeb = Platform.OS === 'web';
+
 // :: Shared/Common
 // --------------------------------------------------------
+
+const platformStyles = ({ theme }) => {
+  if (isWeb) {
+    return css`
+      transition: all ${theme.timing.base};
+    `;
+  }
+
+  return null;
+};
 
 const fontFamily = css`
   font-family: ${themeGet('fonts.heading')};
@@ -14,6 +27,12 @@ const color = css`
   color: ${themeGet('colors.text.primary')};
 `;
 
+const shared = css`
+  ${platformStyles}
+  ${fontFamily}
+  ${color}
+`;
+
 // --------------------------------------------------------
 
 // :: Headings
@@ -21,8 +40,7 @@ const H1 = () => css`
   font-size: ${utils.rem('43px')};
   line-height: ${utils.rem('56px')};
   font-weight: 800;
-  ${fontFamily}
-  ${color}
+  ${shared}
 `;
 
 const H2 = () => css`
@@ -30,40 +48,35 @@ const H2 = () => css`
   line-height: ${utils.rem('40px')};
   font-weight: 700;
   margin-bottom: ${themeGet('space.xxs')};
-  ${fontFamily}
-  ${color}
+  ${shared}
 `;
 
 const H3 = () => css`
   font-size: ${utils.rem('24px')};
   line-height: ${utils.rem('28px')};
   font-weight: 700;
-  ${fontFamily}
-  ${color}
+  ${shared}
 `;
 
 const H4 = () => css`
   font-size: ${utils.rem('16px')};
   line-height: ${utils.rem('22px')};
   font-weight: 600;
-  ${fontFamily}
-  ${color}
+  ${shared}
 `;
 
 const H5 = () => css`
   font-size: ${utils.rem('14px')};
   line-height: ${utils.rem('21px')};
   font-weight: 500;
-  ${fontFamily}
-  ${color}
+  ${shared}
 `;
 
 const H6 = () => css`
   font-size: ${utils.rem('12px')};
   line-height: ${utils.rem('18px')};
   font-weight: 600;
-  ${fontFamily}
-  ${color}
+  ${shared}
 `;
 
 // :: Body Text
@@ -71,16 +84,14 @@ const BodyText = () => css`
   font-size: ${utils.rem('16px')};
   line-height: ${utils.rem('24px')};
   font-weight: 400;
-  ${fontFamily}
-  ${color}
+  ${shared}
 `;
 
 const SmallBodyText = () => css`
   font-size: ${utils.rem('12px')};
   line-height: ${utils.rem('18px')};
   font-weight: 400;
-  ${fontFamily}
-  ${color}
+  ${shared}
 `;
 
 // :: System Text
@@ -89,24 +100,21 @@ const LargeSystemText = () => css`
   line-height: ${utils.rem('22px')};
   letter-spacing: ${utils.rem('-0.41px')};
   font-weight: 400;
-  ${fontFamily}
-  ${color}
+  ${shared}
 `;
 
 const SmallSystemText = () => css`
   font-size: ${utils.rem('10px')};
   line-height: ${utils.rem('12px')};
   font-weight: 400;
-  ${fontFamily}
-  ${color}
+  ${shared}
 `;
 
 const SystemText = () => css`
   font-size: ${utils.rem('14px')};
   line-height: ${utils.rem('21px')};
   font-weight: 400;
-  ${fontFamily}
-  ${color}
+  ${shared}
 `;
 
 export default {

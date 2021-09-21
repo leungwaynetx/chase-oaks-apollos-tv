@@ -1,7 +1,7 @@
 import React from 'react';
 import { Pressable } from 'react-native';
 
-import { Box, SmallSystemText, systemPropTypes } from 'shared/ui-kit';
+import { Box, SystemText, systemPropTypes } from 'shared/ui-kit';
 import { useNavigation } from 'shared/router';
 
 function Nav(props = {}) {
@@ -43,7 +43,7 @@ function Nav(props = {}) {
               : 'transparent'
           }
         >
-          <SmallSystemText
+          <SystemText
             color={
               router.pathname === '/home' || router.pathname === '/'
                 ? 'fill.screen'
@@ -52,7 +52,7 @@ function Nav(props = {}) {
             fontWeight="bold"
           >
             Home
-          </SmallSystemText>
+          </SystemText>
         </Box>
       </Pressable>
       <Pressable onPress={handleWatchPress}>
@@ -63,14 +63,14 @@ function Nav(props = {}) {
           borderRadius="xxl"
           bg={router.pathname === '/watch' ? 'text.primary' : 'transparent'}
         >
-          <SmallSystemText
+          <SystemText
             color={
               router.pathname === '/watch' ? 'fill.screen' : 'text.secondary'
             }
             fontWeight="bold"
           >
             Watch
-          </SmallSystemText>
+          </SystemText>
         </Box>
       </Pressable>
       <Pressable onPress={handleUiKitPress}>
@@ -80,14 +80,14 @@ function Nav(props = {}) {
           borderRadius="xxl"
           bg={router.pathname === '/ui-kit' ? 'text.primary' : 'transparent'}
         >
-          <SmallSystemText
+          <SystemText
             color={
               router.pathname === '/ui-kit' ? 'fill.screen' : 'text.secondary'
             }
             fontWeight="bold"
           >
             UI Kit
-          </SmallSystemText>
+          </SystemText>
         </Box>
       </Pressable>
     </Box>

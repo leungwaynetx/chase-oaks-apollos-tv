@@ -7,7 +7,7 @@ import { system } from '../_lib/system';
 // :: Core Carousel pieces
 const Container = withTheme(styled.View`
   overflow: hidden;
-  padding: ${themeGet('space.s')} 0 ${themeGet('space.xl')};
+  padding: ${themeGet('space.xs')} 0;
   width: 100%;
   ${system}
 `);
@@ -16,15 +16,15 @@ const pagePosition = ({
   innerGap,
   itemWidth,
   lastPage,
-  lastPageEmptyItemsCount,
+  lastPageEmptyCount,
   outerGap,
   page,
   pageWidth,
 }) => {
   let left = page * -pageWidth;
 
-  if (page === lastPage) {
-    const lastPageOffset = lastPageEmptyItemsCount * (itemWidth + innerGap);
+  if (page >= lastPage) {
+    const lastPageOffset = lastPageEmptyCount * (itemWidth + innerGap);
     left += lastPageOffset;
   }
 
@@ -44,7 +44,13 @@ const ItemsContainer = withTheme(styled.View`
 `);
 
 // :: Pagination Buttons
-const buttonsContainerPlatformStyles = ({ theme, outerGap }) => css`
+const buttonsContainerPlatformStyles = ({
+  buttonsContainerBottomOffset,
+  outerGap,
+  theme,
+}) => css`
+  bottom: ${theme.space[buttonsContainerBottomOffset] ||
+  buttonsContainerBottomOffset};
   background-image: linear-gradient(
     90deg,
     ${theme.colors.material.regular},
@@ -61,7 +67,6 @@ const ButtonsContainer = withTheme(styled.View`
   pointer-events: none;
   position: absolute;
   top: 0;
-  bottom: ${themeGet('space.l')};
   width: 100%;
   ${buttonsContainerPlatformStyles}
 `);
