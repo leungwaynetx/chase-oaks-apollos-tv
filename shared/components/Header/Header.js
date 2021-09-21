@@ -23,9 +23,9 @@ function Header(props = {}) {
         </Pressable>
         <Profile ml="xs" />
       </Box>
-      <Box flex={1} flexDirection="row" justifyContent="center">
+      {/* <Box flex={1} flexDirection="row" justifyContent="center">
         <Nav />
-      </Box>
+      </Box> */}
       <Box flex={0.33} />
     </Styled>
   );
