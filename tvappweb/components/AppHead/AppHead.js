@@ -61,17 +61,19 @@ function AppHead() {
 
     if (_isNotBrowser) return null;
 
-    if (!process.env.NODE_ENV === 'production') return null;
+    if (process.env.NODE_ENV === 'production') {
+      const handleRouteChange = () => {
+        window.Intercom('update');
+      };
 
-    const handleRouteChange = () => {
-      window.Intercom('update');
-    };
+      router.events.on('routeChangeComplete', handleRouteChange);
 
-    router.events.on('routeChangeComplete', handleRouteChange);
+      return () => {
+        router.events.off('routeChangeComplete', handleRouteChange);
+      };
+    }
 
-    return () => {
-      router.events.off('routeChangeComplete', handleRouteChange);
-    };
+    return null;
   }, [router.events]);
 
   return (
