@@ -15,10 +15,6 @@ function Nav(props = {}) {
     router.push('/ui-kit');
   };
 
-  const handleWatchPress = () => {
-    router.push('/watch');
-  };
-
   return (
     <Box
       flexDirection="row"
@@ -55,24 +51,7 @@ function Nav(props = {}) {
           </SystemText>
         </Box>
       </Pressable>
-      <Pressable onPress={handleWatchPress}>
-        <Box
-          mr="xxs"
-          py="xs"
-          px="s"
-          borderRadius="xxl"
-          bg={router.pathname === '/watch' ? 'text.primary' : 'transparent'}
-        >
-          <SystemText
-            color={
-              router.pathname === '/watch' ? 'fill.screen' : 'text.secondary'
-            }
-            fontWeight="bold"
-          >
-            Watch
-          </SystemText>
-        </Box>
-      </Pressable>
+
       <Pressable onPress={handleUiKitPress}>
         <Box
           py="xs"
