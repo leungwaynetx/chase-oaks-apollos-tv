@@ -14,14 +14,14 @@ import {
   SmallBodyText,
   SmallSystemText,
   SystemText,
-} from '../../ui-kit';
+} from 'shared/ui-kit';
 
 function DemoTypography(props = {}) {
   return (
-    <Box>
+    <Box {...props}>
       <H1 mb="s">Typography</H1>
 
-      <Card {...props}>
+      <Card>
         <Box width="100%" flexDirection="row" justifyContent="space-between">
           <Box width="45%">
             <H3

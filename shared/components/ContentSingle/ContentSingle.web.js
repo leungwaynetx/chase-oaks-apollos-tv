@@ -8,9 +8,17 @@ import { initializeApollo } from 'shared/lib/apolloClient';
 import { useNavigation } from 'shared/router';
 import { getURLFromType } from 'shared/utils';
 import { GET_CONTENT_ITEM } from 'shared/hooks/useContentItem';
-
 import { FeatureFeed, Logo } from 'shared/components';
-import { SmallBodyText, H3, H2, H5, Card, Box, Loader } from 'shared/ui-kit';
+import {
+  SmallBodyText,
+  H3,
+  H2,
+  H5,
+  Card,
+  Box,
+  Loader,
+  utils,
+} from 'shared/ui-kit';
 import VideoPlayer from 'shared/components/VideoPlayer';
 
 import googlePlay from '../../../tvappweb/public/googlePlay.svg';
@@ -20,6 +28,8 @@ function getItemId(slug) {
   const id = slug.split('-').pop();
   return `WeekendContentItem:${id}`;
 }
+
+const DEFAULT_CONTENT_WIDTH = utils.rem('1100px');
 
 function ContentSingle(props = {}) {
   const router = useNavigation();
@@ -68,33 +78,23 @@ function ContentSingle(props = {}) {
   };
 
   return (
-    <Box backgroundColor="fill.paper">
-      {edges?.length >= 1 ? (
-        <Box
-          backgroundSize="cover"
-          paddingBottom="56.25%"
-          backgroundPosition="center"
-          backgroundImage={`url(${coverImage?.sources[0]?.uri})`}
-        />
-      ) : null}
+    <Box width="100%" maxWidth={props.contentMaxWidth} margin="0 auto">
       <Box pt="s">
-        {edges?.length === 0 ? (
-          <Box mx="base" mb="base">
-            {props.data?.videos[0]?.embedHtml ? (
-              <VideoPlayer
-                dangerouslySetInnerHTML={props.data?.videos[0]?.embedHtml}
-              />
-            ) : (
-              <Box
-                backgroundSize="cover"
-                borderRadius="base"
-                paddingBottom="56.25%"
-                backgroundPosition="center"
-                backgroundImage={`url(${coverImage?.sources[0]?.uri})`}
-              />
-            )}
-          </Box>
-        ) : null}
+        <Box mx="base" mb="base">
+          {props.data?.videos[0]?.embedHtml ? (
+            <VideoPlayer
+              dangerouslySetInnerHTML={props.data?.videos[0]?.embedHtml}
+            />
+          ) : (
+            <Box
+              backgroundSize="cover"
+              borderRadius="base"
+              paddingBottom="56.25%"
+              backgroundPosition="center"
+              backgroundImage={`url(${coverImage?.sources[0]?.uri})`}
+            />
+          )}
+        </Box>
 
         <Box mx="base">
           {title ? <H2 mb="s">{title}</H2> : null}
@@ -186,6 +186,7 @@ export async function getServerSideProps(context) {
 }
 
 ContentSingle.propTypes = {
+  contentMaxWidth: PropTypes.string,
   data: PropTypes.shape({
     coverImage: PropTypes.shape({}),
     summary: PropTypes.string,
@@ -195,6 +196,10 @@ ContentSingle.propTypes = {
     featureFeed: apollosPropTypes.FeatureFeed,
   }),
   loading: PropTypes.bool,
+};
+
+ContentSingle.defaultProps = {
+  contentMaxWidth: DEFAULT_CONTENT_WIDTH,
 };
 
 export default ContentSingle;

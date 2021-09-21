@@ -14,7 +14,7 @@ function ImageSection(props = {}) {
 
   return (
     <Box {...props}>
-      <H2 mb="s">{`<Image>`}</H2>
+      <H2 mb="base">{`<Image>`}</H2>
 
       <Card>
         <H3 mb="base">
@@ -26,20 +26,20 @@ function ImageSection(props = {}) {
               <Image image={DeadSea} />
             </Card>
             <SystemText fontWeight="bold" mt="xxs" textAlign="center">
+              {`"wide" (16:9)`}
+            </SystemText>
+          </Box>
+
+          <Box flex={1} mx="xs">
+            <Card p="0">
+              <Image image={DeadSea} size="standard" />
+            </Card>
+            <SystemText fontWeight="bold" mt="xxs" textAlign="center">
               {`"standard" (4:3)`}{' '}
             </SystemText>
             <SmallSystemText color="text.secondary" textAlign="center">
               default
             </SmallSystemText>
-          </Box>
-
-          <Box flex={1} mx="xs">
-            <Card p="0">
-              <Image image={DeadSea} size="wide" />
-            </Card>
-            <SystemText fontWeight="bold" mt="xxs" textAlign="center">
-              {`"wide" (16:9)`}
-            </SystemText>
           </Box>
 
           <Box flex={1} mx="xs">

@@ -34,7 +34,7 @@ const transformStyle = ({ hovered, pressed, disabled, focused }) => {
 
   if (hovered || focused) {
     return css`
-      transform: scale(1.04);
+      transform: scale(1.03);
       box-shadow: ${themeGet('shadows.high')};
     `;
   }

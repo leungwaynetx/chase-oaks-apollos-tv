@@ -14,9 +14,9 @@ const theme = {
     xxl: rem('25px'),
   },
   shadows: {
-    low: '0px 2px 8px rgba(0, 0, 0, 0.04);',
-    medium: '0px 5px 24px rgba(0, 0, 0, 0.1);',
-    high: '0px 20px 48px rgba(0, 0, 0, 0.09);',
+    low: '0px 2px 8px rgba(0, 0, 0, 0.25);',
+    medium: '0px 8px 22px rgba(0, 0, 0, .19);',
+    high: '0px 16px 38px rgba(0, 0, 0, 0.24);',
   },
   space: {
     xxs: rem('6px'),
@@ -29,6 +29,7 @@ const theme = {
   },
   timing: {
     base: '0.132s',
+    l: '0.2s',
     xl: '0.3s',
   },
 };

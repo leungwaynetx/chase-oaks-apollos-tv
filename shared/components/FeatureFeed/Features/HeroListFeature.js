@@ -14,8 +14,7 @@ const ActionsContainer = withTheme(styled(View)`
   bottom: 0;
   flex-direction: row;
   justify-content: space-between;
-  margin-top: ${themeGet('space.base')};
-  padding: 0 ${themeGet('space.s')};
+  padding: 0 ${themeGet('space.xl')};
   position: absolute;
   width: 100%;
 `);
@@ -37,10 +36,14 @@ function HeroListFeature(props = {}) {
 
   return (
     /* The percentage padding lets the action row cards overlap the bottom edge */
-    <Box pb={props.feature.actions?.length >= 1 ? '16.8%' : null} {...props}>
+    <Box
+      pb={props.feature.actions?.length >= 1 ? '16.8%' : null}
+      mb="xxl"
+      {...props}
+    >
       <Box>
         <Image image={props.feature.heroCard.coverImage} size="wide" />
-        <Overlay p="l" pb="xxl">
+        <Overlay p="xl" pb="xxl">
           <Box>
             <Box>
               <H1>{props.feature.heroCard.title}</H1>

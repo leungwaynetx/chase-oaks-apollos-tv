@@ -4,11 +4,10 @@ import { getURLFromType } from 'shared/utils';
 import { apollosPropTypes } from 'shared/lib';
 import {
   Box,
-  Card,
+  CardCarousel,
+  ContentItemCard,
   H3,
-  H4,
   systemPropTypes,
-  SmallBodyText,
 } from 'shared/ui-kit';
 
 function HorizontalCardListFeature(props = {}) {
@@ -19,23 +18,20 @@ function HorizontalCardListFeature(props = {}) {
   };
 
   return (
-    <Box p="base" {...props}>
-      <H3 mb="base">{props.feature.title}</H3>
-      <Box flexDirection="row">
-        {props.feature.cards?.map((card) => (
-          <Card
-            key={card.id}
-            onPress={() => handleActionPress(card)}
-            pressableContainerProps={{
-              width: '22%',
-              mr: 's',
-            }}
-          >
-            <H4 mb="xxs">{card.title}</H4>
-            <SmallBodyText>{card.summary}</SmallBodyText>
-          </Card>
-        ))}
-      </Box>
+    <Box pb="l" {...props}>
+      <H3 px="xl" mb="xs">
+        {props.feature.title}
+      </H3>
+      <CardCarousel
+        data={props.feature.cards}
+        renderItem={({ item }) => (
+          <ContentItemCard
+            image={item.coverImage}
+            title={item.title}
+            onPress={() => handleActionPress(item)}
+          />
+        )}
+      />
     </Box>
   );
 }

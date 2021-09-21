@@ -6,7 +6,7 @@ import { ContentTitles } from 'shared/ui-kit/Card';
 function ContentTitlesSection(props = {}) {
   return (
     <Box {...props}>
-      <H2 mb="s">{`<ContentTitles>`}</H2>
+      <H2 mb="base">{`<ContentTitles>`}</H2>
 
       <Card mb="xs">
         <H3 mb="base">
