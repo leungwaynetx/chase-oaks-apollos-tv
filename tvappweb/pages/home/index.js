@@ -3,7 +3,6 @@ import React from 'react';
 import { TabFeedProvider } from 'shared/providers';
 
 import { FeatureFeed } from 'shared/components';
-
 // import { FeatureFeedDebugger } from 'shared/components/FeatureFeed';
 import { Box } from 'shared/ui-kit';
 
