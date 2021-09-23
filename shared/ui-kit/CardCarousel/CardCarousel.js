@@ -12,7 +12,15 @@ import Styled from './CardCarousel.styles';
 function CardCarousel(props = {}) {
   // 👇 This should be extracted to a hook
   // ✂️ ----------------------------------------------
-  const { data, theme, visibleCount } = props;
+  const {
+    data,
+    gradientColor,
+    iconOffset,
+    iconSize,
+    peek,
+    theme,
+    visibleCount,
+  } = props;
 
   // Carousel state
   const [page, setPage] = useState(0);
@@ -96,6 +104,7 @@ function CardCarousel(props = {}) {
             key={props.keyExtractor(item, index)}
             width={`${itemWidth}px`}
             mr={`${innerGap}px`}
+            opacity={!peek && !indexIsOnScreen(index) ? 0 : 1}
           >
             {props.renderItem({
               item,
@@ -110,17 +119,17 @@ function CardCarousel(props = {}) {
 
       <Styled.ButtonsContainer
         outerGap={outerGap}
-        buttonsContainerBottomOffset={props.buttonsContainerBottomOffset}
+        gradientColor={gradientColor}
       >
         <PaginationButton pr="s" disabled={page === 0} onPress={handlePrevPage}>
-          <PrevIcon height="56px" />
+          <PrevIcon top={iconOffset} height={iconSize} />
         </PaginationButton>
         <PaginationButton
           pl="s"
           disabled={page === lastPage}
           onPress={handleNextPage}
         >
-          <NextIcon height="56px" />
+          <NextIcon top={iconOffset} height={iconSize} />
         </PaginationButton>
       </Styled.ButtonsContainer>
     </Styled.Container>
@@ -129,22 +138,25 @@ function CardCarousel(props = {}) {
 
 CardCarousel.propTypes = {
   ...systemPropTypes,
+  data: PropTypes.arrayOf(PropTypes.object),
   // Use to vertically align the pagination arrows to content as desired.
   // Content rendered could have different heights/compositions.
-  buttonsContainerBottomOffset: PropTypes.oneOfType([
-    PropTypes.number,
-    PropTypes.string,
-  ]),
-  data: PropTypes.arrayOf(PropTypes.object),
+  iconOffset: PropTypes.string,
+  iconSize: PropTypes.string,
   keyExtractor: PropTypes.func,
+  // To hide or show the sliver of the cards on the edges of the carousel.
+  // Default is to show them.
+  peek: PropTypes.bool,
   renderItem: PropTypes.func.isRequired,
   visibleCount: PropTypes.number,
 };
 
 CardCarousel.defaultProps = {
-  buttonsContainerBottomOffset: 'base',
   data: [],
+  iconOffset: '-22px',
+  iconSize: '56px',
   keyExtractor: (item, index) => item?.id || index,
+  peek: true,
   visibleCount: 4,
 };
 

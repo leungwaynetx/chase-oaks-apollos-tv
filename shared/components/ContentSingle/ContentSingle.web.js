@@ -1,6 +1,5 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Pressable } from 'react-native';
 import Image from 'next/image';
 
 import { apollosPropTypes } from 'shared/lib';
@@ -10,14 +9,15 @@ import { getURLFromType } from 'shared/utils';
 import { GET_CONTENT_ITEM } from 'shared/hooks/useContentItem';
 import { FeatureFeed, Logo } from 'shared/components';
 import {
+  BodyText,
   SmallBodyText,
   H3,
   H2,
-  H5,
-  Card,
   Box,
   Loader,
   utils,
+  ContentItemCard,
+  CardCarousel,
 } from 'shared/ui-kit';
 import VideoPlayer from 'shared/components/VideoPlayer';
 
@@ -72,15 +72,14 @@ function ContentSingle(props = {}) {
   const title = props?.data?.title;
   const edges = props?.data?.childContentItemsConnection?.edges;
 
-  const handleOnPress = (node) => (event) => {
-    event.preventDefault();
+  const handleActionPress = (node) => {
     router.push(getURLFromType(node));
   };
 
   return (
-    <Box width="100%" maxWidth={props.contentMaxWidth} margin="0 auto">
-      <Box pt="s">
-        <Box mx="base" mb="base">
+    <>
+      <Box pt="s" width="100%" maxWidth={props.contentMaxWidth} margin="0 auto">
+        <Box mx="xl" mb="base">
           {props.data?.videos[0]?.embedHtml ? (
             <VideoPlayer
               dangerouslySetInnerHTML={props.data?.videos[0]?.embedHtml}
@@ -96,66 +95,59 @@ function ContentSingle(props = {}) {
           )}
         </Box>
 
-        <Box mx="base">
+        <Box mx="xl" mb="l">
           {title ? <H2 mb="s">{title}</H2> : null}
-          {summary ? (
-            <SmallBodyText maxWidth="650px">{summary}</SmallBodyText>
-          ) : null}
+          {summary ? <BodyText maxWidth="650px">{summary}</BodyText> : null}
         </Box>
-        {edges ? (
-          <Box p="base" display="flex" flexDirection="row">
-            {edges.map(({ node }) => (
-              <Pressable
-                key={node?.id}
-                onPress={handleOnPress(node)}
-                delayPressIn={0}
-                activeOpacity={0.3}
-                accessibilityRole="button"
-              >
-                <Box display="flex" alignItems="center" mr="s">
-                  <Card
-                    backgroundImage={`url(${node?.coverImage?.sources[0].uri})`}
-                    width="240px"
-                    height="240px"
-                    mb="xs"
-                  />
 
-                  <H5>{node?.title}</H5>
-                </Box>
-              </Pressable>
-            ))}
+        {edges?.length > 0 ? (
+          <Box mb="l">
+            <CardCarousel
+              data={edges}
+              peek={false}
+              iconSize="42px"
+              iconOffset="-11px"
+              renderItem={({ item }) => (
+                <ContentItemCard
+                  image={item.node.coverImage}
+                  title={item.node.title}
+                  onPress={() => handleActionPress(item.node)}
+                />
+              )}
+            />
           </Box>
         ) : null}
-      </Box>
-      {props?.data?.featureFeed?.features && (
-        <FeatureFeed data={props?.data?.featureFeed} />
-      )}
-      {edges?.length === 0 ? (
-        <Box p="base" pb="xxl">
-          <H3 mb="xs">What stands out to you?</H3>
-          <Box
-            bg="neutral.gray5"
-            borderRadius="base"
-            p="base"
-            display="flex"
-            flexDirection="row"
-          >
-            <Logo width="28px" mr="base" />
-            <Box>
-              <SmallBodyText mb="xs">
-                {`To take notes, journal, and more, open the ${'Apollos'} app on your phone.`}
-              </SmallBodyText>
-              <Box display="flex" flexDirection="row">
-                <Box mr="xs">
-                  <Image src={appleStore} alt="Apple App Store" />
+
+        {props?.data?.featureFeed?.features && (
+          <FeatureFeed data={props?.data?.featureFeed} />
+        )}
+        {edges?.length === 0 ? (
+          <Box mx="xl" mb="xxl">
+            <H3 mb="xs">What stands out to you?</H3>
+            <Box
+              bg="neutral.gray5"
+              borderRadius="base"
+              p="base"
+              display="flex"
+              flexDirection="row"
+            >
+              <Logo width="28px" mr="base" />
+              <Box>
+                <SmallBodyText mb="xs">
+                  {`To take notes, journal, and more, open the ${'Apollos'} app on your phone.`}
+                </SmallBodyText>
+                <Box display="flex" flexDirection="row">
+                  <Box mr="xs">
+                    <Image src={appleStore} alt="Apple App Store" />
+                  </Box>
+                  <Image src={googlePlay} alt="Apple App Store" />
                 </Box>
-                <Image src={googlePlay} alt="Apple App Store" />
               </Box>
             </Box>
           </Box>
-        </Box>
-      ) : null}
-    </Box>
+        ) : null}
+      </Box>
+    </>
   );
 }
 

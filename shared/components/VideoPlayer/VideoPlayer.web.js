@@ -8,6 +8,7 @@ import Styled from './VideoPlayer.styles';
 function VideoPlayer(props = {}) {
   const sanitizedHTML = DOMPurify.sanitize(props.dangerouslySetInnerHTML, {
     ALLOWED_TAGS: ['iframe'],
+    ADD_ATTR: ['allow', 'allowfullscreen', 'frameborder', 'scrolling'],
   });
 
   return (

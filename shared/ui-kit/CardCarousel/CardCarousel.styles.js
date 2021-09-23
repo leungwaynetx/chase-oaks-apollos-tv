@@ -45,19 +45,18 @@ const ItemsContainer = withTheme(styled.View`
 
 // :: Pagination Buttons
 const buttonsContainerPlatformStyles = ({
-  buttonsContainerBottomOffset,
   outerGap,
+  gradientColor,
   theme,
 }) => css`
-  bottom: ${theme.space[buttonsContainerBottomOffset] ||
-  buttonsContainerBottomOffset};
   background-image: linear-gradient(
     90deg,
-    ${theme.colors.material.regular},
+    ${theme.colors[gradientColor] || theme.colors.fill.paper},
     transparent ${outerGap}px,
     transparent calc(100% - ${outerGap}px),
-    ${theme.colors.material.regular}
+    ${theme.colors[gradientColor] || theme.colors.fill.paper}
   );
+  height: 100%;
 `;
 
 const ButtonsContainer = withTheme(styled.View`
