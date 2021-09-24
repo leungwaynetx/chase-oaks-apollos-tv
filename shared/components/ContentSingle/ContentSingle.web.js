@@ -145,7 +145,7 @@ function ContentSingle(props = {}) {
               </Box>
               <Box>
                 <SmallBodyText mb="xs">
-                  {`To take notes, journal, and more, open the ${'Apollos'} app on your phone.`}
+                  {`To take notes, journal, and more, open the Chase Oaks app on your phone.`}
                 </SmallBodyText>
                 <Box display="flex" flexDirection="row">
                   <Box mr="xs">
