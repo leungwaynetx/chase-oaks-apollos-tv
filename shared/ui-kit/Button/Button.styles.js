@@ -58,14 +58,14 @@ const buttonTypeProp = ({ type }) => {
     default:
     case 'primary':
       return css`
-        background-color: ${themeGet('colors.base.secondary')};
+        background-color: ${themeGet('colors.base.primary')};
         border-radius: ${themeGet('radii.base')};
       `;
 
     case 'secondary':
       return css`
         border-width: 2px;
-        border-color: ${themeGet('colors.base.secondary')};
+        border-color: ${themeGet('colors.base.primary')};
         border-radius: ${themeGet('radii.base')};
       `;
   }
