@@ -3,8 +3,6 @@ import { withTheme } from 'styled-components';
 import styled, { css } from 'styled-components/native';
 import { themeGet } from '@styled-system/theme-get';
 
-import { system } from '../_lib/system';
-
 import { TypeStyles } from '../Typography';
 
 // Button
@@ -14,12 +12,12 @@ const buttonState = ({ theme, type, disabled, focused, hovered, pressed }) => {
   if (disabled) {
     return css`
       opacity: 0.5;
-      background-color: ${
-        type === 'secondary' ? 'transparent' : theme.colors.base.gray
-      };
-        border-color: ${
-          type === 'secondary' ? theme.colors.base.gray : 'transparent'
-        }
+      background-color: ${type === 'secondary'
+        ? 'transparent'
+        : theme.colors.base.gray};
+      border-color: ${type === 'secondary'
+        ? theme.colors.base.gray
+        : 'transparent'};
       cursor: not-allowed;
     `;
   }

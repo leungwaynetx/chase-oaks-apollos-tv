@@ -52,9 +52,9 @@ function DemoTypography(props = {}) {
               Body Text
             </H3>
             <BodyText>Body Text</BodyText>
-            <BodyText fontStyle="italic">Body Text</BodyText>
             <BodyText fontWeight="bold">Body Text</BodyText>
             <SmallBodyText>Small Body Text</SmallBodyText>
+            <SmallBodyText fontWeight="bold">Small Body Text</SmallBodyText>
           </Box>
 
           <Box width="25%">
@@ -67,17 +67,16 @@ function DemoTypography(props = {}) {
             >
               System
             </H3>
-            <SystemText>System Text</SystemText>
-            <SystemText fontStyle="italic">System Text</SystemText>
-            <SystemText fontWeight="bold">System Text</SystemText>
             <LargeSystemText>Large System Text</LargeSystemText>
-            <LargeSystemText fontStyle="italic">
-              Large System Text
-            </LargeSystemText>
             <LargeSystemText fontWeight="bold">
               Large System Text
             </LargeSystemText>
+            <SystemText>System Text</SystemText>
+            <SystemText fontWeight="bold">System Text</SystemText>
             <SmallSystemText>Small System Text</SmallSystemText>
+            <SmallSystemText fontWeight="bold">
+              Small System Text
+            </SmallSystemText>
           </Box>
         </Box>
       </Card>

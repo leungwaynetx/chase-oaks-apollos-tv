@@ -1,23 +1,18 @@
-import { View } from 'react-native';
-import styled from 'styled-components/native';
-import { withTheme } from 'styled-components';
-import { themeGet } from '@styled-system/theme-get';
-
 import { useNavigation } from 'shared/router';
 import { getURLFromType } from 'shared/utils';
 
 import { apollosPropTypes } from 'shared/lib';
-import { Box, Button, H1, H3, systemPropTypes } from 'shared/ui-kit';
-import Card, { ContentTitles, Image, Overlay } from 'shared/ui-kit/Card';
+import {
+  Box,
+  Button,
+  CardCarousel,
+  H1,
+  H3,
+  H4,
+  systemPropTypes,
+} from 'shared/ui-kit';
 
-const ActionsContainer = withTheme(styled(View)`
-  bottom: 0;
-  flex-direction: row;
-  justify-content: space-between;
-  padding: 0 ${themeGet('space.xl')};
-  position: absolute;
-  width: 100%;
-`);
+import { HighlightCard, Image, Overlay } from 'shared/ui-kit/Card';
 
 function HeroListFeature(props = {}) {
   const router = useNavigation();
@@ -35,51 +30,63 @@ function HeroListFeature(props = {}) {
   };
 
   return (
-    /* The percentage padding lets the action row cards overlap the bottom edge */
-    <Box
-      pb={props.feature.actions?.length >= 1 ? '16.8%' : null}
-      mb="xxl"
-      {...props}
-    >
-      <Box>
-        <Image image={props.feature.heroCard.coverImage} size="wide" />
-        <Overlay p="xl" pb="xxl">
+    <Box mb="xxl" {...props}>
+      {/* Background Image */}
+      <Box position="absolute" top="0" left="0" right="0">
+        <Image image={props.feature.heroCard.coverImage} />
+        <Overlay p="xl" pb="xxl" />
+      </Box>
+
+      {/* Content */}
+      <Box pt="33vw">
+        {/* Masthead */}
+        <Box px="xl" mb="xl">
+          <H1>{props.feature.heroCard.title}</H1>
+          <H3 fontWeight="400">{props.feature.heroCard.summary}</H3>
+          <Box alignSelf="flex-start" mt="base">
+            <Button title="Watch now" onPress={handleWatchNowPress} />
+          </Box>
+        </Box>
+
+        {/* Actions list */}
+        {Boolean(props.feature.actions?.length) && (
           <Box>
-            <Box>
-              <H1>{props.feature.heroCard.title}</H1>
-              <H3 fontWeight="400">{props.feature.heroCard.summary}</H3>
-            </Box>
-            <Box mt="base" alignSelf="flex-start" flexDirection="row">
-              <Button onPress={handleWatchNowPress} title="Watch now" mr="s" />
+            {/* List Header */}
+            <Box
+              flexDirection="row"
+              justifyContent="space-between"
+              alignItems="flex-end"
+              mb="s"
+              px="xl"
+            >
+              <Box>
+                <H4 color="text.secondary">{props.feature.subtitle}</H4>
+                <H3>{props.feature.title}</H3>
+              </Box>
               <Button
                 onPress={handlePrimaryActionClick}
                 title={props.feature.primaryAction.title}
                 type="secondary"
               />
             </Box>
-          </Box>
-        </Overlay>
-      </Box>
 
-      {Boolean(props.feature.actions?.length) && (
-        <ActionsContainer>
-          {props.feature.actions.slice(0, 3).map((action) => (
-            <Card
-              key={action.id}
-              onPress={() => handleActionPress(action)}
-              pressableContainerProps={{
-                width: 'calc(33.33% - 16px)',
-              }}
-              bg="fill.system"
-              p="0"
-              width="100%"
-            >
-              <Image image={action.image} size="wide" />
-              <ContentTitles py="xs" px="s" title={action.title} micro />
-            </Card>
-          ))}
-        </ActionsContainer>
-      )}
+            <CardCarousel
+              buttonsContainerBottomOffset="0"
+              data={props.feature.actions}
+              renderItem={({ item: action }) => (
+                <HighlightCard
+                  key={action.id}
+                  image={action.image}
+                  title={action.title}
+                  micro
+                  onPress={() => handleActionPress(action)}
+                />
+              )}
+              visibleCount={3}
+            />
+          </Box>
+        )}
+      </Box>
     </Box>
   );
 }
