@@ -10,7 +10,7 @@ const isWeb = Platform.OS === 'web';
 const Styled = withTheme(styled.View`
   background-color: ${themeGet('colors.fill.paper')};
   justify-content: flex-start;
-  width: ${isWeb ? '100vw' : '100%'};
+  width: 100%;
   max-width: ${isWeb ? '100vw' : '100%'};
   height: ${isWeb ? 'auto' : '100%'};
   min-height: ${isWeb ? '100vh' : '100%'};

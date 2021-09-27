@@ -17,7 +17,10 @@ const titlePressableState = ({ focused, hovered, theme }) => {
 
 const Title = withTheme(styled.Text`
   ${TypeStyles.H4}
+  overflow: hidden;
   text-align: center;
+  text-overflow: ellipsis;
+  white-space: nowrap;
   ${titlePressableState}
 `);
 

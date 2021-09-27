@@ -1,6 +1,13 @@
 import AppProvider from './AppProvider';
 import AuthProvider from './AuthProvider';
-import TabFeedProvider from './TabFeedProvider';
+import ContentFeedProvider from './ContentFeedProvider';
 import ContentItemProvider from './ContentItemProvider';
+import TabFeedProvider from './TabFeedProvider';
 
-export { AppProvider, AuthProvider, ContentItemProvider, TabFeedProvider };
+export {
+  AppProvider,
+  AuthProvider,
+  ContentFeedProvider,
+  ContentItemProvider,
+  TabFeedProvider,
+};
