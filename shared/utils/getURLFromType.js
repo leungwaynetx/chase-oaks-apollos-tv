@@ -23,6 +23,9 @@ function getURLFromType(node, title) {
     case 'UniversalContentItem': {
       return `/watch/${slugify(node.title ? node.title : title)}-${randomId}`;
     }
+    case 'ContentChannel': {
+      return `/channel/${slugify(node.title ? node.title : title)}-${randomId}`;
+    }
     case 'Url': {
       return node.url;
     }

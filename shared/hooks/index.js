@@ -1,6 +1,7 @@
 import useAuthIdentity from './useAuthIdentity';
 import useAuthQuery from './useAuthQuery';
 import useAuthenticateCredentials from './useAuthenticateCredentials';
+import useContentFeed from './useContentFeed';
 import useContentItem from './useContentItem';
 import useCurrentUser from './useCurrentUser';
 import useForm from './useForm';
@@ -16,6 +17,7 @@ export {
   useAuthIdentity,
   useAuthQuery,
   useAuthenticateCredentials,
+  useContentFeed,
   useContentItem,
   useCurrentUser,
   useForm,

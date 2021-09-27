@@ -22,7 +22,12 @@ function HeroListFeature(props = {}) {
   };
 
   const handlePrimaryActionClick = () => {
-    router.push(getURLFromType(props.feature.primaryAction.relatedNode));
+    router.push(
+      getURLFromType(
+        props.feature.primaryAction.relatedNode,
+        props.feature.primaryAction.title
+      )
+    );
   };
 
   const handleActionPress = (action) => {
