@@ -2,6 +2,13 @@ import { rem } from '../_utils';
 import colors from './colors';
 
 const theme = {
+  breakpoints: {
+    // Pixel values defining the maximum device width for each breakpoint
+    sm: 375,
+    md: 768,
+    lg: 1280,
+    xl: 1440,
+  },
   colors,
   fonts: {
     heading: 'Inter',

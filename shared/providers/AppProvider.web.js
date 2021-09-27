@@ -5,14 +5,17 @@ import { ApolloProvider } from '@apollo/client';
 import { useApollo } from '../lib/apolloClient';
 import { ThemeProvider } from '../ui-kit';
 import AuthProvider from './AuthProvider';
+import BreakpointProvider from './BreakpointProvider';
 
 function AppProvider(props = {}) {
   const apolloClient = useApollo(props.initialApolloState);
   return (
     <ApolloProvider client={apolloClient}>
-      <AuthProvider>
-        <ThemeProvider>{props.children}</ThemeProvider>
-      </AuthProvider>
+      <BreakpointProvider>
+        <AuthProvider>
+          <ThemeProvider>{props.children}</ThemeProvider>
+        </AuthProvider>
+      </BreakpointProvider>
     </ApolloProvider>
   );
 }
@@ -23,6 +26,7 @@ AppProvider.propTypes = {
     PropTypes.func,
     PropTypes.object,
   ]),
+  // eslint-disable-next-line react/forbid-prop-types
   initialApolloState: PropTypes.object,
 };
 
