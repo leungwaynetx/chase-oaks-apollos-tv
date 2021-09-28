@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import DOMPurify from 'dompurify';
 
 import { apollosPropTypes } from 'shared/lib';
 import { initializeApollo } from 'shared/lib/apolloClient';
@@ -10,12 +11,12 @@ import { useBreakpoint } from 'shared/providers/BreakpointProvider';
 
 import { FeatureFeed } from 'shared/components';
 import {
-  BodyText,
   Box,
   CardCarousel,
   ContentItemCard,
   H2,
   Loader,
+  Longform,
   utils,
 } from 'shared/ui-kit';
 import VideoPlayer from 'shared/components/VideoPlayer';
@@ -67,9 +68,11 @@ function ContentSingle(props = {}) {
   }
 
   const coverImage = props?.data?.coverImage;
-  const summary = props?.data?.summary;
-  const title = props?.data?.title;
   const edges = props?.data?.childContentItemsConnection?.edges;
+  const htmlContent = props?.data?.htmlContent;
+  const title = props?.data?.title;
+
+  const sanitizedHTML = DOMPurify.sanitize(htmlContent);
   const outerPadding = responsive({ _: 'base', lg: 'xl' });
 
   const handleActionPress = (node) => {
@@ -97,7 +100,9 @@ function ContentSingle(props = {}) {
 
         <Box mx={outerPadding} mb="l">
           {title ? <H2 mb="s">{title}</H2> : null}
-          {summary ? <BodyText maxWidth="650px">{summary}</BodyText> : null}
+          {htmlContent ? (
+            <Longform dangerouslySetInnerHTML={{ __html: sanitizedHTML }} />
+          ) : null}
         </Box>
 
         {edges?.length > 0 ? (
@@ -153,6 +158,7 @@ ContentSingle.propTypes = {
     childContentItemsConnection: PropTypes.shape(),
     videos: PropTypes.arrayOf(PropTypes.shape({ embedHtml: PropTypes.string })),
     featureFeed: apollosPropTypes.FeatureFeed,
+    htmlContent: PropTypes.string,
   }),
   loading: PropTypes.bool,
 };
