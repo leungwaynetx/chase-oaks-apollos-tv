@@ -43,7 +43,7 @@ const colors = {
       tertiary: 'rgba(244, 247, 248, 0.33)', // 33% primary
       quaternary: 'rgba(244, 247, 248, 0.18)', // 18% primary
       placeholder: 'rgba(244, 247, 248, 0.3)', // 30% primary
-      action: '#8059B1', // brand primary
+      action: '#b28ae6', // Brighter brand primary
     },
   },
   light: {
