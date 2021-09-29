@@ -4,6 +4,8 @@ import { useAuthIdentity, useForm } from 'shared/hooks';
 
 import { TextField } from 'shared/components';
 import { H5, Box, Button } from 'shared/ui-kit';
+import GenderField from './GenderField';
+import BirthDateField from './BirthDateField';
 
 function upperFirst(string) {
   return string.charAt(0).toUpperCase() + string.slice(1);
@@ -42,7 +44,7 @@ function AuthDetails() {
             error={error?.firstName}
           />
         </Box>
-        <Box>
+        <Box mb="l">
           <TextField
             id="lastName"
             placeholder="Last Name"
@@ -51,6 +53,14 @@ function AuthDetails() {
             error={error?.lastName}
           />
         </Box>
+        <BirthDateField
+          onChange={(event) => setFieldValue('birthDate', event.target.value)}
+          error={error?.birthDate}
+          mb="l"
+        />
+        <GenderField
+          onChange={(event) => setFieldValue('gender', event.target.value)}
+        />
       </Box>
       <Box flexDirection="row" justifyContent="flex-end">
         <Button
