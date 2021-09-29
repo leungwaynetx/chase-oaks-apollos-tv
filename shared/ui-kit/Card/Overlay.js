@@ -10,7 +10,7 @@ function Overlay(props = {}) {
 
   return (
     <Styled.Container>
-      <Styled.Gradient />
+      <Styled.Gradient variant={props.variant} />
       <Box height="100%" justifyContent="flex-end" p="base" {...otherProps}>
         {children}
       </Box>
@@ -25,6 +25,9 @@ Overlay.propTypes = {
     PropTypes.func,
     PropTypes.object,
   ]),
+  variant: PropTypes.oneOf(['standard', 'strong']),
 };
+
+Overlay.defaultProps = { variant: 'standard' };
 
 export default Overlay;

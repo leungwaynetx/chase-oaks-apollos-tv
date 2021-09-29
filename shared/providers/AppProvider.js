@@ -4,14 +4,18 @@ import { ApolloProvider } from '@apollo/client';
 
 import { ThemeProvider } from '../ui-kit';
 import client from '../lib/apolloClient';
+
 import AuthProvider from './AuthProvider';
+import BreakpointProvider from './BreakpointProvider';
 
 function AppProvider(props = {}) {
   return (
     <ApolloProvider client={client} {...props}>
-      <AuthProvider>
-        <ThemeProvider>{props.children}</ThemeProvider>
-      </AuthProvider>
+      <BreakpointProvider>
+        <AuthProvider>
+          <ThemeProvider>{props.children}</ThemeProvider>
+        </AuthProvider>
+      </BreakpointProvider>
     </ApolloProvider>
   );
 }

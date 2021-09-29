@@ -66,14 +66,14 @@ const H4 = () => css`
 `;
 
 const H5 = () => css`
-  font-size: ${utils.rem('14px')};
+  font-size: ${utils.rem('16px')};
   line-height: ${utils.rem('21px')};
   font-weight: 500;
   ${shared}
 `;
 
 const H6 = () => css`
-  font-size: ${utils.rem('12px')};
+  font-size: ${utils.rem('14px')};
   line-height: ${utils.rem('18px')};
   font-weight: 600;
   ${shared}

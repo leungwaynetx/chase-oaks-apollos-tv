@@ -14,7 +14,9 @@ import Card, { ContentItemCard } from './Card';
 import CardCarousel from './CardCarousel';
 import Layout from './Layout';
 import Loader from './Loader';
+import Longform from './Longform';
 import PressableBox from './PressableBox';
+import Select from './Select';
 
 import {
   BodyText,
@@ -43,7 +45,9 @@ export {
   ContentItemCard,
   Layout,
   Loader,
+  Longform,
   PressableBox,
+  Select,
   // Typography
   BodyText,
   H1,

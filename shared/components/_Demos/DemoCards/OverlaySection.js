@@ -5,6 +5,7 @@ import {
   H2,
   H3,
   H4,
+  H5,
   SmallSystemText,
   SystemText,
 } from 'shared/ui-kit';
@@ -19,57 +20,100 @@ function OverlaySection(props = {}) {
         padding by default.
       </H4>
 
-      <Box flexDirection="row" justifyContent="space-between">
-        <Box flex={1} mx="xxs">
-          <Card p="0" mb="s" minHeight="256px" bg="base.primary">
-            <Overlay>
-              <SystemText>
-                {
-                  'Default <Overlay> positioning and padding. Suits most common cases.'
-                }
-              </SystemText>
-            </Overlay>
-          </Card>
-        </Box>
+      <Card>
+        <H3 mb="base">Example Configurations</H3>
+        <Box flexDirection="row" justifyContent="space-between">
+          <Box flex={1} mr="xxs">
+            <Card p="0" mb="s" minHeight="256px" bg="base.primary">
+              <Overlay>
+                <SystemText>
+                  {
+                    'Default <Overlay> positioning and padding. Suits most common cases.'
+                  }
+                </SystemText>
+              </Overlay>
+            </Card>
+          </Box>
 
-        <Box flex={1} mx="xxs">
-          <Card p="0" mb="s" minHeight="256px" bg="base.secondary">
-            <Overlay justifyContent="space-between" p="0">
-              <Box
+          <Box flex={1} mx="xxs">
+            <Card p="0" mb="s" minHeight="256px" bg="base.secondary">
+              <Overlay justifyContent="space-between" p="0">
+                <Box
+                  flexDirection="row"
+                  justifyContent="space-between"
+                  justifySelf="flex-start"
+                >
+                  <SmallSystemText py="xxs" px="xs">
+                    {'Multiple elements with custom positions.'}
+                  </SmallSystemText>
+                  <SmallSystemText
+                    bg="text.primary"
+                    color="fill.paper"
+                    fontWeight="bold"
+                    p="xxs"
+                    borderBottomLeftRadius="s"
+                    boxShadow="low"
+                    alignSelf="flex-start"
+                  >
+                    {'WATCHED'}
+                  </SmallSystemText>
+                </Box>
+                <Box alignSelf="flex-end" p="xs">
+                  <SystemText>Bottom Right</SystemText>
+                </Box>
+              </Overlay>
+            </Card>
+          </Box>
+
+          <Box flex={1} ml="xxs">
+            <Card p="0" mb="s" minHeight="256px" bg="base.tertiary">
+              <Overlay justifyContent="center" alignItems="center">
+                <H3>{'▶️ Play'}</H3>
+              </Overlay>
+            </Card>
+          </Box>
+        </Box>
+      </Card>
+
+      <Card>
+        <H3 mb="base">
+          <H3 color="text.action">variant</H3> prop
+        </H3>
+        <Box flexDirection="row" justifyContent="space-between">
+          <Box flex={1} mr="xxs">
+            <Card p="0" mb="s" minHeight="256px" bg="base.tertiary">
+              <Overlay
                 flexDirection="row"
                 justifyContent="space-between"
-                justifySelf="flex-start"
+                alignItems="center"
+                p="0"
               >
-                <SmallSystemText py="xxs" px="xs">
-                  {'Multiple elements with custom positions.'}
-                </SmallSystemText>
+                <H3 p="base">standard</H3>
                 <SmallSystemText
                   bg="text.primary"
-                  color="fill.paper"
+                  color="text.action"
                   fontWeight="bold"
                   p="xxs"
+                  px="s"
                   borderBottomLeftRadius="s"
                   boxShadow="low"
                   alignSelf="flex-start"
                 >
-                  {'WATCHED'}
+                  {'default'}
                 </SmallSystemText>
-              </Box>
-              <Box alignSelf="flex-end" p="xs">
-                <SystemText>Bottom Right</SystemText>
-              </Box>
-            </Overlay>
-          </Card>
-        </Box>
+              </Overlay>
+            </Card>
+          </Box>
 
-        <Box flex={1} mx="xxs">
-          <Card p="0" mb="s" minHeight="256px" bg="base.tertiary">
-            <Overlay justifyContent="center" alignItems="center">
-              <H3>{'▶️ Play'}</H3>
-            </Overlay>
-          </Card>
+          <Box flex={1} ml="xxs">
+            <Card p="0" mb="s" minHeight="256px" bg="base.tertiary">
+              <Overlay variant="strong" justifyContent="center">
+                <H3>{'strong'}</H3>
+              </Overlay>
+            </Card>
+          </Box>
         </Box>
-      </Box>
+      </Card>
     </Box>
   );
 }

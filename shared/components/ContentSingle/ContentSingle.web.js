@@ -1,28 +1,27 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import Image from 'next/image';
+import DOMPurify from 'dompurify';
 
 import { apollosPropTypes } from 'shared/lib';
 import { initializeApollo } from 'shared/lib/apolloClient';
 import { useNavigation } from 'shared/router';
 import { getURLFromType } from 'shared/utils';
 import { GET_CONTENT_ITEM } from 'shared/hooks/useContentItem';
-import { FeatureFeed, Logo } from 'shared/components';
+import { useBreakpoint } from 'shared/providers/BreakpointProvider';
+
+import { FeatureFeed } from 'shared/components';
 import {
-  BodyText,
-  SmallBodyText,
-  H3,
-  H2,
   Box,
-  Loader,
-  utils,
-  ContentItemCard,
   CardCarousel,
+  ContentItemCard,
+  H2,
+  Loader,
+  Longform,
+  utils,
 } from 'shared/ui-kit';
 import VideoPlayer from 'shared/components/VideoPlayer';
 
-import googlePlay from '../../../tvappweb/public/googlePlay.svg';
-import appleStore from '../../../tvappweb/public/appleStore.svg';
+import MobileAppPromo from './MobileAppPromo';
 
 function getItemId(slug) {
   const id = slug.split('-').pop();
@@ -33,6 +32,7 @@ const DEFAULT_CONTENT_WIDTH = utils.rem('1100px');
 
 function ContentSingle(props = {}) {
   const router = useNavigation();
+  const { responsive } = useBreakpoint();
 
   if (props.loading) {
     return (
@@ -68,9 +68,12 @@ function ContentSingle(props = {}) {
   }
 
   const coverImage = props?.data?.coverImage;
-  const summary = props?.data?.summary;
-  const title = props?.data?.title;
   const edges = props?.data?.childContentItemsConnection?.edges;
+  const htmlContent = props?.data?.htmlContent;
+  const title = props?.data?.title;
+
+  const sanitizedHTML = DOMPurify.sanitize(htmlContent);
+  const outerPadding = responsive({ _: 'base', lg: 'xl' });
 
   const handleActionPress = (node) => {
     router.push(getURLFromType(node));
@@ -79,7 +82,7 @@ function ContentSingle(props = {}) {
   return (
     <>
       <Box pt="s" width="100%" maxWidth={props.contentMaxWidth} margin="0 auto">
-        <Box mx="xl" mb="base">
+        <Box px={outerPadding} mb="base">
           {props.data?.videos[0]?.embedHtml ? (
             <VideoPlayer
               dangerouslySetInnerHTML={props.data?.videos[0]?.embedHtml}
@@ -95,9 +98,11 @@ function ContentSingle(props = {}) {
           )}
         </Box>
 
-        <Box mx="xl" mb="l">
+        <Box mx={outerPadding} mb="l">
           {title ? <H2 mb="s">{title}</H2> : null}
-          {summary ? <BodyText maxWidth="650px">{summary}</BodyText> : null}
+          {htmlContent ? (
+            <Longform dangerouslySetInnerHTML={{ __html: sanitizedHTML }} />
+          ) : null}
         </Box>
 
         {edges?.length > 0 ? (
@@ -122,40 +127,7 @@ function ContentSingle(props = {}) {
           <FeatureFeed data={props?.data?.featureFeed} />
         )}
         {edges?.length === 0 ? (
-          <Box mx="xl" mb="xxl">
-            <H3 mb="xs">What stands out to you?</H3>
-            <Box
-              bg="neutral.gray5"
-              borderRadius="base"
-              p="base"
-              display="flex"
-              flexDirection="row"
-            >
-              <Box
-                borderRadius="999px"
-                backgroundImage="radial-gradient(93.06% 93.06% at 100% 0%, rgba(114, 141, 150, 0.42) 0%, rgba(47, 76, 181, 0) 100%), radial-gradient(83.39% 77.78% at 0% 95.2%, rgba(148, 100, 156, 0.2) 0%, rgba(116, 42, 162, 0) 100%)"
-                backgroundColor="#413A60"
-                alignItems="center"
-                justifyContent="center"
-                width="90px"
-                height="90px"
-                mr="base"
-              >
-                <Logo width="60px" />
-              </Box>
-              <Box>
-                <SmallBodyText mb="xs">
-                  {`To take notes, journal, and more, open the Chase Oaks app on your phone.`}
-                </SmallBodyText>
-                <Box display="flex" flexDirection="row">
-                  <Box mr="xs">
-                    <Image src={appleStore} alt="Apple App Store" />
-                  </Box>
-                  <Image src={googlePlay} alt="Apple App Store" />
-                </Box>
-              </Box>
-            </Box>
-          </Box>
+          <MobileAppPromo outerPadding={outerPadding} />
         ) : null}
       </Box>
     </>
@@ -186,6 +158,7 @@ ContentSingle.propTypes = {
     childContentItemsConnection: PropTypes.shape(),
     videos: PropTypes.arrayOf(PropTypes.shape({ embedHtml: PropTypes.string })),
     featureFeed: apollosPropTypes.FeatureFeed,
+    htmlContent: PropTypes.string,
   }),
   loading: PropTypes.bool,
 };

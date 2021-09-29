@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useWindowDimensions } from 'react-native';
 import PropTypes from 'prop-types';
 import { withTheme } from 'styled-components';
@@ -22,6 +22,13 @@ function CardCarousel(props = {}) {
     visibleCount,
   } = props;
 
+  const outerGap = utils.stripUnit(
+    utils.px(theme.space[props.outerGap || 'xl'])
+  );
+  const innerGap = utils.stripUnit(
+    utils.px(theme.space[props.innerGap || 'xs'])
+  );
+
   // Carousel state
   const [page, setPage] = useState(0);
   const totalPages = Math.ceil(data.length / visibleCount);
@@ -32,14 +39,11 @@ function CardCarousel(props = {}) {
 
   const { width: windowWidth } = useWindowDimensions();
   const [containerLayout, setContainerLayout] = useState({
-    width: windowWidth,
+    width: windowWidth, // Default to full size of page, overridden if necessary later
     height: 256, // Arbitrary default
   });
   const [itemWidth, setItemWidth] = useState(256); // Arbitrary default
-
-  const outerGap = utils.stripUnit(utils.px(theme.space.xl));
-  const innerGap = utils.stripUnit(utils.px(theme.space.xs));
-  const pageWidth = containerLayout.width - outerGap * 2 + innerGap;
+  const [pageWidth, setPageWidth] = useState(256); // Arbitrary default
 
   // Determine how many empty spots are on the last page.
   // This lets us decide how far to scroll, so the last item aligns to
@@ -49,6 +53,17 @@ function CardCarousel(props = {}) {
     totalPages >= 2 && lastPageRemainder >= 1
       ? visibleCount - lastPageRemainder
       : 0;
+
+  useEffect(() => {
+    // Figure out the size of all items and their margins
+    const targetWidth =
+      containerLayout.width -
+      innerGap * visibleCount - // Gap between items
+      (outerGap * 2 - innerGap); // Gap around all X visible items
+
+    setPageWidth(containerLayout.width - outerGap * 2 + innerGap);
+    setItemWidth(targetWidth / visibleCount);
+  }, [containerLayout, innerGap, outerGap, totalPages, visibleCount]);
 
   // Determines if a given index is in view, i.e. fully
   // visible and interactive on the current page.
@@ -66,16 +81,7 @@ function CardCarousel(props = {}) {
 
   // Event handlers
   const handleOnLayout = (event) => {
-    const newContainerLayout = event.nativeEvent.layout;
-
-    // Figure out the size of all items and their margins
-    const targetWidth =
-      newContainerLayout.width -
-      innerGap * visibleCount - // Gap between items
-      (outerGap * 2 - innerGap); // Gap around all X visible items
-
-    setContainerLayout(newContainerLayout);
-    setItemWidth(targetWidth / visibleCount);
+    setContainerLayout(event.nativeEvent.layout);
   };
 
   const handlePrevPage = () => {
@@ -149,6 +155,8 @@ CardCarousel.propTypes = {
   peek: PropTypes.bool,
   renderItem: PropTypes.func.isRequired,
   visibleCount: PropTypes.number,
+  innerGap: PropTypes.number,
+  outerGap: PropTypes.number,
 };
 
 CardCarousel.defaultProps = {

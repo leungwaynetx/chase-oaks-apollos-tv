@@ -6,6 +6,7 @@ import {
   H2,
   H3,
   H4,
+  H5,
   BodyText,
   SmallBodyText,
   systemPropTypes,
@@ -15,7 +16,7 @@ function ContentTitles(props = {}) {
   if (props.micro) {
     return (
       <Box {...props}>
-        <H4>{props.title}</H4>
+        <H5>{props.title}</H5>
         <SmallBodyText>{props.body}</SmallBodyText>
       </Box>
     );
@@ -23,7 +24,7 @@ function ContentTitles(props = {}) {
 
   return (
     <Box {...props}>
-      {props.featured ? <H2>{props.title}</H2> : <H3>{props.title}</H3>}
+      {props.featured ? <H2>{props.title}</H2> : <H4>{props.title}</H4>}
       <BodyText>{props.body}</BodyText>
     </Box>
   );

@@ -1,31 +1,40 @@
 import { Pressable } from 'react-native';
 
+import { useNavigation } from 'shared/router';
+import { useBreakpoint } from 'shared/providers/BreakpointProvider';
+
 import { Logo } from 'shared/components';
 import { Box, systemPropTypes } from 'shared/ui-kit';
-import { useNavigation } from 'shared/router';
 
 import Styled from './Header.styles';
 import Profile from './Profile';
 import Nav from './Nav';
 
+const isDev = process.env.NODE_ENV === 'development';
+
 function Header(props = {}) {
   const router = useNavigation();
+  const { responsive } = useBreakpoint();
 
   const handleLogoPress = () => {
     router.push('/home');
   };
 
   return (
-    <Styled {...props}>
+    <Styled px={responsive({ _: 'base', lg: 'xl' })} {...props}>
       <Box flex={0.33} flexDirection="row" alignItems="center">
         <Pressable onPress={handleLogoPress}>
-          <Logo width="60px" />
+          <Logo width="60px" maxHeight="40px" />
         </Pressable>
-        <Profile ml="xs" />
+        <Profile />
       </Box>
-      {/* <Box flex={1} flexDirection="row" justifyContent="center">
-        <Nav />
-      </Box> */}
+      <Box
+        flex={1}
+        flexDirection="row"
+        justifyContent={responsive({ _: 'flex-end', md: 'center' })}
+      >
+        {isDev ? <Nav /> : null}
+      </Box>
       <Box flex={0.33} />
     </Styled>
   );
