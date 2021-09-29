@@ -1,6 +1,5 @@
-import styled from 'styled-components/native';
+import styled, { css } from 'styled-components/native';
 import { withTheme } from 'styled-components';
-import { themeGet } from '@styled-system/theme-get';
 
 import { system } from '../_lib/system';
 
@@ -11,17 +10,34 @@ const Container = withTheme(styled.View`
   ${system}
 `);
 
+const gradientColors = ({ theme, variant }) => {
+  if (variant === 'strong') {
+    return css`
+      background-image: linear-gradient(
+        4deg,
+        ${theme.colors.fill.paper} 15%,
+        ${theme.colors.material.thick} 20%,
+        ${theme.colors.material.thin} 45%,
+        transparent
+      );
+    `;
+  }
+
+  return css`
+    background-image: linear-gradient(
+      4deg,
+      ${theme.colors.material.thick} 15%,
+      ${theme.colors.material.thin} 35%,
+      transparent
+    );
+  `;
+};
+
 const Gradient = withTheme(styled.View`
   position: absolute;
   width: 100%;
   height: 100%;
-  background-image: linear-gradient(
-    6deg,
-    ${themeGet('colors.fill.paper')} 3%,
-    ${themeGet('colors.material.thick')} 20%,
-    ${themeGet('colors.material.thin')} 45%,
-    transparent
-  );
+  ${gradientColors}
 `);
 
 const Styled = {

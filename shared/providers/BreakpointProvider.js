@@ -137,7 +137,7 @@ function breakpointSelect(options, activeBreakpoint) {
   }
 
   // Define the initial value, and prepare the options for iteration.
-  let selectedValue = options._ || undefined;
+  let selectedValue = '_' in options ? options._ : undefined;
   const optionEntries = sortBreakpointOptions(options);
   const activeBreakpointIndex = breakpointsOrder[activeBreakpoint];
 

@@ -4,6 +4,7 @@ import { ApolloProvider } from '@apollo/client';
 
 import { ThemeProvider } from '../ui-kit';
 import client from '../lib/apolloClient';
+
 import AuthProvider from './AuthProvider';
 import BreakpointProvider from './BreakpointProvider';
 

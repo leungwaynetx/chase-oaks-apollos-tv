@@ -1,11 +1,14 @@
 import React from 'react';
 import { Pressable } from 'react-native';
 
-import { Box, SystemText, systemPropTypes } from 'shared/ui-kit';
 import { useNavigation } from 'shared/router';
+import { useBreakpoint } from 'shared/providers/BreakpointProvider';
+
+import { Box, SmallSystemText, systemPropTypes } from 'shared/ui-kit';
 
 function Nav(props = {}) {
   const router = useNavigation();
+  const { responsive } = useBreakpoint();
 
   const handleHomePress = () => {
     router.push('/home');
@@ -19,6 +22,8 @@ function Nav(props = {}) {
     router.push('/watch');
   };
 
+  const pathIs = (value) => router.pathname === value;
+
   return (
     <Box
       flexDirection="row"
@@ -26,9 +31,10 @@ function Nav(props = {}) {
       alignItems="center"
       textTransform="uppercase"
       letterSpacing="1px"
-      bg="fill.paper"
+      bg="material.thick"
       borderRadius="xxl"
       boxShadow="high"
+      opacity={responsive({ _: 0, lg: 1 })}
       {...props}
     >
       <Pressable onPress={handleHomePress}>
@@ -37,22 +43,16 @@ function Nav(props = {}) {
           py="xs"
           px="s"
           borderRadius="xxl"
-          bg={
-            router.pathname === '/home' || router.pathname === '/'
-              ? 'text.primary'
-              : 'transparent'
-          }
+          bg={pathIs('/home') || pathIs('/') ? 'text.primary' : 'transparent'}
         >
-          <SystemText
+          <SmallSystemText
             color={
-              router.pathname === '/home' || router.pathname === '/'
-                ? 'fill.screen'
-                : 'text.secondary'
+              pathIs('/home') || pathIs('/') ? 'fill.screen' : 'text.secondary'
             }
             fontWeight="bold"
           >
             Home
-          </SystemText>
+          </SmallSystemText>
         </Box>
       </Pressable>
       <Pressable onPress={handleWatchPress}>
@@ -61,16 +61,14 @@ function Nav(props = {}) {
           py="xs"
           px="s"
           borderRadius="xxl"
-          bg={router.pathname === '/watch' ? 'text.primary' : 'transparent'}
+          bg={pathIs('/watch') ? 'text.primary' : 'transparent'}
         >
-          <SystemText
-            color={
-              router.pathname === '/watch' ? 'fill.screen' : 'text.secondary'
-            }
+          <SmallSystemText
+            color={pathIs('/watch') ? 'fill.screen' : 'text.secondary'}
             fontWeight="bold"
           >
             Watch
-          </SystemText>
+          </SmallSystemText>
         </Box>
       </Pressable>
       <Pressable onPress={handleUiKitPress}>
@@ -78,16 +76,14 @@ function Nav(props = {}) {
           py="xs"
           px="s"
           borderRadius="xxl"
-          bg={router.pathname === '/ui-kit' ? 'text.primary' : 'transparent'}
+          bg={pathIs('/ui-kit') ? 'text.primary' : 'transparent'}
         >
-          <SystemText
-            color={
-              router.pathname === '/ui-kit' ? 'fill.screen' : 'text.secondary'
-            }
+          <SmallSystemText
+            color={pathIs('/ui-kit') ? 'fill.screen' : 'text.secondary'}
             fontWeight="bold"
           >
             UI Kit
-          </SystemText>
+          </SmallSystemText>
         </Box>
       </Pressable>
     </Box>

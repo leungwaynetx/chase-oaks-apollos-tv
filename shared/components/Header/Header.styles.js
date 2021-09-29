@@ -9,13 +9,13 @@ const Styled = withTheme(styled.View`
   background-color: transparent;
   background-image: linear-gradient(
     180deg,
-    ${themeGet('colors.fill.screen')} 15%,
+    ${themeGet('colors.fill.screen')} 0%,
     transparent
   );
   flex-direction: row;
   justify-content: flex-start;
-  padding: ${themeGet('space.base')} ${themeGet('space.l')};
-  padding-bottom: ${themeGet('space.l')};
+  padding-top: ${themeGet('space.s')};
+  padding-bottom: ${themeGet('space.base')};
   position: fixed;
   width: 100%;
   z-index: 3;
