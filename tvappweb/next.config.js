@@ -7,6 +7,9 @@ const withTM = require('next-transpile-modules')([
 ]);
 
 module.exports = withTM({
+  images: {
+    domains: ['www.chaseoaks.org'],
+  },
   webpack: (config, { buildId, dev, isServer, defaultLoaders, webpack }) => {
     config.resolve = {
       ...config.resolve,

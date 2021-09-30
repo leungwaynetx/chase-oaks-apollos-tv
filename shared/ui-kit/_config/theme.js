@@ -20,6 +20,7 @@ const theme = {
     l: rem('10px'),
     xl: rem('16px'),
     xxl: rem('25px'),
+    round: rem('999px'),
   },
   shadows: {
     low: '0px 2px 8px rgba(0, 0, 0, 0.25);',

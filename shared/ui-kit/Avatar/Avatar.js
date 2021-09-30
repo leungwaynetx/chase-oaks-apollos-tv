@@ -1,11 +1,12 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import Image from 'next/image';
 
-import { PressableBox, systemPropTypes } from 'shared/ui-kit';
+import { Box, systemPropTypes } from 'shared/ui-kit';
 
 function Avatar(props = {}) {
-  return (
-    <PressableBox {...props}>
+  if (!props.src) {
+    return (
       <svg
         xmlns="http://www.w3.org/2000/svg"
         width={props.width}
@@ -19,12 +20,21 @@ function Avatar(props = {}) {
           clipRule="evenodd"
         />
       </svg>
-    </PressableBox>
+    );
+  }
+
+  return (
+    <Box borderRadius="round" overflow="hidden">
+      <Image alt={`Avatar of ${props.name}`} {...props} />
+    </Box>
   );
 }
 
 Avatar.propTypes = {
   ...systemPropTypes,
+  name: PropTypes.string,
+  src: PropTypes.string,
+  width: PropTypes.string.isRequired,
   onPress: PropTypes.func,
 };
 
