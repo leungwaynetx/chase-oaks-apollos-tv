@@ -8,6 +8,7 @@ const theme = {
     md: 768,
     lg: 1280,
     xl: 1440,
+    xxl: 2048,
   },
   colors,
   fonts: {

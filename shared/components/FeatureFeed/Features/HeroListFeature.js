@@ -14,7 +14,7 @@ import {
   systemPropTypes,
 } from 'shared/ui-kit';
 
-import { HighlightCard, Image, Overlay } from 'shared/ui-kit/Card';
+import { HighlightCard, Overlay } from 'shared/ui-kit/Card';
 
 function HeroListFeature(props = {}) {
   const router = useNavigation();
@@ -44,21 +44,36 @@ function HeroListFeature(props = {}) {
   };
 
   return (
-    <Box mb="l" {...props}>
+    <Box mb={props.feature.actions?.length ? 'xl' : 'base'} {...props}>
       {/* Background Image */}
       <Box position="absolute" top="0" left="0" right="0">
-        <Image image={props.feature.heroCard.coverImage} />
+        <Box
+          backgroundImage={`url(${props.feature.heroCard.coverImage?.sources[0]?.uri})`}
+          backgroundPosition="top center"
+          backgroundSize="cover"
+          width="100%"
+          height={responsive({
+            _: '80vw',
+            lg: '56.25vw', // 16:9
+          })}
+          maxHeight="66vh"
+        />
         <Overlay p="xl" pb="xxl" variant="strong" />
       </Box>
 
       {/* Content */}
-      <Box pt="33vw">
+      <Box pt={responsive({ sm: '50vw', md: '33vw', xxl: '23vw' })}>
         {/* Masthead */}
-        <Box px={outerPadding} mb="xl">
+        <Box
+          px={outerPadding}
+          mb={responsive({ _: 'l', lg: 'xl', xxl: 'xxl' })}
+        >
           <HeadingComponent>{props.feature.heroCard.title}</HeadingComponent>
           <SummaryComponent fontWeight="400">
             {props.feature.heroCard.summary}
           </SummaryComponent>
+
+          {/* CTAs */}
           <Box alignSelf="flex-start" flexDirection="row" mt="base">
             <Button
               title="Watch now"
@@ -78,7 +93,7 @@ function HeroListFeature(props = {}) {
           </Box>
         </Box>
 
-        {/* Actions list */}
+        {/* Actions / Cards list */}
         {props.feature.actions?.length ? (
           <Box>
             {/* List Header */}
@@ -97,6 +112,7 @@ function HeroListFeature(props = {}) {
               </Box>
             ) : null}
 
+            {/* Actions / Cards */}
             <CardCarousel
               buttonsContainerBottomOffset="0"
               data={props.feature.actions}
