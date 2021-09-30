@@ -8,7 +8,7 @@ import { Box } from 'shared/ui-kit';
 
 const HomeScreen = () => {
   return (
-    <Box pb="xl" mb="xxl">
+    <Box flexGrow={1} pb="xxl">
       <TabFeedProvider
         Component={FeatureFeed}
         options={{

@@ -23,7 +23,7 @@ export default function WatchSingle(props) {
   };
 
   return (
-    <Box py="xxl">
+    <Box py="xxl" flexGrow={1}>
       <ContentItemProvider Component={ContentSingle} options={options} />
     </Box>
   );

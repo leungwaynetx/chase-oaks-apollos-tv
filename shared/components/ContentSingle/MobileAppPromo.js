@@ -1,4 +1,3 @@
-import PropTypes from 'prop-types';
 import Image from 'next/image';
 
 import { useBreakpoint } from 'shared/providers/BreakpointProvider';
@@ -14,8 +13,8 @@ function MobileAppPromo(props = {}) {
   const { responsive } = useBreakpoint();
 
   return (
-    <Box px={props.outerPadding} pb="xxl">
-      <H3 mb="xs">What stands out to you?</H3>
+    <Box pb="xxl">
+      <H3 mb="base">What stands out to you?</H3>
       <Box
         bg="neutral.gray5"
         borderRadius="base"
@@ -27,12 +26,10 @@ function MobileAppPromo(props = {}) {
         textAlign={responsive({ _: 'center', lg: 'left' })}
         alignItems="center"
       >
-        <Box
-          mr={responsive({ lg: 'base' })}
+        <AppLogo
+          mr={responsive({ _: 0, lg: 'base' })}
           mb={responsive({ _: 'base', lg: 0 })}
-        >
-          <AppLogo />
-        </Box>
+        />
         <Box flex={responsive({ lg: 1 })}>
           <BodyText mb={responsive({ _: 'base', lg: 'xs' })}>
             {`To take notes, journal, and more, open the ${'Apollos'} app on your phone.`}
@@ -55,8 +52,6 @@ function MobileAppPromo(props = {}) {
   );
 }
 
-MobileAppPromo.propTypes = {
-  outerPadding: PropTypes.string,
-};
+MobileAppPromo.propTypes = {};
 
 export default MobileAppPromo;
