@@ -1,20 +1,20 @@
-import PropTypes from 'prop-types';
 import Image from 'next/image';
 
 import { useBreakpoint } from 'shared/providers/BreakpointProvider';
 
-import { Logo } from 'shared/components';
 import { BodyText, Box, H3 } from 'shared/ui-kit';
 
 import googlePlay from '../../../tvappweb/public/googlePlay.svg';
 import appleStore from '../../../tvappweb/public/appleStore.svg';
 
+import AppLogo from './AppLogo';
+
 function MobileAppPromo(props = {}) {
   const { responsive } = useBreakpoint();
 
   return (
-    <Box px={props.outerPadding} pb="xxl">
-      <H3 mb="xs">What stands out to you?</H3>
+    <Box pb="xxl">
+      <H3 mb="base">What stands out to you?</H3>
       <Box
         bg="neutral.gray5"
         borderRadius="base"
@@ -26,12 +26,11 @@ function MobileAppPromo(props = {}) {
         textAlign={responsive({ _: 'center', lg: 'left' })}
         alignItems="center"
       >
-        <Logo
-          width="28px"
+        <AppLogo
           mr={responsive({ _: 0, lg: 'base' })}
           mb={responsive({ _: 'base', lg: 0 })}
         />
-        <Box flex={responsive({ _: 0, lg: 1 })}>
+        <Box flex={responsive({ lg: 1 })}>
           <BodyText mb={responsive({ _: 'base', lg: 'xs' })}>
             {`To take notes, journal, and more, open the ${'Apollos'} app on your phone.`}
           </BodyText>
@@ -53,8 +52,6 @@ function MobileAppPromo(props = {}) {
   );
 }
 
-MobileAppPromo.propTypes = {
-  outerPadding: PropTypes.string,
-};
+MobileAppPromo.propTypes = {};
 
 export default MobileAppPromo;

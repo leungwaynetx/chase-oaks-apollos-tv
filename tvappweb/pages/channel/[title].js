@@ -24,8 +24,9 @@ const ContentFeed = () => {
   const options = {
     variables: { itemId, child: true, sibling: false },
   };
+
   return (
-    <Box py="xxl">
+    <Box py="xxl" flexGrow={1}>
       <ContentFeedProvider Component={ContentList} options={options} />
     </Box>
   );

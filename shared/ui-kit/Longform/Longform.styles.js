@@ -2,13 +2,10 @@ import styled from 'styled-components';
 import { themeGet } from '@styled-system/theme-get';
 
 import { system } from 'shared/ui-kit';
+import { TypeStyles } from 'shared/ui-kit/Typography';
 
 const Longform = styled.div`
-  color: ${themeGet('colors.text.primary')};
-  font-family: ${themeGet('fonts.heading')};
-  font-size: 16px;
-  font-weight: 400;
-  line-height: 24px;
+  ${TypeStyles.BodyText};
 
   h1,
   h2,

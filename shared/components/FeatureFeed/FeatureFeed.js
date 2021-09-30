@@ -30,7 +30,7 @@ function FeatureFeed(props = {}) {
         alignContent="center"
         alignItems="center"
         width="100%"
-        minHeight="50vh"
+        flexGrow={1}
       >
         <Loader />
       </Box>

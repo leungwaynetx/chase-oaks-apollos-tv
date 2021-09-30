@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import PropTypes from 'prop-types';
 import DOMPurify from 'dompurify';
 
@@ -28,13 +28,21 @@ function getItemId(slug) {
   return `WeekendContentItem:${id}`;
 }
 
-const DEFAULT_CONTENT_WIDTH = utils.rem('1100px');
+const DEFAULT_CONTENT_WIDTH = utils.rem('1280px');
 
 function ContentSingle(props = {}) {
   const router = useNavigation();
   const { responsive } = useBreakpoint();
 
-  if (props.loading) {
+  const invalidPage = !props.loading && !props.data;
+
+  useEffect(() => {
+    if (invalidPage) {
+      router.push('/');
+    }
+  }, [invalidPage, router]);
+
+  if (props.loading || invalidPage) {
     return (
       <Box
         display="flex"
@@ -42,25 +50,7 @@ function ContentSingle(props = {}) {
         alignContent="center"
         alignItems="center"
         width="100%"
-        minHeight="50vh"
-      >
-        <Loader />
-      </Box>
-    );
-  }
-
-  // note : this means that there is not a valid page found on the API, so we'll redirect home
-
-  if (!props.loading && !props.data) {
-    router.push('/');
-    return (
-      <Box
-        display="flex"
-        justifyContent="center"
-        alignContent="center"
-        alignItems="center"
-        width="100%"
-        minHeight="50vh"
+        flexGrow={1}
       >
         <Loader />
       </Box>
@@ -82,7 +72,7 @@ function ContentSingle(props = {}) {
   return (
     <>
       <Box pt="s" width="100%" maxWidth={props.contentMaxWidth} margin="0 auto">
-        <Box px={outerPadding} mb="base">
+        <Box px={outerPadding} mb="l">
           {props.data?.videos[0]?.embedHtml ? (
             <VideoPlayer
               dangerouslySetInnerHTML={props.data?.videos[0]?.embedHtml}
@@ -127,7 +117,9 @@ function ContentSingle(props = {}) {
           <FeatureFeed data={props?.data?.featureFeed} />
         )}
         {edges?.length === 0 ? (
-          <MobileAppPromo outerPadding={outerPadding} />
+          <Box mt="l" px={outerPadding}>
+            <MobileAppPromo outerPadding={outerPadding} />
+          </Box>
         ) : null}
       </Box>
     </>
