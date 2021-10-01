@@ -12,8 +12,6 @@ import useTabFeed from './useTabFeed';
 import useUserExists from './useUserExists';
 import useVerifyPin from './useVerifyPin';
 import useWatchFeed from './useWatchFeed';
-import useAuthQuery from './useAuthQuery';
-import useCurrentUser from './useCurrentUser';
 
 export {
   useAuthIdentity,
@@ -30,6 +28,4 @@ export {
   useUserExists,
   useVerifyPin,
   useWatchFeed,
-  useAuthQuery,
-  useCurrentUser,
 };
