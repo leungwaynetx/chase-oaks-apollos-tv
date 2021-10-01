@@ -2,6 +2,10 @@
 
 A Mono-repo with React Native, Next.js, and a shared component library to build cross-platform TV apps.
 
+### ⛔️ Warning
+
+This project is still under construction and not ready for production. The web app side is in a stable place, but the native side still needs work. We are hard at work trying to get everything up and running.
+
 ### Get started
 
 #### Install:
