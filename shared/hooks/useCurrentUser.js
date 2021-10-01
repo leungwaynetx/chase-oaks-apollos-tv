@@ -6,6 +6,9 @@ export const GET_CURRENT_USER = gql`
   query {
     currentUser {
       id
+      rock {
+        authToken
+      }
       profile {
         email
         firstName
