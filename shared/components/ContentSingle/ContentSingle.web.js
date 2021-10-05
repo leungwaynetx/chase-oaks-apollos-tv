@@ -18,6 +18,7 @@ import {
   Loader,
   Longform,
   utils,
+  Button,
 } from 'shared/ui-kit';
 import VideoPlayer from 'shared/components/VideoPlayer';
 
@@ -69,10 +70,22 @@ function ContentSingle(props = {}) {
     router.push(getURLFromType(node));
   };
 
+  const handleGoBack = () => {
+    router.push('/');
+  };
+
   return (
     <>
       <Box pt="s" width="100%" maxWidth={props.contentMaxWidth} margin="0 auto">
         <Box px={outerPadding} mb="l">
+          <Box display="block" mb="xs">
+            <Button
+              title="← Back"
+              type="link"
+              onClick={handleGoBack}
+              display="inline-flex"
+            />
+          </Box>
           {props.data?.videos[0]?.embedHtml ? (
             <VideoPlayer
               dangerouslySetInnerHTML={props.data?.videos[0]?.embedHtml}

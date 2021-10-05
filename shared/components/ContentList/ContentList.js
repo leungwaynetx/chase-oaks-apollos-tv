@@ -7,11 +7,15 @@ import { useBreakpoint } from 'shared/providers/BreakpointProvider';
 import { useNavigation } from 'shared/router';
 import { getURLFromType } from 'shared/utils';
 
-import { Box, ContentItemCard, Loader } from 'shared/ui-kit';
+import { Button, Box, ContentItemCard, Loader } from 'shared/ui-kit';
 
 function ContentList(props = {}) {
   const router = useNavigation();
   const { responsive } = useBreakpoint();
+
+  const handleGoBack = () => {
+    router.push('/');
+  };
 
   const handleActionPress = (node) => {
     router.push(getURLFromType(node));
@@ -41,24 +45,34 @@ function ContentList(props = {}) {
   const columnWidth = (1 / columns) * 100;
 
   return (
-    <Box
-      flexDirection="row"
-      flexWrap="wrap"
-      px={responsive({ _: 'base', lg: 'xl' })}
-      pt="xl"
-    >
-      {props.data?.edges?.map(({ node }) => (
-        <ContentItemCard
-          key={node.id}
-          image={node.coverImage}
-          title={node.title}
-          onPress={() => handleActionPress(node)}
-          flexBasis={`calc(${columnWidth}% - (${mx} * 2))`}
+    <>
+      <Box px={responsive({ _: 'base', lg: 'xl' })} display="block" mb="xs">
+        <Button
+          title="← Back"
+          type="link"
+          onClick={handleGoBack}
+          display="inline-flex"
           mx={mx}
-          mb={responsive({ _: 'l', lg: 'xl' })}
         />
-      ))}
-    </Box>
+      </Box>
+      <Box
+        flexDirection="row"
+        flexWrap="wrap"
+        px={responsive({ _: 'base', lg: 'xl' })}
+      >
+        {props.data?.edges?.map(({ node }) => (
+          <ContentItemCard
+            key={node.id}
+            image={node.coverImage}
+            title={node.title}
+            onPress={() => handleActionPress(node)}
+            flexBasis={`calc(${columnWidth}% - (${mx} * 2))`}
+            mx={mx}
+            mb={responsive({ _: 'l', lg: 'xl' })}
+          />
+        ))}
+      </Box>
+    </>
   );
 }
 

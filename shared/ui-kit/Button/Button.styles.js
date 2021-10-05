@@ -68,6 +68,11 @@ const buttonTypeProp = ({ type }) => {
         border-color: ${themeGet('colors.base.secondary')};
         border-radius: ${themeGet('radii.base')};
       `;
+    case 'link':
+      return css`
+        border-width: 2px;
+        border-radius: ${themeGet('radii.base')};
+      `;
   }
 };
 
@@ -89,6 +94,31 @@ const buttonSizeProp = ({ size }) => {
   }
 };
 
+const activeLink = ({ focused, hovered, pressed, type }) => {
+  if (pressed && type === 'link') {
+    return css`
+      background-color: none;
+      border-color: transparent;
+    `;
+  }
+
+  if ((focused || hovered) && type === 'link') {
+    return css`
+      background-color: none;
+      border-color: transparent;
+    `;
+  }
+  return null;
+};
+const buttonTypeLink = ({ type }) => {
+  if (type === 'link') {
+    return css`
+      padding: 0;
+    `;
+  }
+  return null;
+};
+
 const Button = withTheme(styled.View`
   align-self: flex-start;
   border-width: 2px;
@@ -97,6 +127,8 @@ const Button = withTheme(styled.View`
   ${webTransition}
   ${buttonState}
   ${buttonSizeProp}
+  ${buttonTypeLink}
+  ${activeLink}
 `);
 
 // Title
@@ -117,6 +149,20 @@ const titleState = ({ theme, disabled, focused, hovered }) => {
   return null;
 };
 
+const titleStateLink = ({ theme, disabled, focused, hovered, type }) => {
+  if (disabled && type === 'link')
+    return css`
+      color: ${theme.colors.text.secondary};
+    `;
+
+  if ((focused || hovered) && type === 'link') {
+    return css`
+      color: ${theme.colors.text.primary}};
+    `;
+  }
+  return null;
+};
+
 const titleTypeProp = ({ type }) => {
   switch (type) {
     default:
@@ -124,6 +170,10 @@ const titleTypeProp = ({ type }) => {
       return null;
 
     case 'secondary':
+      return css`
+        color: ${themeGet('colors.text.action')};
+      `;
+    case 'link':
       return css`
         color: ${themeGet('colors.text.action')};
       `;
@@ -154,6 +204,7 @@ const Title = withTheme(styled.Text`
   ${titleTypeProp}
   font-weight: 600;
   ${titleState}
+  ${titleStateLink}
 `);
 
 export default {
