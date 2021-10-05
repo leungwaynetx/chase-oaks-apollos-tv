@@ -11,6 +11,7 @@
   "dependencies": {
     "@apollo/client": "^3.3.21",
     "@styled-system/theme-get": "^5.1.2",
+    "amplitude-js": "^8.8.0",
     "apollo3-cache-persist": "^0.10.0",
     "color": "^4.0.0",
     "dompurify": "^2.3.1",

@@ -5,6 +5,7 @@ import useContentFeed from './useContentFeed';
 import useContentItem from './useContentItem';
 import useCurrentUser from './useCurrentUser';
 import useForm from './useForm';
+import useInteractWithNode from './useInteractWithNode';
 import useRegisterWithEmail from './useRegisterWithEmail';
 import useRegisterWithSms from './useRegisterWithSms';
 import useRequestPin from './useRequestPin';
@@ -21,6 +22,7 @@ export {
   useContentItem,
   useCurrentUser,
   useForm,
+  useInteractWithNode,
   useRegisterWithEmail,
   useRegisterWithSms,
   useRequestPin,

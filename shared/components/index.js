@@ -3,8 +3,10 @@ import ContentSingle from './ContentSingle';
 import FeatureFeed from './FeatureFeed';
 import Footer from './Footer';
 import Header from './Header';
+import InteractWhenLoaded from './InteractWhenLoaded';
 import Logo from './Logo';
 import TextField from './TextField';
+import TrackEventWhenLoaded from './TrackEventWhenLoaded';
 import VideoPlayer from './VideoPlayer';
 
 export {
@@ -13,7 +15,9 @@ export {
   FeatureFeed,
   Footer,
   Header,
+  InteractWhenLoaded,
   Logo,
   TextField,
+  TrackEventWhenLoaded,
   VideoPlayer,
 };

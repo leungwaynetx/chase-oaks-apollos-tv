@@ -8,6 +8,7 @@ import { useNavigation } from 'shared/router';
 import { getURLFromType } from 'shared/utils';
 import { GET_CONTENT_ITEM } from 'shared/hooks/useContentItem';
 import { useBreakpoint } from 'shared/providers/BreakpointProvider';
+import InteractWhenLoaded from 'shared/components/InteractWhenLoaded';
 
 import { FeatureFeed } from 'shared/components';
 import {
@@ -18,6 +19,7 @@ import {
   Loader,
   Longform,
   utils,
+  Button,
 } from 'shared/ui-kit';
 import VideoPlayer from 'shared/components/VideoPlayer';
 
@@ -69,10 +71,27 @@ function ContentSingle(props = {}) {
     router.push(getURLFromType(node));
   };
 
+  const handleGoBack = () => {
+    router.push('/');
+  };
+
   return (
     <>
+      <InteractWhenLoaded
+        loading={props.loading}
+        nodeId={props.data?.id}
+        action={'COMPLETE'}
+      />
       <Box pt="s" width="100%" maxWidth={props.contentMaxWidth} margin="0 auto">
         <Box px={outerPadding} mb="l">
+          <Box display="block" mb="xs">
+            <Button
+              title="← Back"
+              type="link"
+              onClick={handleGoBack}
+              display="inline-flex"
+            />
+          </Box>
           {props.data?.videos[0]?.embedHtml ? (
             <VideoPlayer
               dangerouslySetInnerHTML={props.data?.videos[0]?.embedHtml}
@@ -144,6 +163,7 @@ export async function getServerSideProps(context) {
 ContentSingle.propTypes = {
   contentMaxWidth: PropTypes.string,
   data: PropTypes.shape({
+    id: PropTypes.string,
     coverImage: PropTypes.shape({}),
     summary: PropTypes.string,
     title: PropTypes.string,
