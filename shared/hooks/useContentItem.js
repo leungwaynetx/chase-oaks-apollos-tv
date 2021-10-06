@@ -57,6 +57,11 @@ export const GET_CONTENT_ITEM = gql`
                   id
                   title
                   summary
+                  coverImage {
+                    sources {
+                      uri
+                    }
+                  }
                   hasAction
                   action
                   actionIcon
