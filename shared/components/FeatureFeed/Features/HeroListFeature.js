@@ -81,8 +81,7 @@ function HeroListFeature(props = {}) {
               size={responsive({ _: 'micro', lg: undefined })}
               mr={responsive({ _: 'xs', lg: 's' })}
             />
-            {props.feature.primaryAction.title &&
-            props.feature.primaryAction.relatedNode ? (
+            {props.feature.primaryAction ? (
               <Button
                 title={props.feature.primaryAction.title}
                 onPress={handlePrimaryActionClick}
