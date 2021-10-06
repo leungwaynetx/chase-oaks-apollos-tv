@@ -121,6 +121,12 @@ function ContentSingle(props = {}) {
               peek={false}
               iconSize="42px"
               iconOffset="-11px"
+              outerGap={responsive({ _: 'base', lg: 'xl' })}
+              visibleCount={responsive({
+                _: 1,
+                md: Math.min(edges.length, 2),
+                lg: 3,
+              })}
               renderItem={({ item }) => (
                 <ContentItemCard
                   image={item.node.coverImage}
