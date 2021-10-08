@@ -8,7 +8,7 @@ const withTM = require('next-transpile-modules')([
 
 module.exports = withTM({
   images: {
-    domains: ['www.chaseoaks.org'],
+    domains: ['www.chaseoaks.org', 'res.cloudinary.com', 'cloudinary.com'],
   },
   webpack: (config, { buildId, dev, isServer, defaultLoaders, webpack }) => {
     config.resolve = {
