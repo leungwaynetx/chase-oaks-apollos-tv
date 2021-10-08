@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react';
 import PropTypes from 'prop-types';
 import DOMPurify from 'dompurify';
+import format from 'date-fns/format';
 
 import { apollosPropTypes } from 'shared/lib';
 import { initializeApollo } from 'shared/lib/apolloClient';
@@ -16,6 +17,7 @@ import {
   CardCarousel,
   ContentItemCard,
   H2,
+  H4,
   Loader,
   Longform,
   utils,
@@ -63,6 +65,9 @@ function ContentSingle(props = {}) {
   const edges = props?.data?.childContentItemsConnection?.edges;
   const htmlContent = props?.data?.htmlContent;
   const title = props?.data?.title;
+  const publishDate = props?.data?.publishDate
+    ? format(new Date(props?.data?.publishDate), 'MMMM do, yyyy')
+    : null;
 
   const sanitizedHTML = DOMPurify.sanitize(htmlContent);
   const outerPadding = responsive({ _: 'base', lg: 'xl' });
@@ -108,6 +113,7 @@ function ContentSingle(props = {}) {
         </Box>
 
         <Box mx={outerPadding} mb="l">
+          {publishDate ? <H4 color="text.secondary">{publishDate}</H4> : null}
           {title ? <H2 mb="s">{title}</H2> : null}
           {htmlContent ? (
             <Longform dangerouslySetInnerHTML={{ __html: sanitizedHTML }} />
@@ -172,6 +178,7 @@ ContentSingle.propTypes = {
     id: PropTypes.string,
     coverImage: PropTypes.shape({}),
     summary: PropTypes.string,
+    publishDate: PropTypes.string,
     title: PropTypes.string,
     childContentItemsConnection: PropTypes.shape(),
     videos: PropTypes.arrayOf(PropTypes.shape({ embedHtml: PropTypes.string })),
