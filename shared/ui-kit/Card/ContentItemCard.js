@@ -26,6 +26,7 @@ function ContentItemCard(props = {}) {
 
 ContentItemCard.propTypes = {
   ...systemPropTypes,
+  disabled: PropTypes.bool,
   image: apollosPropTypes.ImageMedia,
   title: PropTypes.string,
 };

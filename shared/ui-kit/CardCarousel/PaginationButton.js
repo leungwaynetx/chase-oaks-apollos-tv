@@ -1,22 +1,22 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import { Card, systemPropTypes } from 'shared/ui-kit';
+import { Box, PressableBox, systemPropTypes } from 'shared/ui-kit';
 
 function PaginationButton(props = {}) {
   const { children, ...otherProps } = props;
   return (
-    <Card
-      p="xs"
-      py="xl"
-      bg="transparent"
+    <PressableBox
+      borderRadius="0"
       boxShadow="none"
-      pointerEvents="auto"
+      height="100%"
+      justifyContent="center"
       opacity={otherProps.disabled ? 0 : 1}
+      pointerEvents="auto"
       {...otherProps}
     >
-      {children}
-    </Card>
+      {({ hovered }) => <Box opacity={hovered ? 1 : 0.75}>{children}</Box>}
+    </PressableBox>
   );
 }
 

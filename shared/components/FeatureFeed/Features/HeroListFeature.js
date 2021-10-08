@@ -123,7 +123,7 @@ function HeroListFeature(props = {}) {
                 xl: Math.min(props.feature.actions.length, 4),
               })}
               iconSize={responsive({ _: '36px', lg: undefined })}
-              iconOffset={0}
+              iconOffset="0"
               renderItem={({ item: action }) => (
                 <HighlightCard
                   key={action.id}

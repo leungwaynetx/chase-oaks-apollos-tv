@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 
+import { useBreakpoint } from 'shared/providers/BreakpointProvider';
 import {
   Box,
   CardCarousel,
@@ -18,8 +19,16 @@ function DemoCardCarousel(props = {}) {
   // on initial page load. Some of the carousel image styles don't get
   // applied for some reason, but a re-render fixes it.
   // I suspect something with react-native-web and Next.js, but could be
-  // a dev-environment only thing, too.
+  // a dev-environment only thing.
   const [loaded, setLoaded] = useState(false);
+  const { responsive } = useBreakpoint();
+  const responsiveVisibleCount = responsive({
+    _: 1,
+    md: 2,
+    lg: 3,
+    xl: 4,
+    xxl: 5,
+  });
 
   useEffect(() => {
     setTimeout(() => setLoaded(true), 0);
@@ -44,11 +53,30 @@ function DemoCardCarousel(props = {}) {
         </H3>
         <CardCarousel
           data={data}
-          renderItem={({ item }) => (
+          renderItem={({ item, disabled }) => (
             <ContentItemCard
               image={item.coverImage}
               title={item.title}
               onPress={() => null}
+              disabled={disabled}
+            />
+          )}
+        />
+      </Box>
+
+      <Box mb="l">
+        <H3 px="xl" mb="xxs">
+          Long List, no `peek`
+        </H3>
+        <CardCarousel
+          data={data}
+          peek={false}
+          renderItem={({ item, disabled }) => (
+            <ContentItemCard
+              image={item.coverImage}
+              title={item.title}
+              onPress={() => null}
+              disabled={disabled}
             />
           )}
         />
@@ -64,31 +92,31 @@ function DemoCardCarousel(props = {}) {
         <CardCarousel
           data={data.slice(0, 3)}
           visibleCount={5}
-          renderItem={({ item }) => (
+          renderItem={({ item, disabled }) => (
             <ContentItemCard
               image={item.coverImage}
               title={item.title}
               onPress={() => null}
+              disabled={disabled}
             />
           )}
         />
       </Box>
 
-      <Box mb="l">
+      <Box pt="xl" pb="l" mb="xl" bg="fill.screen">
         <H3 px="xl">
-          More items per page
-          <H3 color="text.tertiary" ml="xs">
-            {data.length} items, 6 visible
-          </H3>
+          Responsive `visibleCount` and overridden `gradientColor`
         </H3>
         <CardCarousel
           data={data}
-          visibleCount={6}
-          renderItem={({ item }) => (
+          visibleCount={responsiveVisibleCount}
+          gradientColor="fill.screen"
+          renderItem={({ item, disabled }) => (
             <ContentItemCard
               image={item.coverImage}
               title={item.title}
               onPress={() => null}
+              disabled={disabled}
             />
           )}
         />

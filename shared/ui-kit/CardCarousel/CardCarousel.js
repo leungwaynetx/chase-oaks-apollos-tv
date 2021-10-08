@@ -127,11 +127,15 @@ function CardCarousel(props = {}) {
         outerGap={outerGap}
         gradientColor={gradientColor}
       >
-        <PaginationButton pr="s" disabled={page === 0} onPress={handlePrevPage}>
+        <PaginationButton
+          pl="xs"
+          disabled={page === 0}
+          onPress={handlePrevPage}
+        >
           <PrevIcon top={iconOffset} height={iconSize} />
         </PaginationButton>
         <PaginationButton
-          pl="s"
+          pr="xs"
           disabled={page === lastPage}
           onPress={handleNextPage}
         >
@@ -145,22 +149,26 @@ function CardCarousel(props = {}) {
 CardCarousel.propTypes = {
   ...systemPropTypes,
   data: PropTypes.arrayOf(PropTypes.object),
+  // The color to use on the edges of the carousel, should match the background.
+  // Must be a theme color, like `fill.system` etc.
+  gradientColor: PropTypes.string,
   // Use to vertically align the pagination arrows to content as desired.
   // Content rendered could have different heights/compositions.
   iconOffset: PropTypes.string,
   iconSize: PropTypes.string,
   keyExtractor: PropTypes.func,
   // To hide or show the sliver of the cards on the edges of the carousel.
-  // Default is to show them.
   peek: PropTypes.bool,
   renderItem: PropTypes.func.isRequired,
   visibleCount: PropTypes.number,
-  innerGap: PropTypes.number,
-  outerGap: PropTypes.number,
+  // These `gap` props are assumed to be theme values like `s`, `xl`, etc
+  innerGap: PropTypes.string,
+  outerGap: PropTypes.string,
 };
 
 CardCarousel.defaultProps = {
   data: [],
+  gradientColor: 'fill.paper',
   iconOffset: '-22px',
   iconSize: '56px',
   keyExtractor: (item, index) => item?.id || index,
