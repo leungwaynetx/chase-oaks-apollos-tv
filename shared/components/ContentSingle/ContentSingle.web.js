@@ -67,7 +67,7 @@ function ContentSingle(props = {}) {
     }
 
     if (!authenticated && requireAuth) {
-      router.push('/auth');
+      router.push('/auth?gatedRedirect=true');
     }
   }, [authenticated, props.data, requireAuth, router]);
 
