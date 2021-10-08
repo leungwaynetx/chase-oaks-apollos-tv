@@ -11,7 +11,7 @@ import { GET_CONTENT_ITEM } from 'shared/hooks/useContentItem';
 import { useBreakpoint } from 'shared/providers/BreakpointProvider';
 import InteractWhenLoaded from 'shared/components/InteractWhenLoaded';
 
-import { FeatureFeed } from 'shared/components';
+import { FeatureFeed, SEO } from 'shared/components';
 import {
   Box,
   CardCarousel,
@@ -82,6 +82,12 @@ function ContentSingle(props = {}) {
 
   return (
     <>
+      <SEO
+        description={htmlContent}
+        image={coverImage?.sources[0]?.uri}
+        title={title}
+        url={typeof window !== 'undefined' ? window.location.href : undefined}
+      />
       <InteractWhenLoaded
         loading={props.loading}
         nodeId={props.data?.id}

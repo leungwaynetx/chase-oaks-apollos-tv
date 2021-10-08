@@ -1,6 +1,8 @@
 import styled, { css } from 'styled-components/native';
 import { withTheme } from 'styled-components';
 import { themeGet } from '@styled-system/theme-get';
+import color from 'color';
+import get from 'lodash/get';
 
 import { system } from '../_lib/system';
 
@@ -43,25 +45,35 @@ const ItemsContainer = withTheme(styled.View`
   ${system}
 `);
 
-// :: Pagination Buttons
+// :: Buttons Container
 const buttonsContainerPlatformStyles = ({
+  gradientColor: _gradientColor,
   outerGap,
-  gradientColor,
+  peek,
   theme,
-}) => css`
-  background-image: linear-gradient(
-    90deg,
-    ${theme.colors[gradientColor] || theme.colors.fill.paper},
-    transparent ${outerGap}px,
-    transparent calc(100% - ${outerGap}px),
-    ${theme.colors[gradientColor] || theme.colors.fill.paper}
-  );
-  height: 100%;
-`;
+}) => {
+  if (peek) {
+    return null;
+  }
+
+  const gradientColor = get(theme.colors, _gradientColor);
+  const transparent = color(gradientColor).alpha(0).toString();
+
+  return css`
+    background-image: linear-gradient(
+      90deg,
+      ${gradientColor},
+      ${transparent} ${outerGap * 1.1}px,
+      ${transparent} calc(100% - ${outerGap * 1.1}px),
+      ${gradientColor}
+    );
+  `;
+};
 
 const ButtonsContainer = withTheme(styled.View`
-  align-items: center;
+  align-items: stretch;
   flex-direction: row;
+  height: 100%;
   justify-content: space-between;
   pointer-events: none;
   position: absolute;
