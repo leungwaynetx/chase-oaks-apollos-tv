@@ -1,4 +1,5 @@
+import ButtonFeature from './ButtonFeature';
 import HeroListFeature from './HeroListFeature';
 import HorizontalCardListFeature from './HorizontalCardListFeature';
 
-export { HeroListFeature, HorizontalCardListFeature };
+export { ButtonFeature, HeroListFeature, HorizontalCardListFeature };

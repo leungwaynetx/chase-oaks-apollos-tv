@@ -20,7 +20,7 @@ function Profile(props = {}) {
     : '';
 
   const handleUpdateProfile = () => {
-    router.push(`https://rock.chaseoaks.org/MyAccount${loggedInQuery}`);
+    router.push(`https://chaseoaks.org/MyAccount${loggedInQuery}`);
   };
 
   const handleLogin = () => {

@@ -7,6 +7,7 @@ export const GET_CONTENT_ITEM = gql`
       __typename
 
       ... on ContentItem {
+        publishDate
         title
         htmlContent
         summary
@@ -70,6 +71,19 @@ export const GET_CONTENT_ITEM = gql`
                     __typename
                     ... on ContentItem {
                       title
+                    }
+                  }
+                }
+              }
+              ... on ButtonFeature {
+                action {
+                  title
+                  action
+                  relatedNode {
+                    id
+                    __typename
+                    ... on Url {
+                      url
                     }
                   }
                 }

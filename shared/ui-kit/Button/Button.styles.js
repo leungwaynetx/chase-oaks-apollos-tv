@@ -120,8 +120,8 @@ const buttonTypeLink = ({ type }) => {
 };
 
 const Button = withTheme(styled.View`
-  align-self: flex-start;
   border-width: 2px;
+  text-align: center;
   border-color: transparent;
   ${buttonTypeProp}
   ${webTransition}
@@ -155,11 +155,11 @@ const titleStateLink = ({ theme, disabled, focused, hovered, type }) => {
       color: ${theme.colors.text.secondary};
     `;
 
-  if ((focused || hovered) && type === 'link') {
+  if ((focused || hovered) && type === 'link')
     return css`
-      color: ${theme.colors.text.primary}};
+      color: ${theme.colors.text.primary};
     `;
-  }
+
   return null;
 };
 
