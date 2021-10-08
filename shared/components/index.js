@@ -5,6 +5,7 @@ import Footer from './Footer';
 import Header from './Header';
 import InteractWhenLoaded from './InteractWhenLoaded';
 import Logo from './Logo';
+import SEO from './SEO';
 import TextField from './TextField';
 import TrackEventWhenLoaded from './TrackEventWhenLoaded';
 import VideoPlayer from './VideoPlayer';
@@ -17,6 +18,7 @@ export {
   Header,
   InteractWhenLoaded,
   Logo,
+  SEO,
   TextField,
   TrackEventWhenLoaded,
   VideoPlayer,
