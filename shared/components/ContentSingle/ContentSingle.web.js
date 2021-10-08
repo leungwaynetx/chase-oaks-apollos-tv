@@ -88,15 +88,14 @@ function ContentSingle(props = {}) {
         action={'COMPLETE'}
       />
       <Box pt="s" width="100%" maxWidth={props.contentMaxWidth} margin="0 auto">
-        <Box px={outerPadding} mb="l">
-          <Box display="block" mb="xs">
-            <Button
-              title="← Back"
-              type="link"
-              onClick={handleGoBack}
-              display="inline-flex"
-            />
-          </Box>
+        <Box px={responsive({ _: 0, md: outerPadding })} mb="l">
+          <Button
+            py="xs"
+            title="← Back"
+            type="link"
+            onClick={handleGoBack}
+            mb="xs"
+          />
           {props.data?.videos[0]?.embedHtml ? (
             <VideoPlayer
               dangerouslySetInnerHTML={props.data?.videos[0]?.embedHtml}
@@ -104,7 +103,7 @@ function ContentSingle(props = {}) {
           ) : (
             <Box
               backgroundSize="cover"
-              borderRadius="base"
+              borderRadius={responsive({ _: 0, md: 'base' })}
               paddingBottom="56.25%"
               backgroundPosition="center"
               backgroundImage={`url(${coverImage?.sources[0]?.uri})`}

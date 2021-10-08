@@ -76,6 +76,13 @@ export const ActionListAction = PropTypes.shape({
 // :: Features
 // ------------------------------------------------------------
 
+// type ButtonFeature implements Feature, Node
+export const ButtonFeature = PropTypes.shape({
+  ...FeaturePropTypes,
+  ...NodePropTypes,
+  action: FeatureAction,
+});
+
 // type HeroListFeature implements Feature, Node
 export const HeroListFeature = PropTypes.shape({
   ...FeaturePropTypes,

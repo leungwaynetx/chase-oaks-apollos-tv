@@ -15,6 +15,7 @@ const Button = (props = {}) => {
       delayPressIn={0}
       activeOpacity={0.3}
       accessibilityRole="button"
+      alignSelf="flex-start"
       {...props}
     >
       {(pressableStateProps) => (
