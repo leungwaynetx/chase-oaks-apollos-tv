@@ -18,7 +18,7 @@ function ButtonFeature(props = {}) {
     <Box mx={responsive({ _: 'base', lg: 'xl' })}>
       <Button
         alignSelf={responsive({ _: 'stretch', md: 'flex-start' })}
-        title={props.feature.action.title}
+        title={props.feature.action.title || 'More Information'}
         onPress={handlePress}
       />
     </Box>
