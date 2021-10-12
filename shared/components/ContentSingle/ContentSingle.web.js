@@ -71,7 +71,12 @@ function ContentSingle(props = {}) {
     }
   }, [authenticated, props.data, requireAuth, router]);
 
-  if (props.loading || invalidPage || !props.data || requireAuth) {
+  if (
+    props.loading ||
+    invalidPage ||
+    !props.data ||
+    (!authenticated && requireAuth)
+  ) {
     return (
       <Box
         display="flex"
