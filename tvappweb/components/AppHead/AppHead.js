@@ -16,12 +16,9 @@ function AppHead() {
 
     if (_isNotBrowser) return null;
 
-    if (process.env.NODE_ENV === 'production')
-      /* eslint-disable func-names, no-var, vars-on-top, prefer-rest-params */
-      // prettier-ignore
-      return (function(){var w=window;var ic=w.Intercom;if(typeof ic==="function"){ic('reattach_activator');ic('update',w.intercomSettings);}else{var d=document;var i=function(){i.c(arguments);};i.q=[];i.c=function(args){i.q.push(args);};w.Intercom=i;var l=function(){var s=d.createElement('script');s.type='text/javascript';s.async=true;s.src='https://widget.intercom.io/widget/o69wli5a';var x=d.getElementsByTagName('script')[0];x.parentNode.insertBefore(s,x);};if(w.attachEvent){w.attachEvent('onload',l);}else{w.addEventListener('load',l,false);}}})();
-
-    return null;
+    /* eslint-disable func-names, no-var, vars-on-top, prefer-rest-params */
+    // prettier-ignore
+    return (function(){var w=window;var ic=w.Intercom;if(typeof ic==="function"){ic('reattach_activator');ic('update',w.intercomSettings);}else{var d=document;var i=function(){i.c(arguments);};i.q=[];i.c=function(args){i.q.push(args);};w.Intercom=i;var l=function(){var s=d.createElement('script');s.type='text/javascript';s.async=true;s.src='https://widget.intercom.io/widget/o69wli5a';var x=d.getElementsByTagName('script')[0];x.parentNode.insertBefore(s,x);};if(w.attachEvent){w.attachEvent('onload',l);}else{w.addEventListener('load',l,false);}}})();
   });
 
   useEffect(() => {
@@ -30,12 +27,9 @@ function AppHead() {
 
     if (_isNotBrowser) return null;
 
-    if (process.env.NODE_ENV === 'production')
-      return window.Intercom('boot', {
-        app_id: 'o69wli5a',
-      });
-
-    return null;
+    return window.Intercom('boot', {
+      app_id: 'o69wli5a',
+    });
   });
 
   useEffect(() => {
@@ -44,7 +38,7 @@ function AppHead() {
 
     if (_isNotBrowser) return null;
 
-    if (process.env.NODE_ENV === 'production' && currentUser) {
+    if (currentUser) {
       const fullName = `${currentUser.profile?.firstName} ${currentUser.profile?.lastName}`;
 
       window.Intercom('update', {
@@ -52,9 +46,9 @@ function AppHead() {
         email: currentUser.profile?.email, // Email address
         // created_at: currentUser.created_at, // Signup date as a Unix timestamp
       });
-    }
 
-    return null;
+      return null;
+    }
   }, [currentUser]);
 
   useEffect(() => {
@@ -63,24 +57,20 @@ function AppHead() {
 
     if (_isNotBrowser) return null;
 
-    if (process.env.NODE_ENV === 'production') {
-      const handleRouteChange = () => {
-        window.Intercom('update');
-      };
+    const handleRouteChange = () => {
+      window.Intercom('update');
+    };
 
-      router.events.on('routeChangeComplete', handleRouteChange);
+    router.events.on('routeChangeComplete', handleRouteChange);
 
-      return () => {
-        router.events.off('routeChangeComplete', handleRouteChange);
-      };
-    }
-
-    return null;
+    return () => {
+      router.events.off('routeChangeComplete', handleRouteChange);
+    };
   }, [router.events]);
 
   useEffect(() => {
     // Only run Amplitude Analytics in production
-    if (!process.env.NODE_ENV === 'production') return null;
+    // if (!process.env.NODE_ENV === 'production') return null;
 
     // NEXT_PUBLIC_AMPLITUDE_KEY  needs to be set in the .env
     if (!process.env.NEXT_PUBLIC_AMPLITUDE_KEY) {
