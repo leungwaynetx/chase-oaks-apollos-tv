@@ -46,9 +46,9 @@ function AppHead() {
         email: currentUser.profile?.email, // Email address
         // created_at: currentUser.created_at, // Signup date as a Unix timestamp
       });
-
-      return null;
     }
+
+    return null;
   }, [currentUser]);
 
   useEffect(() => {
