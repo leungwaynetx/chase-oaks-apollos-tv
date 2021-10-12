@@ -46,7 +46,7 @@ function ContentList(props = {}) {
 
   return (
     <>
-      <Box px={responsive({ _: 'base', lg: 'xl' })} display="block" mb="xs">
+      {/* <Box px={responsive({ _: 'base', lg: 'xl' })} display="block" mb="xs">
         <Button
           title="← Back"
           type="link"
@@ -54,7 +54,7 @@ function ContentList(props = {}) {
           display="inline-flex"
           mx={mx}
         />
-      </Box>
+      </Box> */}
       <Box
         flexDirection="row"
         flexWrap="wrap"
