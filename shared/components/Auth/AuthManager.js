@@ -35,7 +35,7 @@ function AuthManager(props = {}) {
   return (
     <>
       <Box mb="base" textAlign="center">
-        <H1 mb="s">{gatedRedirect ? 'Oops 🙈' : 'Hello 👋'} </H1>
+        <H1 mb="s">Hello 👋</H1>
         <H4 pb="base" color="neutral.gray">
           {gatedRedirect
             ? 'To access our full video library, please sign in'
