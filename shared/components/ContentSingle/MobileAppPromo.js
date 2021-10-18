@@ -32,7 +32,7 @@ function MobileAppPromo(props = {}) {
         />
         <Box flex={responsive({ lg: 1 })}>
           <BodyText mb={responsive({ _: 'base', lg: 'xs' })}>
-            {`To take notes, journal, and more, open the ${'Apollos'} app on your phone.`}
+            {`To take notes, journal, and more, open the Chase Oaks app on your phone.`}
           </BodyText>
           <Box
             flexDirection="row"
