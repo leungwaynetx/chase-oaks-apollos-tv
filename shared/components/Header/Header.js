@@ -24,7 +24,7 @@ function Header(props = {}) {
     <Styled px={responsive({ _: 'base', lg: 'xl' })} {...props}>
       <Box flex={0.33} flexDirection="row" alignItems="center">
         <Pressable onPress={handleLogoPress}>
-          <Logo width="60px" maxHeight="47px" mr="xxs" />
+          <Logo size="47" mr="xs" />
         </Pressable>
         <Profile />
       </Box>

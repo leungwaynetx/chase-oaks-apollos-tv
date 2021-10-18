@@ -1,19 +1,21 @@
 import { Box, systemPropTypes } from 'shared/ui-kit';
 
-function Logo(props = {}) {
+function Logo({ size, ...rest }) {
+  const DEFAULT_ICON_SIZE = 40;
+  const newSize = size || DEFAULT_ICON_SIZE;
   return (
-    <Box {...props}>
+    <Box {...rest}>
       <svg
-        width="100%"
-        height="100%"
-        viewBox="0 0 39 40"
+        width={newSize}
+        height={newSize}
+        viewBox={`0 0 ${DEFAULT_ICON_SIZE} ${DEFAULT_ICON_SIZE}`}
         fill="none"
         xmlns="http://www.w3.org/2000/svg"
       >
         <path
           fillRule="evenodd"
           clipRule="evenodd"
-          d="M0.5 40L15.3734 0H23.6266L38.5 40H0.5ZM19.2738 9.72716L11.4695 32.3998H27.5507L19.7464 9.72716H19.2738Z"
+          d="M1 40L15.8734 0H24.1266L39 40H1ZM19.7738 9.72716L11.9695 32.3998H28.0507L20.2464 9.72716H19.7738Z"
           fill="white"
         />
       </svg>

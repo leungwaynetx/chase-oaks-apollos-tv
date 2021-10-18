@@ -72,6 +72,9 @@ export const GET_CONTENT_ITEM = gql`
                     ... on ContentItem {
                       title
                     }
+                    ... on Url {
+                      url
+                    }
                   }
                 }
               }

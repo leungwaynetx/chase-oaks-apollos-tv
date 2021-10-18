@@ -31,6 +31,7 @@ function AppHead() {
   return (
     <Head>
       <link rel="icon" href="/favicon.ico" />
+      <title>Apollos+</title>
     </Head>
   );
 }

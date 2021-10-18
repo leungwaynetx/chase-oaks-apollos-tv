@@ -13,7 +13,7 @@ function AppLogo(props = {}) {
         width="72px"
         height="72px"
       >
-        <Logo width="32px" />
+        <Logo size="32" />
       </Box>
     </Box>
   );
