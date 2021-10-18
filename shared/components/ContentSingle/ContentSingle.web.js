@@ -123,7 +123,7 @@ function ContentSingle(props = {}) {
         nodeId={props.data?.id}
         action={'COMPLETE'}
       />
-      <Box pt="s" width="100%" maxWidth={props.contentMaxWidth} margin="0 auto">
+      <Box width="100%" maxWidth={props.contentMaxWidth} margin="0 auto">
         <Box px={responsive({ _: 0, md: outerPadding })} mb="l">
           {/* <Button
             py="xs"
