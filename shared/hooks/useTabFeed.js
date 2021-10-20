@@ -61,6 +61,9 @@ export const TAB_FEED_FEATURES = gql`
             relatedNode {
               id
               __typename
+              ... on ContentItem {
+                title
+              }
             }
           }
         }

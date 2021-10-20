@@ -21,7 +21,7 @@ const sizeProp = ({ size }) => {
 
 const backgroundImage = ({ theme, uri }) => css`
   background-color: ${theme.colors.fill.system};
-  background-image: url(${uri});
+  background-image: url(${uri || '/imagePlaceholder.png'});
   background-position: center center;
   background-size: cover;
 `;

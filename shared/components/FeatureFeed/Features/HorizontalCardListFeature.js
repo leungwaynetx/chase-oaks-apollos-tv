@@ -26,6 +26,8 @@ function HorizontalCardListFeature(props = {}) {
       </H3>
       <CardCarousel
         data={props.feature.cards}
+        primaryAction={props.feature.primaryAction}
+        featureTitle={props.feature.title}
         outerGap={responsive({
           _: 'base',
           lg: 'xl',
