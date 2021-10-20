@@ -3,13 +3,16 @@ import { useWindowDimensions } from 'react-native';
 import PropTypes from 'prop-types';
 import { withTheme } from 'styled-components';
 
-import { Box, systemPropTypes, utils } from 'shared/ui-kit';
+import { Box, ContentItemCard, systemPropTypes, utils } from 'shared/ui-kit';
+import { getURLFromType } from 'shared/utils';
+import { useNavigation } from 'shared/router';
 
 import PaginationButton from './PaginationButton';
 import { PrevIcon, NextIcon } from './PaginationButtonIcons';
 import Styled from './CardCarousel.styles';
 
 function CardCarousel(props = {}) {
+  const router = useNavigation();
   // 👇 This should be extracted to a hook
   // ✂️ ----------------------------------------------
   const {
@@ -20,6 +23,8 @@ function CardCarousel(props = {}) {
     peek,
     theme,
     visibleCount,
+    primaryAction,
+    featureTitle,
   } = props;
 
   const outerGap = utils.stripUnit(
@@ -31,7 +36,9 @@ function CardCarousel(props = {}) {
 
   // Carousel state
   const [page, setPage] = useState(0);
-  const totalPages = Math.ceil(data.length / visibleCount);
+  const dataLength =
+    primaryAction?.action === 'OPEN_CHANNEL' ? data.length + 1 : data.length;
+  const totalPages = Math.ceil(dataLength / visibleCount);
   const lastPage = totalPages - 1; // Zero index offset
 
   // ℹ️ Since we need to do detailed layout measuring math, important
@@ -48,7 +55,7 @@ function CardCarousel(props = {}) {
   // Determine how many empty spots are on the last page.
   // This lets us decide how far to scroll, so the last item aligns to
   // the right edge of the container instead of left.
-  const lastPageRemainder = data.length % visibleCount;
+  const lastPageRemainder = dataLength % visibleCount;
   const lastPageEmptyCount =
     totalPages >= 2 && lastPageRemainder >= 1
       ? visibleCount - lastPageRemainder
@@ -94,6 +101,10 @@ function CardCarousel(props = {}) {
 
   // ✂️ ----------------------------------------------
 
+  const handleActionPress = (action, title) => {
+    router.push(getURLFromType(action.relatedNode, title));
+  };
+
   return (
     <Styled.Container {...props} onLayout={handleOnLayout}>
       <Styled.ItemsContainer
@@ -116,11 +127,26 @@ function CardCarousel(props = {}) {
               item,
               index,
               first: index === 0,
-              last: index === data.length - 1,
+              last: index === dataLength - 1,
               disabled: !indexIsOnScreen(index),
             })}
           </Box>
         ))}
+        {primaryAction?.action === 'OPEN_CHANNEL' && dataLength > 5 && (
+          <Box
+            key={props.keyExtractor(dataLength - 1)}
+            width={`${itemWidth}px`}
+            mr={`${innerGap}px`}
+            opacity={!peek && !indexIsOnScreen(dataLength - 1) ? 0 : 1}
+          >
+            <ContentItemCard
+              title={'View All'}
+              last
+              disabled={!indexIsOnScreen(dataLength - 1)}
+              onPress={() => handleActionPress(primaryAction, featureTitle)}
+            />
+          </Box>
+        )}
       </Styled.ItemsContainer>
 
       <Styled.ButtonsContainer
