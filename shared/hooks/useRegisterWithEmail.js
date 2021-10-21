@@ -18,6 +18,11 @@ export const REGISTER_WITH_EMAIL = gql`
           id
           firstName
           lastName
+          nickName
+          email
+          campus {
+            name
+          }
         }
       }
     }

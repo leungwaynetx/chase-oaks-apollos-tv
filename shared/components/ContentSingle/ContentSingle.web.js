@@ -11,8 +11,13 @@ import { GET_CONTENT_ITEM } from 'shared/hooks/useContentItem';
 import { useBreakpoint } from 'shared/providers/BreakpointProvider';
 import { useAuthState } from 'shared/providers/AuthProvider';
 
-import InteractWhenLoaded from 'shared/components/InteractWhenLoaded';
-import { FeatureFeed, SEO } from 'shared/components';
+import {
+  FeatureFeed,
+  InteractWhenLoaded,
+  SEO,
+  TrackEventWhenLoaded,
+} from 'shared/components';
+
 import {
   Box,
   CardCarousel,
@@ -123,9 +128,21 @@ function ContentSingle(props = {}) {
         nodeId={props.data?.id}
         action={'COMPLETE'}
       />
+      <TrackEventWhenLoaded
+        loading={props.loading}
+        eventName={'View Content'}
+        properties={{
+          itemId: props.data?.id,
+          parentId: props.data?.parentChannel?.id,
+          parentName: props.data?.parentChannel.name,
+          publishDate,
+          title,
+        }}
+      />
       <Box width="100%" maxWidth={props.contentMaxWidth} margin="0 auto">
         <Box px={responsive({ _: 0, md: outerPadding })} mb="l">
           {/* <Button
+            ml={responsive({ _: outerPadding, md: 0 })}
             py="xs"
             title="← Back"
             type="link"
@@ -210,15 +227,19 @@ export async function getServerSideProps(context) {
 ContentSingle.propTypes = {
   contentMaxWidth: PropTypes.string,
   data: PropTypes.shape({
-    id: PropTypes.string,
-    coverImage: PropTypes.shape({}),
-    summary: PropTypes.string,
-    publishDate: PropTypes.string,
-    title: PropTypes.string,
     childContentItemsConnection: PropTypes.shape(),
-    videos: PropTypes.arrayOf(PropTypes.shape({ embedHtml: PropTypes.string })),
+    coverImage: PropTypes.shape({}),
     featureFeed: apollosPropTypes.FeatureFeed,
     htmlContent: PropTypes.string,
+    id: PropTypes.string,
+    parentChannel: PropTypes.shape({
+      id: PropTypes.string,
+      name: PropTypes.string,
+    }),
+    publishDate: PropTypes.string,
+    summary: PropTypes.string,
+    title: PropTypes.string,
+    videos: PropTypes.arrayOf(PropTypes.shape({ embedHtml: PropTypes.string })),
   }),
   loading: PropTypes.bool,
 };
