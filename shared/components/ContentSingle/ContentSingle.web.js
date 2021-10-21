@@ -103,7 +103,7 @@ function ContentSingle(props = {}) {
         properties={{
           itemId: props.data?.id,
           parentId: props.data?.parentChannel?.id,
-          parentName: props.data?.parentChannel.name,
+          parentName: props.data?.parentChannel?.name,
           publishDate,
           title,
         }}
