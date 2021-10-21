@@ -126,6 +126,7 @@ function ContentSingle(props = {}) {
       <Box width="100%" maxWidth={props.contentMaxWidth} margin="0 auto">
         <Box px={responsive({ _: 0, md: outerPadding })} mb="l">
           {/* <Button
+
             py="xs"
             title="← Back"
             type="link"
