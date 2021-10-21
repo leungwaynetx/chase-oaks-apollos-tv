@@ -21,6 +21,7 @@
     "react": "17.0.1",
     "react-dom": "17.0.1",
     "react-native-web": "^0.17.1",
+    "react-use-intercom": "^1.4.0",
     "shared": "^1.0.0",
     "styled-components": "^5.3.0",
     "styled-system": "^5.1.5"

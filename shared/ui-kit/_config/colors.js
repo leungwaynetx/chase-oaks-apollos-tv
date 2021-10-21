@@ -3,8 +3,8 @@ const colors = {
     // These colors are the same across light and dark themes, and serve
     // as the default set that all other colors are based off of.
     base: {
-      primary: '#00676D',
-      secondary: '#17B582',
+      primary: '#8059B1',
+      secondary: '#E74E39',
       tertiary: '#6EC5B8',
       gray: '#8E8E93',
       black: '#000000',
@@ -43,15 +43,15 @@ const colors = {
       tertiary: 'rgba(244, 247, 248, 0.33)', // 33% primary
       quaternary: 'rgba(244, 247, 248, 0.18)', // 18% primary
       placeholder: 'rgba(244, 247, 248, 0.3)', // 30% primary
-      action: '#17B582', // brand secondary
+      action: '#b28ae6', // Brighter brand primary
     },
   },
   light: {
     // These colors are the same across light and dark themes, and serve
     // as the default set that all other colors are based off of.
     base: {
-      primary: '#00676D',
-      secondary: '#17B582',
+      primary: '#E74E39',
+      secondary: '#8059B1',
       tertiary: '#6EC5B8',
       gray: '#8E8E93',
       black: '#000000',
@@ -83,7 +83,7 @@ const colors = {
       tertiary: 'rgba(39, 39, 46, 0.3)', // 30% primary
       quaternary: 'rgba(39, 39, 46, 0.18)', // 18% primary
       placeholder: 'rgba(229, 229, 234, 0.3)', // 30% gray5
-      action: '#17B582', // brand secondary
+      action: '#8059B1', // brand primary
     },
     shadow: {
       low: '0px 2px 8px rgba(0, 0, 0, 0.04)',

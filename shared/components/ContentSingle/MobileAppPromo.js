@@ -32,18 +32,30 @@ function MobileAppPromo(props = {}) {
         />
         <Box flex={responsive({ lg: 1 })}>
           <BodyText mb={responsive({ _: 'base', lg: 'xs' })}>
-            {`To take notes, journal, and more, open the ${'Apollos'} app on your phone.`}
+            {`To take notes, journal, and more, open the Chase Oaks app on your phone.`}
           </BodyText>
           <Box
             flexDirection="row"
             justifyContent={responsive({ _: 'center', lg: 'flex-start' })}
           >
             <Box mr="xs">
-              <Image src={appleStore} alt="Apple App Store" />
+              <a
+                href="https://apps.apple.com/us/app/chase-oaks-church/id898909549"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <Image src={appleStore} alt="Apple App Store" />
+              </a>
             </Box>
             {/* The 1px padding below corrects for white space in App Store button image */}
             <Box height="38px" mt="1px">
-              <Image src={googlePlay} alt="Apple App Store" />
+              <a
+                href="https://play.google.com/store/apps/details?id=com.chaseoaks.churchapp"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <Image src={googlePlay} alt="Google Play Store" />
+              </a>
             </Box>
           </Box>
         </Box>

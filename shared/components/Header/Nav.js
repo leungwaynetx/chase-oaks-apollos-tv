@@ -55,6 +55,7 @@ function Nav(props = {}) {
           </SmallSystemText>
         </Box>
       </Pressable>
+
       <Pressable onPress={handleWatchPress}>
         <Box
           mr="xxs"
@@ -71,6 +72,7 @@ function Nav(props = {}) {
           </SmallSystemText>
         </Box>
       </Pressable>
+
       <Pressable onPress={handleUiKitPress}>
         <Box
           py="xs"

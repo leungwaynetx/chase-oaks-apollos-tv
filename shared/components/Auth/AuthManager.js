@@ -1,7 +1,9 @@
 import React from 'react';
-import { useAuth } from '../../providers/AuthProvider';
 
-import { Box, Card, H1, H4 } from '../../ui-kit';
+import { useNavigation } from 'shared/router';
+import { useAuth } from 'shared/providers/AuthProvider';
+
+import { Box, Card, H1, H4 } from 'shared/ui-kit';
 
 import Confirm from './AuthConfirm';
 import Details from './AuthDetails';
@@ -9,6 +11,8 @@ import Identity from './AuthIdentity';
 
 function AuthManager(props = {}) {
   const [{ step }] = useAuth();
+  const router = useNavigation();
+  const gatedRedirect = Boolean(router.query?.gatedRedirect);
 
   const render = () => {
     switch (step) {
@@ -31,9 +35,11 @@ function AuthManager(props = {}) {
   return (
     <>
       <Box mb="base" textAlign="center">
-        <H1>Hello 👋</H1>
+        <H1 mb="s">Hello 👋</H1>
         <H4 pb="base" color="neutral.gray">
-          Have we met before?
+          {gatedRedirect
+            ? 'To access our full video library, please sign in'
+            : 'Have we met before?'}
         </H4>
       </Box>
       <Card minWidth="50%" {...props}>

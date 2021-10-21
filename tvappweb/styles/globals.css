@@ -37,4 +37,4 @@ input:focus-visible {
   outline: none;
 }
 
-::selection { background: rgba(110,197,184, 0.62); /* base.tertiary */ }
+::selection { background: #8059B1; /* base.tertiary */ }

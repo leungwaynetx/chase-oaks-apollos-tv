@@ -10,7 +10,7 @@ function Footer(props = {}) {
         <Logo />
       </Box>
       <SmallSystemText color="text.secondary">
-        &copy; Copyright information.
+        &copy; 2021 Chase Oaks Church. All Rights Reserved.
       </SmallSystemText>
     </Box>
   );

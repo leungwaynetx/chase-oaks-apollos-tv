@@ -9,8 +9,9 @@ import { useNavigation } from 'shared/router';
 import { getURLFromType } from 'shared/utils';
 import { GET_CONTENT_ITEM } from 'shared/hooks/useContentItem';
 import { useBreakpoint } from 'shared/providers/BreakpointProvider';
-import InteractWhenLoaded from 'shared/components/InteractWhenLoaded';
+import { useAuthState } from 'shared/providers/AuthProvider';
 
+import InteractWhenLoaded from 'shared/components/InteractWhenLoaded';
 import { FeatureFeed, SEO } from 'shared/components';
 import {
   Box,
@@ -27,6 +28,16 @@ import VideoPlayer from 'shared/components/VideoPlayer';
 
 import MobileAppPromo from './MobileAppPromo';
 
+// Any ContentItem that is *not* a child of one of these ContentChannels
+// will require authentication in order to access.
+const PUBLIC_CONTENT_CHANNELS = [
+  'ContentChannel:22c861a5d54d09634018f7eb132c452e', // "Sermon Messages" (individual videos)
+  'ContentChannel:66a4d75b02b447556e4e3806430a9946', // "Sermon Series"
+  'ContentChannel:85d90f9bd9be966c181ab3a2deccb813', // "Platform - Featured Next Steps"
+  'ContentChannel:bb048251c28d1afabd8e27c36dbb3c9c', // "Platform - En Espanol Messages"
+  // 'ContentChannel:6002ba9aefe43a447f89fe3bfc88d060', // "Sermon Guided Discussions"
+];
+
 function getItemId(slug) {
   const id = slug.split('-').pop();
   return `WeekendContentItem:${id}`;
@@ -35,10 +46,14 @@ function getItemId(slug) {
 const DEFAULT_CONTENT_WIDTH = utils.rem('1280px');
 
 function ContentSingle(props = {}) {
+  const { authenticated } = useAuthState();
   const router = useNavigation();
   const { responsive } = useBreakpoint();
 
   const invalidPage = !props.loading && !props.data;
+  const requireAuth = !PUBLIC_CONTENT_CHANNELS.includes(
+    props.data?.parentChannel?.id
+  );
 
   useEffect(() => {
     if (invalidPage) {
@@ -46,7 +61,22 @@ function ContentSingle(props = {}) {
     }
   }, [invalidPage, router]);
 
-  if (props.loading || invalidPage) {
+  useEffect(() => {
+    if (!props.data) {
+      return;
+    }
+
+    if (!authenticated && requireAuth) {
+      router.push('/auth?gatedRedirect=true');
+    }
+  }, [authenticated, props.data, requireAuth, router]);
+
+  if (
+    props.loading ||
+    invalidPage ||
+    !props.data ||
+    (!authenticated && requireAuth)
+  ) {
     return (
       <Box
         display="flex"
@@ -95,14 +125,14 @@ function ContentSingle(props = {}) {
       />
       <Box width="100%" maxWidth={props.contentMaxWidth} margin="0 auto">
         <Box px={responsive({ _: 0, md: outerPadding })} mb="l">
-          <Button
-            ml={responsive({ _: outerPadding, md: 0 })}
+          {/* <Button
+
             py="xs"
             title="← Back"
             type="link"
             onClick={handleGoBack}
             mb="xs"
-          />
+          /> */}
           {props.data?.videos[0]?.embedHtml ? (
             <VideoPlayer
               dangerouslySetInnerHTML={props.data?.videos[0]?.embedHtml}
