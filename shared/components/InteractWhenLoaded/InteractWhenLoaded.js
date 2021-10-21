@@ -22,7 +22,7 @@ const InteractWhenLoaded = ({ loading, nodeId, action }) => {
 };
 
 InteractWhenLoaded.propTypes = {
-  loaded: PropTypes.bool,
+  loading: PropTypes.bool,
   nodeId: PropTypes.string.isRequired,
   action: PropTypes.string,
 };

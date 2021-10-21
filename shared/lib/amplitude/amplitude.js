@@ -7,7 +7,7 @@ export const trackEvent = ({ eventName, properties = null }) => {
     .logEvent(eventName, properties, (...args) => console.log(args));
 };
 
-export const init = currentUser => {
+export const init = (currentUser) => {
   // Do not run unless traffic is coming from a browser
   const _isNotBrowser =
     typeof window === 'undefined' || typeof document === 'undefined';
@@ -25,6 +25,8 @@ export const init = currentUser => {
 
     amplitudeJS.getInstance().setUserProperties(userProperties);
   }
+
+  return null;
 };
 
 const amplitude = {

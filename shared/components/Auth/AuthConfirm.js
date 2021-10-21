@@ -1,4 +1,6 @@
 import React, { useState } from 'react';
+import amplitude from 'shared/lib/amplitude';
+
 import { useNavigation } from '../../router';
 
 import { useAuth, update as updateAuth } from '../../providers/AuthProvider';
@@ -43,9 +45,20 @@ const AuthConfirm = () => {
       passcode: `The ${COPY.LABEL[state.type]} you entered is incorrect.`,
     });
   };
-  const onSuccess = (token) => {
+
+  const onSuccess = ({ token, user }) => {
     setStatus('SUCCESS');
     dispatch(updateAuth({ token }));
+    amplitude.trackEvent({
+      eventName: 'UserLogin',
+      userId: user?.profile?.id,
+      firstName: user?.profile?.firstName,
+      lastName: user?.profile?.lastName,
+      nickName: user?.profile?.nickName,
+      email: user?.profile?.email,
+      campus: user?.profile?.campus.name,
+    });
+
     router.push('/home');
   };
 
@@ -59,9 +72,9 @@ const AuthConfirm = () => {
             variables: { phone: state.identity, code: passcode },
             update: (
               cache,
-              { data: { authenticateWithSms: { token } = {} } = {} }
+              { data: { authenticateWithSms: { token, user } = {} } = {} }
             ) => {
-              onSuccess(token);
+              onSuccess({ token, user });
             },
             onError,
           });
@@ -74,9 +87,9 @@ const AuthConfirm = () => {
             },
             update: (
               cache,
-              { data: { registerWithSms: { token } = {} } = {} }
+              { data: { registerWithSms: { token, user } = {} } = {} }
             ) => {
-              onSuccess(token);
+              onSuccess({ token, user });
             },
             onError,
           });
@@ -93,9 +106,9 @@ const AuthConfirm = () => {
             variables: { email: state.identity, password: passcode },
             update: (
               cache,
-              { data: { authenticate: { token } = {} } = {} }
+              { data: { authenticate: { token, user } = {} } = {} }
             ) => {
-              onSuccess(token);
+              onSuccess({ token, user });
             },
             onError,
           });
@@ -108,9 +121,9 @@ const AuthConfirm = () => {
             },
             update: (
               cache,
-              { data: { registerPerson: { token } = {} } = {} }
+              { data: { registerPerson: { token, user } = {} } = {} }
             ) => {
-              onSuccess(token);
+              onSuccess({ token, user });
             },
             onError,
           });

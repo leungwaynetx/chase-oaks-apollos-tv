@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import Image from 'next/image';
 
 import { Box, systemPropTypes } from 'shared/ui-kit';
 
@@ -24,7 +25,7 @@ function Avatar(props = {}) {
 
   return (
     <Box borderRadius="round" overflow="hidden">
-      <img alt={`Avatar of ${props.name}`} {...props} />
+      <Image objectFit="cover" alt={`Avatar of ${props.name}`} {...props} />
     </Box>
   );
 }
