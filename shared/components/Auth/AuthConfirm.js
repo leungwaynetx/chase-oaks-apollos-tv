@@ -56,7 +56,7 @@ const AuthConfirm = () => {
       lastName: user?.profile?.lastName,
       nickName: user?.profile?.nickName,
       email: user?.profile?.email,
-      campus: user?.profile?.campus.name,
+      campus: user?.profile?.campus?.name,
     });
 
     router.push('/home');
