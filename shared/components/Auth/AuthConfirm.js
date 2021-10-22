@@ -51,15 +51,16 @@ const AuthConfirm = () => {
     dispatch(updateAuth({ token }));
     amplitude.trackEvent({
       eventName: 'UserLogin',
-      userId: user?.profile?.id,
-      firstName: user?.profile?.firstName,
-      lastName: user?.profile?.lastName,
-      nickName: user?.profile?.nickName,
-      email: user?.profile?.email,
-      campus: user?.profile?.campus?.name,
+      properties: {
+        userId: user?.profile?.id,
+        firstName: user?.profile?.firstName,
+        lastName: user?.profile?.lastName,
+        nickName: user?.profile?.nickName,
+        email: user?.profile?.email,
+        campusName: user?.profile?.campus?.name || null,
+      },
     });
-
-    router.push('/home');
+    // router.push('/home');
   };
 
   const { values, setFieldValue, handleSubmit } = useForm(async () => {

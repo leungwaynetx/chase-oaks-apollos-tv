@@ -19,6 +19,11 @@ export const init = (currentUser) => {
   if (currentUser) {
     const userProperties = {
       campusName: currentUser?.profile?.campus?.name,
+      email: currentUser?.profile?.email,
+      firstName: currentUser?.profile?.firstName,
+      lastName: currentUser?.profile?.lastName,
+      nickName: currentUser?.profile?.nickName,
+      userId: currentUser?.profile?.id,
     };
 
     amplitudeJS.getInstance().setUserId(currentUser?.profile?.id);
