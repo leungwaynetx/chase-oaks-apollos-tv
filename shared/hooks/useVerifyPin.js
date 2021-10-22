@@ -4,6 +4,19 @@ export const VERIFY_PIN = gql`
   mutation verifyPin($phone: String!, $code: String!) {
     authenticateWithSms(phoneNumber: $phone, pin: $code) {
       token
+      user {
+        id
+        profile {
+          id
+          firstName
+          lastName
+          nickName
+          email
+          campus {
+            name
+          }
+        }
+      }
     }
   }
 `;

@@ -7,7 +7,7 @@ export const trackEvent = ({ eventName, properties = null }) => {
     .logEvent(eventName, properties, (...args) => console.log(args));
 };
 
-export const init = currentUser => {
+export const init = (currentUser) => {
   // Do not run unless traffic is coming from a browser
   const _isNotBrowser =
     typeof window === 'undefined' || typeof document === 'undefined';
@@ -19,12 +19,19 @@ export const init = currentUser => {
   if (currentUser) {
     const userProperties = {
       campusName: currentUser?.profile?.campus?.name,
+      email: currentUser?.profile?.email,
+      firstName: currentUser?.profile?.firstName,
+      lastName: currentUser?.profile?.lastName,
+      nickName: currentUser?.profile?.nickName,
+      userId: currentUser?.profile?.id,
     };
 
     amplitudeJS.getInstance().setUserId(currentUser?.profile?.id);
 
     amplitudeJS.getInstance().setUserProperties(userProperties);
   }
+
+  return null;
 };
 
 const amplitude = {
