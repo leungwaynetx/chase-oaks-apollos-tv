@@ -60,7 +60,7 @@ const AuthConfirm = () => {
         campusName: user?.profile?.campus?.name || null,
       },
     });
-    // router.push('/home');
+    router.push('/home');
   };
 
   const { values, setFieldValue, handleSubmit } = useForm(async () => {
