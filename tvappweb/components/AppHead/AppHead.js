@@ -30,7 +30,7 @@ function AppHead() {
     });
 
     return null;
-  }, [fullName, currentUser?.profile?.email]);
+  }, [intercom, fullName, currentUser?.profile?.email]);
 
   useEffect(() => {
     // Only run Amplitude Analytics in production
