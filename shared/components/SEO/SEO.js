@@ -2,12 +2,12 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import Head from 'next/head';
 
-const DEFAULT_TITLE = 'The Apollos Project';
-const DEFAULT_DESCRIPTION = `The Apollos Project is an open-source initiative that empowers your church to launch your own digital products and bring your congregation closer to Jesus.`;
+const DEFAULT_TITLE = 'Chase Oaks TV';
+const DEFAULT_DESCRIPTION = `Chase Oaks Church is a diverse, multi-cultural, and multi-generational community in which anyone can come as they are, be transformed, and make a difference to others.`;
 const DEFAULT_IMAGE =
-  'https://uploads-ssl.webflow.com/5e974c89dfe70106c6183e08/5e989c0c5f5122edceab511a_Mockup__Hero-Home.png';
-const DEFAULT_KEYWORDS = `Apollos Project, The Apollos Project`;
-const DEFAULT_URL = 'https://apollosapp.io/';
+  'https://play-lh.googleusercontent.com/DuGK5TFcC2KLxzLkLsBwVCgQC08oIB_2Lfz8J6g0NhW3QmJZlJjv4hFFETz7wKdR3VY=w3624-h1952-rw';
+const DEFAULT_KEYWORDS = `Chase Oaks`;
+const DEFAULT_URL = 'https://www.chaseoaks.tv/';
 
 function getPageTitle(title) {
   if (title === DEFAULT_TITLE || title === 'Home') return DEFAULT_TITLE;
