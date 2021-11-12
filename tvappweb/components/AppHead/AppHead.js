@@ -16,6 +16,13 @@ function AppHead() {
   const intercom = useIntercom();
 
   useEffect(() => {
+    const _isNotBrowser =
+      typeof window === 'undefined' || typeof document === 'undefined';
+
+    if (_isNotBrowser) return null;
+
+    if (process.env.NODE_ENV !== 'production') return null;
+
     if (fullName || currentUser?.profile?.email) {
       window.Intercom('update', {
         name: fullName, // Full name
@@ -34,7 +41,7 @@ function AppHead() {
 
   useEffect(() => {
     // Only run Amplitude Analytics in production
-    // if (!process.env.NODE_ENV === 'production') return null;
+    if (process.env.NODE_ENV !== 'production') return null;
 
     // NEXT_PUBLIC_AMPLITUDE_KEY  needs to be set in the .env
     if (!process.env.NEXT_PUBLIC_AMPLITUDE_KEY) {
