@@ -2,9 +2,9 @@ import PropTypes from 'prop-types';
 import { AppProvider } from 'shared/providers';
 import '../styles/globals.css';
 
-import { Footer, Header } from 'shared/components';
+import { Footer } from 'shared/components';
 import { Layout } from 'shared/ui-kit';
-import { AppHead } from '../components';
+import { AppHead, Header } from '../components';
 
 function App({ Component, pageProps }) {
   return (

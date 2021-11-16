@@ -8,7 +8,7 @@ function DemoJumboCard({ item }) {
     <Card
       width="100%"
       pt="56.8%"
-      backgroundImage={`url(${item.coverImage.sources[0]?.uri})`}
+      // backgroundImage={`url(${item.coverImage.sources[0]?.uri})`}
       backgroundSize="cover"
       justifyContent="center"
       alignContent="flex-end"
@@ -31,8 +31,8 @@ function DemoJumboCard({ item }) {
       >
         <H1 mb="base">{item.title}</H1>
         <Box flexDirection="row">
-          <Button title="Lorem ipsum" mr="s" size="small" />
-          <Button title="Dolor sit" type="secondary" size="small" />
+          <Button title="Lorem ipsum" mr="s" variant="small" />
+          <Button title="Dolor sit" type="secondary" variant="small" />
         </Box>
       </Box>
     </Card>

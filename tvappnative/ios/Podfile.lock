@@ -1,4 +1,8 @@
 PODS:
+  - Amplitude (8.5.0)
+  - amplitude-react-native (2.6.0):
+    - Amplitude (= 8.5.0)
+    - React-Core
   - boost-for-react-native (1.63.0)
   - DoubleConversion (1.1.6)
   - FBLazyVector (0.64.2-2)
@@ -183,11 +187,11 @@ PODS:
     - React-jsi (= 0.64.2-2)
     - React-perflogger (= 0.64.2-2)
   - React-jsinspector (0.64.2-2)
-  - react-native-config (1.4.3):
-    - react-native-config/App (= 1.4.3)
-  - react-native-config/App (1.4.3):
+  - react-native-config (1.4.4):
+    - react-native-config/App (= 1.4.4)
+  - react-native-config/App (1.4.4):
     - React-Core
-  - react-native-safe-area-context (3.3.0):
+  - react-native-safe-area-context (3.3.2):
     - React-Core
   - React-perflogger (0.64.2-2)
   - React-RCTAnimation (0.64.2-2):
@@ -249,12 +253,15 @@ PODS:
     - React
   - RNGestureHandler (1.10.3):
     - React-Core
-  - RNScreens (3.5.0):
+  - RNScreens (3.8.0):
     - React-Core
     - React-RCTImage
+  - RNSVG (11.0.1):
+    - React
   - Yoga (1.14.0)
 
 DEPENDENCIES:
+  - "amplitude-react-native (from `../node_modules/@amplitude/react-native`)"
   - DoubleConversion (from `../node_modules/react-native/third-party-podspecs/DoubleConversion.podspec`)
   - FBLazyVector (from `../node_modules/react-native/Libraries/FBLazyVector`)
   - FBReactNativeSpec (from `../node_modules/react-native/React/FBReactNativeSpec`)
@@ -287,13 +294,17 @@ DEPENDENCIES:
   - RNDefaultPreference (from `../node_modules/react-native-default-preference`)
   - RNGestureHandler (from `../node_modules/react-native-gesture-handler`)
   - RNScreens (from `../node_modules/react-native-screens`)
+  - RNSVG (from `../node_modules/react-native-svg`)
   - Yoga (from `../node_modules/react-native/ReactCommon/yoga`)
 
 SPEC REPOS:
   trunk:
+    - Amplitude
     - boost-for-react-native
 
 EXTERNAL SOURCES:
+  amplitude-react-native:
+    :path: "../node_modules/@amplitude/react-native"
   DoubleConversion:
     :podspec: "../node_modules/react-native/third-party-podspecs/DoubleConversion.podspec"
   FBLazyVector:
@@ -354,14 +365,18 @@ EXTERNAL SOURCES:
     :path: "../node_modules/react-native-gesture-handler"
   RNScreens:
     :path: "../node_modules/react-native-screens"
+  RNSVG:
+    :path: "../node_modules/react-native-svg"
   Yoga:
     :path: "../node_modules/react-native/ReactCommon/yoga"
 
 SPEC CHECKSUMS:
+  Amplitude: ef9ed339ddd33c9183edf63fa4bbaa86cf873321
+  amplitude-react-native: fa5e830e59fd8ed440a74d58fd72ad4b37e7c946
   boost-for-react-native: 39c7adb57c4e60d6c5479dd8623128eb5b3f0f2c
   DoubleConversion: cde416483dac037923206447da6e1454df403714
   FBLazyVector: 7fd7485ebdd1572a8faf2a24509ed2c37f8db77f
-  FBReactNativeSpec: c5196980c0aaf8ab2f84b49c4c86a7ffe62712b5
+  FBReactNativeSpec: d963ea85fbae8835aab065e75050e742d445668f
   glog: 40a13f7840415b9a77023fbcae0f1e6f43192af3
   RCT-Folly: ec7a233ccc97cc556cf7237f0db1ff65b986f27c
   RCTRequired: 587385d66e6bbb5632ade820568adf71edb60545
@@ -374,8 +389,8 @@ SPEC CHECKSUMS:
   React-jsi: a9cfd61ea63646230601c893424090a442bd2c25
   React-jsiexecutor: 74dd9b564b4f87f7835ebe729f23bb97d281bee1
   React-jsinspector: f49fa9d09ea327d0f0bdd268fd0925db58d19951
-  react-native-config: 387b1ea507bc50a2059e69149dac1342b9532f58
-  react-native-safe-area-context: 61c8c484a3a9e7d1fda19f7b1794b35bbfd2262a
+  react-native-config: 72d948053a442779b3178fddd571e37f118ef606
+  react-native-safe-area-context: 584dc04881deb49474363f3be89e4ca0e854c057
   React-perflogger: 2f5ca2592cb8c2dce248f171c9193abad44ad08d
   React-RCTAnimation: fcecb04903a27253a40c5df81b142f2a82c37380
   React-RCTBlob: 2af9d951f742821632f53964c77a8d98f0a2be37
@@ -388,9 +403,10 @@ SPEC CHECKSUMS:
   ReactCommon: fe50c49bc90e5d242845cb534f88164868cba242
   RNDefaultPreference: 2f8d6d54230edbd78708ada8d63bb275e5a8415b
   RNGestureHandler: a479ebd5ed4221a810967000735517df0d2db211
-  RNScreens: 01ab149b5dd5c27f5ff26741b1d2bdf2cee1af35
+  RNScreens: 6e1ea5787989f92b0671049b808aef64fa1ef98c
+  RNSVG: 67f1f12dae2cef6ed59a42cae74a6b8f5a9e7b46
   Yoga: e6fb09105c0264e3ad22605d6b6fa2776e169518
 
 PODFILE CHECKSUM: 2a03547aa29ce78e34e663ea057999876de255c5
 
-COCOAPODS: 1.10.1
+COCOAPODS: 1.11.2

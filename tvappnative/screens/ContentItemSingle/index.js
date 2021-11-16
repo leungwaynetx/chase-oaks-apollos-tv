@@ -1,16 +1,22 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { ScrollView } from 'react-native';
 import { ContentItemProvider } from 'shared/providers';
 import ContentSingle from 'shared/components/ContentSingle';
+import { Box } from 'shared/ui-kit';
 
 const ContentItemSingle = (props) => {
-  const itemId = props.route?.params?.itemId;
-
   const options = {
-    variables: { id: itemId },
+    variables: { id: props?.route?.params?.itemId },
   };
 
-  return <ContentItemProvider Component={ContentSingle} options={options} />;
+  return (
+    <Box backgroundColor="fill.paper">
+      <ScrollView flexGrow={1} height="100%">
+        <ContentItemProvider Component={ContentSingle} options={options} />
+      </ScrollView>
+    </Box>
+  );
 };
 
 ContentItemSingle.propTypes = {

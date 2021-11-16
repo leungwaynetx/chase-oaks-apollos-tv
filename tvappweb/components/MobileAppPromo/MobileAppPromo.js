@@ -4,8 +4,8 @@ import { useBreakpoint } from 'shared/providers/BreakpointProvider';
 
 import { BodyText, Box, H3 } from 'shared/ui-kit';
 
-import googlePlay from '../../../tvappweb/public/googlePlay.svg';
-import appleStore from '../../../tvappweb/public/appleStore.svg';
+import googlePlay from 'tvappweb/public/googlePlay.svg';
+import appleStore from 'tvappweb/public/appleStore.svg';
 
 import AppLogo from './AppLogo';
 
@@ -39,11 +39,21 @@ function MobileAppPromo(props = {}) {
             justifyContent={responsive({ _: 'center', lg: 'flex-start' })}
           >
             <Box mr="xs">
-              <Image src={appleStore} alt="Apple App Store" />
+              <Image
+                src={appleStore}
+                alt="Apple App Store"
+                width="120"
+                height="40"
+              />
             </Box>
             {/* The 1px padding below corrects for white space in App Store button image */}
             <Box height="38px" mt="1px">
-              <Image src={googlePlay} alt="Apple App Store" />
+              <Image
+                src={googlePlay}
+                width="136"
+                height="40"
+                alt="Apple App Store"
+              />
             </Box>
           </Box>
         </Box>

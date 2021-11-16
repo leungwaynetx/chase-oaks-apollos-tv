@@ -79,44 +79,44 @@ function DemoButtons(props = {}) {
         </Section>
 
         <Section
-          title="Small size"
-          titleCode={`<Button title="See more" size="small" />`}
+          title="Small variant"
+          titleCode={`<Button title="See more" variant="small" />`}
         >
           <Example label="Idle">
-            <Button title="See more" size="small" />
+            <Button title="See more" variant="small" />
           </Example>
           <Example label="Focused">
-            <Button title="See more" size="small" focused />
+            <Button title="See more" variant="small" focused />
           </Example>
           <Example label="Hovered">
-            <Button title="See more" size="small" hovered />
+            <Button title="See more" variant="small" hovered />
           </Example>
           <Example label="Pressed">
-            <Button title="See more" size="small" pressed hovered />
+            <Button title="See more" variant="small" pressed hovered />
           </Example>
           <Example label="Disabled">
-            <Button title="See more" size="small" disabled />
+            <Button title="See more" variant="small" disabled />
           </Example>
         </Section>
 
         <Section
-          title="Micro size"
-          titleCode={`<Button title="Add to list" size="micro" />`}
+          title="Micro variant"
+          titleCode={`<Button title="Add to list" variant="micro" />`}
         >
           <Example label="Idle">
-            <Button title="Add to list" size="micro" />
+            <Button title="Add to list" variant="micro" />
           </Example>
           <Example label="Focused">
-            <Button title="Add to list" size="micro" focused />
+            <Button title="Add to list" variant="micro" focused />
           </Example>
           <Example label="Hovered">
-            <Button title="Add to list" size="micro" hovered />
+            <Button title="Add to list" variant="micro" hovered />
           </Example>
           <Example label="Pressed">
-            <Button title="Add to list" size="micro" pressed hovered />
+            <Button title="Add to list" variant="micro" pressed hovered />
           </Example>
           <Example label="Disabled">
-            <Button title="Add to list" size="micro" disabled />
+            <Button title="Add to list" variant="micro" disabled />
           </Example>
         </Section>
 

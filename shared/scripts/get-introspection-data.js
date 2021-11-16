@@ -3,7 +3,7 @@ const Path = require('path');
 require('dotenv/config');
 const fetch = require('node-fetch');
 
-const attempts = 0;
+let attempts = 0;
 const maxAttempts = 3;
 const timeBetweenAttempts = 5 * 1000;
 
@@ -45,10 +45,12 @@ const getIntrospectionData = async () => {
   } catch (e) {
     if (attempts < maxAttempts) {
       console.log(
-        `Error writing fragmentTypes (-api probably hasn't started yet). Trying again after wait. Attempt: ${attempts +
-          1} of ${maxAttempts}`
+        `Error writing fragmentTypes (-api probably hasn't started yet). Trying again after wait. Attempt: ${
+          attempts + 1
+        } of ${maxAttempts}`
       );
       await new Promise((resolve) => setTimeout(resolve, timeBetweenAttempts)); // try again after waiting
+      attempts += 1;
       getIntrospectionData();
     } else {
       // throw new Error('Error writing fragmentTypes file', e);

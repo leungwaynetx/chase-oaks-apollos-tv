@@ -1,5 +1,6 @@
 import React from 'react';
 
+import { Box } from 'shared/ui-kit';
 import {
   DemoButtons,
   DemoCards,
@@ -7,8 +8,7 @@ import {
   DemoColors,
   DemoShadows,
   DemoTypography,
-} from 'shared/components/_Demos';
-import { Box } from 'shared/ui-kit';
+} from '../../components/_Demos';
 
 const UIKit = () => {
   return (

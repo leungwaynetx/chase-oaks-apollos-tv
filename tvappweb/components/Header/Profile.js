@@ -2,14 +2,9 @@ import { logout, useAuth } from 'shared/providers/AuthProvider';
 import { useNavigation } from 'shared/router';
 import { useCurrentUser } from 'shared/hooks';
 
-import {
-  Avatar,
-  Box,
-  Button,
-  BodyText,
-  PressableBox,
-  Menu,
-} from 'shared/ui-kit';
+import { Avatar, Box, Button, BodyText, PressableBox } from 'shared/ui-kit';
+
+import Menu from '../Menu';
 
 function Profile(props = {}) {
   const [{ authenticated }, dispatch] = useAuth();
@@ -43,9 +38,9 @@ function Profile(props = {}) {
             <PressableBox onPress={toggle}>
               <Avatar
                 name={currentUser?.profile?.firstName}
-                src={currentUser?.profile?.photo?.uri}
-                width="54px"
-                height="54px"
+                source={currentUser?.profile?.photo?.uri}
+                width={54}
+                height={54}
               />
             </PressableBox>
           )}
@@ -78,7 +73,7 @@ function Profile(props = {}) {
         </Menu>
       ) : (
         <Box>
-          <Button title="Sign in" size="micro" onPress={handleLogin} />
+          <Button title="Sign in" variant="micro" onPress={handleLogin} />
         </Box>
       )}
     </Box>

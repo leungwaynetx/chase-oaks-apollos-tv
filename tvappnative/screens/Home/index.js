@@ -1,41 +1,25 @@
 import React from 'react';
-import { FlatList } from 'react-native';
-import { useNavigation } from 'shared/router';
+import { ScrollView } from 'react-native';
 
-import { Button, Box } from 'shared/ui-kit';
-import { useAuth, logout } from 'shared/providers/AuthProvider';
+import { TabFeedProvider } from 'shared/providers';
 
-import useWatchFeed from 'shared/hooks/useWatchFeed';
+import { FeatureFeed } from 'shared/components';
+// import { FeatureFeedDebugger } from 'shared/components/FeatureFeed';
+import { Box } from 'shared/ui-kit';
 
 const HomeScreen = () => {
-  const [dispatch] = useAuth();
-  const { edges } = useWatchFeed();
-  const router = useNavigation();
-
-  const handleLogout = () => {
-    dispatch(logout());
-    router.push('/auth');
-  };
-
-  const handleOnPress = (node) => {
-    router.push('/content-item', {
-      itemId: node.id,
-    });
-  };
-
-  const renderItem = ({ item: { node = {} } }) => (
-    <Box key={node.id}>
-      <Button title={node.title} onPress={() => handleOnPress(node)} />
-    </Box>
-  );
-
   return (
     <Box backgroundColor="fill.paper">
-      <FlatList
-        data={edges}
-        renderItem={renderItem}
-        keyExtractor={(item) => item.node.id}
-      />
+      <ScrollView flexGrow={1} height="100%">
+        <TabFeedProvider
+          Component={FeatureFeed}
+          options={{
+            variables: {
+              tab: 'WATCH',
+            },
+          }}
+        />
+      </ScrollView>
     </Box>
   );
 };

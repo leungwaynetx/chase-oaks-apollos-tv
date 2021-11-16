@@ -13,23 +13,25 @@ import { useBreakpoint } from 'shared/providers/BreakpointProvider';
 import {
   FeatureFeed,
   InteractWhenLoaded,
-  SEO,
   TrackEventWhenLoaded,
 } from 'shared/components';
 import {
   Box,
-  CardCarousel,
   ContentItemCard,
   H2,
   H4,
   Loader,
-  Longform,
   utils,
   Button,
 } from 'shared/ui-kit';
 import VideoPlayer from 'shared/components/VideoPlayer';
 
-import MobileAppPromo from './MobileAppPromo';
+import {
+  MobileAppPromo,
+  SEO,
+  Longform,
+  CardCarousel,
+} from 'tvappweb/components';
 
 function getItemId(slug) {
   const id = slug.split('-').pop();

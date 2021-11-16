@@ -1,20 +1,15 @@
-const amplitudeJS =
-  typeof window !== 'undefined' ? require('amplitude-js') : null;
+import { Amplitude } from '@amplitude/react-native';
+import Config from 'react-native-config';
 
 export const trackEvent = ({ eventName, properties = null }) => {
-  amplitudeJS
-    .getInstance()
-    .logEvent(eventName, properties, (...args) => console.log(args));
+  Amplitude.getInstance().logEvent(eventName, properties, (...args) =>
+    console.log(args)
+  );
 };
 
 export const init = (currentUser) => {
-  // Do not run unless traffic is coming from a browser
-  const _isNotBrowser =
-    typeof window === 'undefined' || typeof document === 'undefined';
-
-  if (_isNotBrowser) return null;
-
-  amplitudeJS.getInstance().init(process.env.NEXT_PUBLIC_AMPLITUDE_KEY);
+  const ampInstance = Amplitude.getInstance();
+  ampInstance.init(Config.AMPLITUDE_KEY);
 
   if (currentUser) {
     const userProperties = {
@@ -26,9 +21,9 @@ export const init = (currentUser) => {
       userId: currentUser?.profile?.id,
     };
 
-    amplitudeJS.getInstance().setUserId(currentUser?.profile?.id);
+    Amplitude.getInstance().setUserId(currentUser?.profile?.id);
 
-    amplitudeJS.getInstance().setUserProperties(userProperties);
+    Amplitude.getInstance().setUserProperties(userProperties);
   }
 
   return null;

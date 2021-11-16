@@ -18,6 +18,11 @@ const buttonState = ({ theme, type, disabled, focused, hovered, pressed }) => {
       border-color: ${type === 'secondary'
         ? theme.colors.base.gray
         : 'transparent'};
+    `;
+  }
+
+  if (disabled && Platform.OS === 'web') {
+    return css`
       cursor: not-allowed;
     `;
   }
@@ -34,7 +39,7 @@ const buttonState = ({ theme, type, disabled, focused, hovered, pressed }) => {
 
   if (focused || hovered) {
     return css`
-      background-color: ${theme.colors.text.primary};
+      background-color: ${theme.colors.base.secondary};
       border-color: transparent;
       transform: scale(1.03);
     `;
@@ -58,7 +63,7 @@ const buttonTypeProp = ({ type }) => {
     default:
     case 'primary':
       return css`
-        background-color: ${themeGet('colors.base.secondary')};
+        background-color: ${themeGet('colors.base.primary')};
         border-radius: ${themeGet('radii.base')};
       `;
 
@@ -76,8 +81,8 @@ const buttonTypeProp = ({ type }) => {
   }
 };
 
-const buttonSizeProp = ({ size }) => {
-  switch (size) {
+const buttonSizeProp = ({ variant }) => {
+  switch (variant) {
     default:
     case 'large':
       return css`
@@ -142,7 +147,7 @@ const titleState = ({ theme, disabled, focused, hovered }) => {
 
   if (focused || hovered) {
     return css`
-      color: ${theme.colors.fill.paper};
+      color: ${theme.colors.text.primary};
     `;
   }
 
@@ -180,8 +185,8 @@ const titleTypeProp = ({ type }) => {
   }
 };
 
-const titleSizeProp = ({ size }) => {
-  switch (size) {
+const titleSizeProp = ({ variant }) => {
+  switch (variant) {
     default:
     case 'large':
       return css`
