@@ -1,15 +1,15 @@
-import React, { useEffect, useState } from 'react';
-import { useWindowDimensions } from 'react-native';
-import PropTypes from 'prop-types';
-import { withTheme } from 'styled-components';
+import React, { useEffect, useState } from "react";
+import { useWindowDimensions } from "react-native";
+import PropTypes from "prop-types";
+import { withTheme } from "styled-components";
 
-import { Box, ContentItemCard, systemPropTypes, utils } from 'shared/ui-kit';
-import { getURLFromType } from 'shared/utils';
-import { useNavigation } from 'shared/router';
+import { Box, ContentItemCard, systemPropTypes, utils } from "shared/ui-kit";
+import { getURLFromType } from "shared/utils";
+import { useNavigation } from "shared/router";
 
-import PaginationButton from './PaginationButton';
-import { PrevIcon, NextIcon } from './PaginationButtonIcons';
-import Styled from './CardCarousel.styles';
+import PaginationButton from "./PaginationButton";
+import { PrevIcon, NextIcon } from "./PaginationButtonIcons";
+import Styled from "./CardCarousel.styles";
 
 function CardCarousel(props = {}) {
   const router = useNavigation();
@@ -28,16 +28,16 @@ function CardCarousel(props = {}) {
   } = props;
 
   const outerGap = utils.stripUnit(
-    utils.px(theme.space[props.outerGap || 'xl'])
+    utils.px(theme.space[props.outerGap || "xl"])
   );
   const innerGap = utils.stripUnit(
-    utils.px(theme.space[props.innerGap || 'xs'])
+    utils.px(theme.space[props.innerGap || "xs"])
   );
 
   // Carousel state
   const [page, setPage] = useState(0);
   const dataLength =
-    primaryAction?.action === 'OPEN_CHANNEL' ? data.length + 1 : data.length;
+    primaryAction?.action === "OPEN_CHANNEL" ? data.length + 1 : data.length;
   const totalPages = Math.ceil(dataLength / visibleCount);
   const lastPage = totalPages - 1; // Zero index offset
 
@@ -132,7 +132,7 @@ function CardCarousel(props = {}) {
             })}
           </Box>
         ))}
-        {primaryAction?.action === 'OPEN_CHANNEL' && dataLength > 5 && (
+        {primaryAction?.action === "OPEN_CHANNEL" && dataLength > 5 && (
           <Box
             key={props.keyExtractor(dataLength - 1)}
             width={`${itemWidth}px`}
@@ -140,7 +140,7 @@ function CardCarousel(props = {}) {
             opacity={!peek && !indexIsOnScreen(dataLength - 1) ? 0 : 1}
           >
             <ContentItemCard
-              title={'View All'}
+              title={"View All"}
               last
               disabled={!indexIsOnScreen(dataLength - 1)}
               onPress={() => handleActionPress(primaryAction, featureTitle)}
@@ -194,9 +194,9 @@ CardCarousel.propTypes = {
 
 CardCarousel.defaultProps = {
   data: [],
-  gradientColor: 'fill.paper',
-  iconOffset: '-22px',
-  iconSize: '56px',
+  gradientColor: "fill.paper",
+  iconOffset: "-22px",
+  iconSize: "56px",
   keyExtractor: (item, index) => item?.id || index,
   peek: true,
   visibleCount: 4,

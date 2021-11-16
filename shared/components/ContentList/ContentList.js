@@ -9,6 +9,8 @@ import { getURLFromType } from 'shared/utils';
 
 import { Button, Box, ContentItemCard, Loader } from 'shared/ui-kit';
 
+const PAGE_SIZE = 20;
+
 function ContentList(props = {}) {
   const router = useNavigation();
   const { responsive } = useBreakpoint();
@@ -19,6 +21,16 @@ function ContentList(props = {}) {
 
   const handleActionPress = (node) => {
     router.push(getURLFromType(node));
+  };
+  const hasMorePages = props.data?.totalCount > props.data?.edges?.length;
+
+  const handleLoadMore = () => {
+    props.fetchMore({
+      variables: {
+        first: PAGE_SIZE,
+        after: props.data?.pageInfo?.endCursor,
+      },
+    });
   };
 
   if (props.loading) {
@@ -72,6 +84,15 @@ function ContentList(props = {}) {
           />
         ))}
       </Box>
+      {hasMorePages && (
+        <Box px={responsive({ _: 'base', lg: 'xl' })}>
+          <Button
+            title="Load More"
+            onPress={() => handleLoadMore()}
+            alignSelf="center"
+          />
+        </Box>
+      )}
     </>
   );
 }
@@ -83,7 +104,12 @@ ContentList.propTypes = {
         node: apollosPropTypes.Node,
       })
     ),
+    totalCount: PropTypes.number,
+    pageInfo: PropTypes.shape({
+      endCursor: PropTypes.string,
+    }),
   }),
+  fetchMore: PropTypes.func,
   loading: PropTypes.bool,
   theme: PropTypes.object, // eslint-disable-line react/forbid-prop-types
 };

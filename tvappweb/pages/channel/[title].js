@@ -22,7 +22,7 @@ const ContentFeed = () => {
   const itemId = getItemId(title);
 
   const options = {
-    variables: { itemId, child: true, sibling: false },
+    variables: { itemId },
   };
 
   return (

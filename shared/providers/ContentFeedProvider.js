@@ -4,10 +4,16 @@ import PropTypes from 'prop-types';
 import { useContentFeed } from 'shared/hooks';
 
 function ContentFeedProvider({ Component, options, ...props }) {
-  const { loading, error, content } = useContentFeed(options);
+  const { loading, error, content, fetchMore } = useContentFeed(options);
 
   return (
-    <Component data={content} loading={loading} error={error} {...props} />
+    <Component
+      data={content}
+      loading={loading}
+      error={error}
+      fetchMore={fetchMore}
+      {...props}
+    />
   );
 }
 
