@@ -39,7 +39,7 @@ const buttonState = ({ theme, type, disabled, focused, hovered, pressed }) => {
 
   if (focused || hovered) {
     return css`
-      background-color: ${theme.colors.base.secondary};
+      background-color: ${theme.colors.text.primary};
       border-color: transparent;
       transform: scale(1.03);
     `;
@@ -147,7 +147,7 @@ const titleState = ({ theme, disabled, focused, hovered }) => {
 
   if (focused || hovered) {
     return css`
-      color: ${theme.colors.text.primary};
+      color: ${theme.colors.fill.paper};
     `;
   }
 
