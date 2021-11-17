@@ -44,7 +44,12 @@ function MobileAppPromo(props = {}) {
                 target="_blank"
                 rel="noopener noreferrer"
               >
-                <Image src={appleStore} alt="Apple App Store" />
+                <Image
+                  src={appleStore}
+                  alt="Apple App Store"
+                  width="120"
+                  height="40"
+                />
               </a>
             </Box>
             {/* The 1px padding below corrects for white space in App Store button image */}
@@ -54,7 +59,12 @@ function MobileAppPromo(props = {}) {
                 target="_blank"
                 rel="noopener noreferrer"
               >
-                <Image src={googlePlay} alt="Google Play Store" />
+                <Image
+                  src={googlePlay}
+                  width="136"
+                  height="40"
+                  alt="Apple App Store"
+                />
               </a>
             </Box>
           </Box>
