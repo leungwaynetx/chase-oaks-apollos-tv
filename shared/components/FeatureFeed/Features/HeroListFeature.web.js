@@ -65,7 +65,7 @@ function HeroListFeature(props = {}) {
             <Button
               title="Watch now"
               onPress={handleWatchNowPress}
-              size={responsive({ _: 'micro', lg: undefined })}
+              variant={responsive({ _: 'micro', lg: undefined })}
               mr={responsive({ _: 'xs', lg: 's' })}
             />
             {props.feature.primaryAction ? (
@@ -73,7 +73,7 @@ function HeroListFeature(props = {}) {
                 title={props.feature.primaryAction.title}
                 onPress={handlePrimaryActionClick}
                 type="secondary"
-                size={responsive({ _: 'micro', lg: undefined })}
+                variant={responsive({ _: 'micro', lg: undefined })}
               />
             ) : null}
           </Box>
