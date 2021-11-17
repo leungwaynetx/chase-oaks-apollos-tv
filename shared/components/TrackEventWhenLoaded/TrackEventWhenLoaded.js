@@ -5,16 +5,14 @@ import { useAuthState } from 'shared/providers/AuthProvider';
 import amplitude from 'shared/lib/amplitude';
 
 const TrackEventWhenLoaded = ({ loading, eventName, properties }) => {
-  const { authenticated } = useAuthState();
-
   useEffect(() => {
-    if (!loading && authenticated) {
+    if (!loading) {
       amplitude.trackEvent({
         eventName,
         properties,
       });
     }
-  }, [loading, authenticated, properties, eventName]);
+  }, [loading, properties, eventName]);
 
   return null;
 };

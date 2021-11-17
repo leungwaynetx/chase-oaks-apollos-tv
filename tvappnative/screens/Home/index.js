@@ -15,7 +15,7 @@ const HomeScreen = () => {
           Component={FeatureFeed}
           options={{
             variables: {
-              tab: 'WATCH',
+              tab: 'TV',
             },
           }}
         />
