@@ -22,10 +22,8 @@ const MyApp = () => {
             component={AuthScreen}
             headerShown={false}
           />
-          <Stack.Screen
-            name="/content-item"
-            component={ContentItemSingleScreen}
-          />
+          <Stack.Screen name="/watch" component={ContentItemSingleScreen} />
+          <Stack.Screen name="/channel" component={ContentItemSingleScreen} />
         </Stack.Navigator>
       </NavigationContainer>
     </AppProvider>

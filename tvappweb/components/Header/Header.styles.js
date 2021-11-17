@@ -2,7 +2,7 @@ import styled from 'styled-components/native';
 import { withTheme } from 'styled-components';
 import { themeGet } from '@styled-system/theme-get';
 
-import { system } from '../../ui-kit';
+import { system } from 'shared/ui-kit';
 
 const Styled = withTheme(styled.View`
   align-items: center;

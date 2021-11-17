@@ -14,24 +14,26 @@ import { useAuthState } from 'shared/providers/AuthProvider';
 import {
   FeatureFeed,
   InteractWhenLoaded,
-  SEO,
   TrackEventWhenLoaded,
 } from 'shared/components';
 
 import {
   Box,
-  CardCarousel,
   ContentItemCard,
   H2,
   H4,
   Loader,
-  Longform,
   utils,
   Button,
 } from 'shared/ui-kit';
 import VideoPlayer from 'shared/components/VideoPlayer';
 
-import MobileAppPromo from './MobileAppPromo';
+import {
+  MobileAppPromo,
+  SEO,
+  Longform,
+  CardCarousel,
+} from 'tvappweb/components';
 
 // Any ContentItem that is *not* a child of one of these ContentChannels
 // will require authentication in order to access.

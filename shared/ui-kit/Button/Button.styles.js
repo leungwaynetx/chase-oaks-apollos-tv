@@ -18,6 +18,11 @@ const buttonState = ({ theme, type, disabled, focused, hovered, pressed }) => {
       border-color: ${type === 'secondary'
         ? theme.colors.base.gray
         : 'transparent'};
+    `;
+  }
+
+  if (disabled && Platform.OS === 'web') {
+    return css`
       cursor: not-allowed;
     `;
   }
@@ -76,8 +81,8 @@ const buttonTypeProp = ({ type }) => {
   }
 };
 
-const buttonSizeProp = ({ size }) => {
-  switch (size) {
+const buttonSizeProp = ({ variant }) => {
+  switch (variant) {
     default:
     case 'large':
       return css`
@@ -180,8 +185,8 @@ const titleTypeProp = ({ type }) => {
   }
 };
 
-const titleSizeProp = ({ size }) => {
-  switch (size) {
+const titleSizeProp = ({ variant }) => {
+  switch (variant) {
     default:
     case 'large':
       return css`

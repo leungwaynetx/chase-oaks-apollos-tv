@@ -85,7 +85,7 @@ function AppHead() {
 
   useEffect(() => {
     // Only run Amplitude Analytics in production
-    // if (!process.env.NODE_ENV === 'production') return null;
+    if (process.env.NODE_ENV !== 'production') return null;
 
     // NEXT_PUBLIC_AMPLITUDE_KEY  needs to be set in the .env
     if (!process.env.NEXT_PUBLIC_AMPLITUDE_KEY) {

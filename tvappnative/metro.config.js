@@ -12,6 +12,7 @@ module.exports = {
         get: (target, name) => path.join(process.cwd(), `node_modules/${name}`),
       }
     ),
+    blockList: [/web.*/],
   },
   projectRoot: path.resolve(__dirname),
   watchFolders: [path.resolve(__dirname, '../shared')],

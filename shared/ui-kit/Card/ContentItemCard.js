@@ -1,12 +1,11 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-
 import { apollosPropTypes } from 'shared/lib';
 
 import { PressableBox, systemPropTypes } from '..';
 
 import Card from './Card';
-import Image from './Image';
+
 import Styled from './ContentItemCard.styles';
 
 function ContentItemCard(props = {}) {
@@ -15,7 +14,11 @@ function ContentItemCard(props = {}) {
       {(pressableStateProps) => (
         <>
           <Card p="0" boxShadow="low" mb="xs" {...pressableStateProps}>
-            <Image image={props.image} />
+            <Styled.Image
+              source={props.image?.sources[0]}
+              defaultSource={require('./imagePlaceholder.png')}
+              resizeMode="cover"
+            />
           </Card>
           <Styled.Title {...pressableStateProps}>{props.title}</Styled.Title>
         </>

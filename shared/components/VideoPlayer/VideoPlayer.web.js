@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import DOMPurify from 'dompurify';
 
 import { systemPropTypes } from 'shared/ui-kit';
-import Styled from './VideoPlayer.styles';
+import Styled from './VideoPlayer.styles.web';
 
 function VideoPlayer(props = {}) {
   const sanitizedHTML = DOMPurify.sanitize(props.dangerouslySetInnerHTML, {

@@ -3,9 +3,9 @@ import { AppProvider } from 'shared/providers';
 import '../styles/globals.css';
 import { IntercomProvider } from 'react-use-intercom';
 
-import { Footer, Header } from 'shared/components';
+import { Footer } from 'shared/components';
 import { Layout } from 'shared/ui-kit';
-import { AppHead } from '../components';
+import { AppHead, Header } from '../components';
 
 const INTERCOM_APP_ID = 'o69wli5a';
 

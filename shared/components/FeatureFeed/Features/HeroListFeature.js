@@ -1,20 +1,11 @@
+import React from 'react';
 import { useNavigation } from 'shared/router';
-import { getURLFromType } from 'shared/utils';
+import { getPathFromType } from 'shared/utils';
+import { ImageBackground } from 'react-native';
 
 import { useBreakpoint } from 'shared/providers/BreakpointProvider';
 import { apollosPropTypes } from 'shared/lib';
-import {
-  Box,
-  Button,
-  CardCarousel,
-  H1,
-  H2,
-  H3,
-  H4,
-  systemPropTypes,
-} from 'shared/ui-kit';
-
-import { HighlightCard, Overlay } from 'shared/ui-kit/Card';
+import { Box, Button, H1, H2, H3, H4, systemPropTypes } from 'shared/ui-kit';
 
 function HeroListFeature(props = {}) {
   const router = useNavigation();
@@ -27,117 +18,78 @@ function HeroListFeature(props = {}) {
 
   // Event Handlers
   const handleWatchNowPress = () => {
-    router.push(getURLFromType(props.feature.heroCard.relatedNode));
+    router.push(getPathFromType(props.feature.heroCard.relatedNode), {
+      itemId: props.feature.heroCard.relatedNode.id,
+    });
   };
 
   const handlePrimaryActionClick = () => {
-    router.push(
-      getURLFromType(
-        props.feature.primaryAction.relatedNode,
-        props.feature.primaryAction.title
-      )
-    );
-  };
-
-  const handleActionPress = (action) => {
-    router.push(getURLFromType(action.relatedNode));
+    router.push(getPathFromType(props.feature.primaryAction.relatedNode), {
+      itemId: props.feature.primaryAction.relatedNode.id,
+    });
   };
 
   return (
-    <Box mb={props.feature.actions?.length ? 'xl' : 'base'} {...props}>
-      {/* Background Image */}
-      <Box position="absolute" top="0" left="0" right="0">
-        <Box
-          backgroundImage={`url(${props.feature.heroCard.coverImage?.sources[0]?.uri})`}
-          backgroundPosition="top center"
-          backgroundSize="cover"
-          width="100%"
-          height={responsive({
-            _: '80vw',
-            lg: '56.25vw', // 16:9
-          })}
-          maxHeight="66vh"
-        />
-        <Overlay p="xl" pb="xxl" variant="strong" />
-      </Box>
+    <Box
+      flex={1}
+      mb={props.feature.actions?.length ? 'xl' : 'base'}
+      {...props}
+      position="relative"
+    >
+      <ImageBackground
+        style={{
+          height: 600,
+        }}
+        imageStyle={{
+          paddingBottom: '56.25%',
+        }}
+        source={props.feature.heroCard.coverImage?.sources[0]}
+      >
+        {/* Content */}
+        <Box flex={1} justifyContent="flex-end">
+          {/* Masthead */}
+          <Box px={outerPadding} mb="l">
+            <HeadingComponent>{props.feature.heroCard.title}</HeadingComponent>
+            <SummaryComponent fontWeight="400">
+              {props.feature.heroCard.summary}
+            </SummaryComponent>
 
-      {/* Content */}
-      <Box pt={responsive({ sm: '50vw', md: '33vw', xxl: '23vw' })}>
-        {/* Masthead */}
-        <Box
-          px={outerPadding}
-          mb={responsive({ _: 'l', lg: 'xl', xxl: 'xxl' })}
-        >
-          <HeadingComponent>{props.feature.heroCard.title}</HeadingComponent>
-          <SummaryComponent fontWeight="400">
-            {props.feature.heroCard.summary}
-          </SummaryComponent>
-
-          {/* CTAs */}
-          <Box alignSelf="flex-start" flexDirection="row" mt="base">
-            <Button
-              title="Watch now"
-              onPress={handleWatchNowPress}
-              size={responsive({ _: 'micro', lg: undefined })}
-              mr={responsive({ _: 'xs', lg: 's' })}
-            />
-            {props.feature.primaryAction ? (
-              <Button
-                title={props.feature.primaryAction.title}
-                onPress={handlePrimaryActionClick}
-                type="secondary"
-                size={responsive({ _: 'micro', lg: undefined })}
-              />
-            ) : null}
-          </Box>
-        </Box>
-
-        {/* Actions / Cards list */}
-        {props.feature.actions?.length ? (
-          <Box>
-            {/* List Header */}
-            {props.feature.title || props.feature.subtitle ? (
-              <Box
-                flexDirection="row"
-                justifyContent="space-between"
-                alignItems="flex-end"
-                mb="s"
-                px={outerPadding}
-              >
-                <Box>
-                  <H4 color="text.secondary">{props.feature.subtitle}</H4>
-                  <H3>{props.feature.title}</H3>
-                </Box>
-              </Box>
-            ) : null}
-
-            {/* Actions / Cards */}
-            <CardCarousel
-              buttonsContainerBottomOffset="0"
-              data={props.feature.actions}
-              outerGap={outerPadding}
-              visibleCount={responsive({
-                _: 1,
-                md: Math.min(props.feature.actions.length, 2),
-                lg: Math.min(props.feature.actions.length, 3),
-                xl: Math.min(props.feature.actions.length, 4),
-              })}
-              iconSize={responsive({ _: '36px', lg: undefined })}
-              iconOffset="0"
-              renderItem={({ item: action }) => (
-                <HighlightCard
-                  key={action.id}
-                  image={action.image}
-                  title={action.title}
-                  micro={responsive({ _: true, xl: false })}
-                  mb="l"
-                  onPress={() => handleActionPress(action)}
+            {/* CTAs */}
+            <Box alignSelf="flex-start" flexDirection="row" mt="base">
+              <Button title="Watch now" onPress={handleWatchNowPress} mr="s" />
+              {props.feature.primaryAction ? (
+                <Button
+                  title={props.feature.primaryAction.title}
+                  onPress={handlePrimaryActionClick}
+                  type="secondary"
+                  variant={responsive({ _: 'micro', lg: undefined })}
                 />
-              )}
-            />
+              ) : null}
+            </Box>
           </Box>
-        ) : null}
-      </Box>
+
+          {/* Actions / Cards list */}
+          {props.feature.actions?.length ? (
+            <Box>
+              {/* List Header */}
+              {props.feature.title || props.feature.subtitle ? (
+                <Box
+                  flexDirection="row"
+                  justifyContent="space-between"
+                  alignItems="flex-end"
+                  mb="s"
+                  px={outerPadding}
+                >
+                  <Box>
+                    <H4 color="text.secondary">{props.feature.subtitle}</H4>
+                    <H3>{props.feature.title}</H3>
+                  </Box>
+                </Box>
+              ) : null}
+            </Box>
+          ) : null}
+        </Box>
+      </ImageBackground>
     </Box>
   );
 }

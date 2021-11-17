@@ -9,28 +9,20 @@ const isWeb = Platform.OS === 'web';
 // :: Shared/Common
 // --------------------------------------------------------
 
-const platformStyles = ({ theme }) => {
+const platformStyles = () => {
   if (isWeb) {
     return css`
-      transition: all ${theme.timing.base};
+      transition: all ${themeGet('timing.base')};
     `;
   }
 
   return null;
 };
 
-const fontFamily = css`
-  font-family: ${themeGet('fonts.heading')};
-`;
-
-const color = css`
-  color: ${themeGet('colors.text.primary')};
-`;
-
 const shared = css`
+  font-family: ${themeGet('fonts.heading')};
+  color: ${themeGet('colors.text.primary')};
   ${platformStyles}
-  ${fontFamily}
-  ${color}
 `;
 
 // --------------------------------------------------------

@@ -1,7 +1,7 @@
 import Image from 'next/image';
 import { Box, systemPropTypes } from 'shared/ui-kit';
 
-import appIcon from '../../../tvappweb/public/appIcon.png';
+import appIcon from 'tvappweb/public/appIcon.png';
 
 function AppLogo(props = {}) {
   return (

@@ -1,4 +1,5 @@
 import React from 'react';
+import { Platform } from 'react-native';
 
 import { validateEmail, validatePhoneNumber } from '../../utils';
 import { useAuthIdentity, useForm, useUserExists } from '../../hooks';
@@ -6,6 +7,8 @@ import { useAuthIdentity, useForm, useUserExists } from '../../hooks';
 import TextField from '../TextField';
 
 import { Box, Button } from '../../ui-kit';
+
+const isWeb = Platform.OS === 'web';
 
 const AuthIdentity = () => {
   const { status, setStatus, error, setError, handleAuthIdentity } =
@@ -16,11 +19,12 @@ const AuthIdentity = () => {
       // eslint-disable-next-line no-use-before-define
       const { identity } = values;
       const userExists = data?.userExists !== 'NONE';
+      const showDetails = userExists ? 2 : 1;
 
       handleAuthIdentity({
         identity,
         userExists,
-        nextStep: userExists ? 2 : 1,
+        nextStep: isWeb ? showDetails : 2,
       });
     },
   });

@@ -9,6 +9,27 @@ import introspectionToPossibleTypes from './introspectionToPossibleTypes';
 const initCache = (initialState) => {
   const cache = new InMemoryCache({
     possibleTypes: introspectionToPossibleTypes(fragmentTypes),
+    typePolicies: {
+      ContentChannel: {
+        fields: {
+          childContentItemsConnection: {
+            keyArgs: ['id'],
+            merge(existing, incoming) {
+              if (!existing) {
+                return incoming;
+              }
+
+              return {
+                ...existing,
+                totalCount: incoming.totalCount,
+                pageInfo: incoming.pageInfo,
+                edges: [...existing?.edges, ...incoming?.edges],
+              };
+            },
+          },
+        },
+      },
+    },
   }).restore(initialState || {});
 
   if (Platform.OS === 'web') {

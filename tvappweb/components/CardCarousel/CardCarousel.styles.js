@@ -4,7 +4,7 @@ import { themeGet } from '@styled-system/theme-get';
 import color from 'color';
 import get from 'lodash/get';
 
-import { system } from '../_lib/system';
+import { system } from 'shared/ui-kit/_lib/system';
 
 // :: Core Carousel pieces
 const Container = withTheme(styled.View`
