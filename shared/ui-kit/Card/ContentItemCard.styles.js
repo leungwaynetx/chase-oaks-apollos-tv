@@ -1,6 +1,7 @@
 import styled, { css } from 'styled-components/native';
 import { withTheme } from 'styled-components';
 import { Platform } from 'react-native';
+import { themeGet } from '@styled-system/theme-get';
 
 import { TypeStyles } from '../Typography';
 
@@ -38,6 +39,7 @@ const Title = withTheme(styled.Text`
 const Image = withTheme(styled.Image`
   width: 100%;
   padding-bottom: 56.25%;
+  background-color: ${themeGet('colors.fill.system')};
 `);
 
 const Styled = {
