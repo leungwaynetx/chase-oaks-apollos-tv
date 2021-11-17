@@ -4,8 +4,8 @@ import { useBreakpoint } from 'shared/providers/BreakpointProvider';
 
 import { BodyText, Box, H3 } from 'shared/ui-kit';
 
-import googlePlay from '../../../tvappweb/public/googlePlay.svg';
-import appleStore from '../../../tvappweb/public/appleStore.svg';
+import googlePlay from 'tvappweb/public/googlePlay.svg';
+import appleStore from 'tvappweb/public/appleStore.svg';
 
 import AppLogo from './AppLogo';
 

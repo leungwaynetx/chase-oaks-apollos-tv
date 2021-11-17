@@ -11,6 +11,7 @@
     "lint": "eslint ."
   },
   "dependencies": {
+    "@amplitude/react-native": "^2.6.0",
     "@apollo/client": "^3.3.21",
     "@react-navigation/native": "^6.0.2",
     "@react-navigation/native-stack": "^6.0.4",
@@ -27,6 +28,7 @@
     "react-native-gesture-handler": "^1.10.3",
     "react-native-safe-area-context": "^3.3.0",
     "react-native-screens": "https://github.com/software-mansion/react-native-screens.git#master",
+    "react-native-svg": "11.0.1",
     "shared": "^1.0.0",
     "styled-components": "^5.3.0",
     "styled-system": "^5.1.5"

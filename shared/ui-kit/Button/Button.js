@@ -29,6 +29,7 @@ const Button = (props = {}) => {
             disabled={props.disabled}
             {...pressableStateProps}
             {...otherProps}
+            {...props}
           >
             {props.title}
           </Styled.Title>
@@ -40,8 +41,8 @@ const Button = (props = {}) => {
 
 Button.propTypes = {
   ...systemPropTypes,
-  size: PropTypes.oneOf(['micro', 'small', 'large']),
-  type: PropTypes.oneOf(['primary', 'secondary']),
+  variant: PropTypes.oneOf(['micro', 'small', 'large']),
+  type: PropTypes.oneOf(['primary', 'secondary', 'link']),
   title: PropTypes.string.isRequired,
   onPress: PropTypes.func,
   // Used for testing/dev purposes only.
@@ -51,7 +52,7 @@ Button.propTypes = {
 };
 
 Button.defaultProps = {
-  size: 'large',
+  variant: 'large',
   // eslint-disable-next-line no-console
   onPress: () => console.log('Please attach a method to this component'),
 };

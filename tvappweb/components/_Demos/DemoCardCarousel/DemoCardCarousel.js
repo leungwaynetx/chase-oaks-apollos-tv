@@ -1,15 +1,9 @@
 import React, { useEffect, useState } from 'react';
 
 import { useBreakpoint } from 'shared/providers/BreakpointProvider';
-import {
-  Box,
-  CardCarousel,
-  ContentItemCard,
-  H1,
-  H3,
-  systemPropTypes,
-} from 'shared/ui-kit';
+import { Box, ContentItemCard, H1, H3, systemPropTypes } from 'shared/ui-kit';
 
+import { CardCarousel } from 'tvappweb/components';
 import DemoJumboCard from './DemoJumboCard';
 import data from './mockData';
 

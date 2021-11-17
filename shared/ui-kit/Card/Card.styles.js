@@ -21,6 +21,10 @@ const transformStyle = ({ hovered, pressed, disabled, focused }) => {
   if (disabled) {
     return css`
       opacity: 0.9;
+    `;
+  }
+  if (disabled && Platform.OS === 'web') {
+    return css`
       cursor: not-allowed;
     `;
   }

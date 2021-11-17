@@ -26,6 +26,7 @@ import {
   minHeight,
   minWidth,
   size,
+  variant,
   verticalAlign,
 
   // Flexbox
@@ -120,7 +121,8 @@ export const layout = compose(
   maxWidth,
   minHeight,
   minWidth,
-  size
+  size,
+  variant
 );
 
 export const flexbox = compose(
