@@ -2,6 +2,7 @@ import React, { useEffect } from 'react';
 import PropTypes from 'prop-types';
 import format from 'date-fns/format';
 import { Image, Dimensions } from 'react-native';
+import Video from 'react-native-video';
 
 import { apollosPropTypes } from 'shared/lib';
 import { useNavigation } from 'shared/router';
@@ -52,7 +53,32 @@ function ContentSingle(props = {}) {
   const handleGoBack = () => {
     router.push('/');
   };
+  let { width, height } = Dimensions.get('window');
 
+  if (props.data?.videos?.length > 0) {
+    return (
+      <Box
+        overflow="hidden"
+        height={height}
+        width={width}
+        justifyContent="center"
+      >
+        <Video
+          source={{
+            uri: props.data?.videos[0]?.sources[0]?.uri,
+          }}
+          controls
+          style={{
+            position: 'absolute',
+            top: 0,
+            left: 0,
+            bottom: 0,
+            right: 0,
+          }}
+        />
+      </Box>
+    );
+  }
   return (
     <>
       <InteractWhenLoaded

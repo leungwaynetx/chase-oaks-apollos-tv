@@ -1,12 +1,12 @@
 import React from 'react';
-import { createStackNavigator } from '@react-navigation/stack';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { NavigationContainer } from '@react-navigation/native';
 
 import { AppProvider } from 'shared/providers';
 
 import { AuthScreen, HomeScreen, ContentItemSingleScreen } from '../../screens';
 
-const Stack = createStackNavigator();
+const Stack = createNativeStackNavigator();
 
 const MyApp = () => {
   return (
@@ -17,12 +17,10 @@ const MyApp = () => {
           screenOptions={{ headerShown: false }}
         >
           <Stack.Screen name="/home" component={HomeScreen} />
-          <Stack.Screen
-            name="/auth"
-            component={AuthScreen}
-            headerShown={false}
-          />
+          <Stack.Screen name="/auth" component={AuthScreen} />
+
           <Stack.Screen name="/watch" component={ContentItemSingleScreen} />
+
           <Stack.Screen name="/channel" component={ContentItemSingleScreen} />
         </Stack.Navigator>
       </NavigationContainer>
