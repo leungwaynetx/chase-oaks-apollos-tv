@@ -6,6 +6,7 @@ import { ImageBackground } from 'react-native';
 import { useBreakpoint } from 'shared/providers/BreakpointProvider';
 import { apollosPropTypes } from 'shared/lib';
 import { Box, Button, H1, H2, H3, H4, systemPropTypes } from 'shared/ui-kit';
+import LinearGradient from 'react-native-linear-gradient';
 
 function HeroListFeature(props = {}) {
   const router = useNavigation();
@@ -47,6 +48,16 @@ function HeroListFeature(props = {}) {
       >
         {/* Content */}
         <Box flex={1} justifyContent="flex-end">
+          <LinearGradient
+            colors={['#00000000', '#1C1C1E']}
+            style={{
+              position: 'absolute',
+              left: 0,
+              right: 0,
+              top: 0,
+              paddingBottom: '56.25%',
+            }}
+          />
           {/* Masthead */}
           <Box px={outerPadding} mb="l">
             <HeadingComponent>{props.feature.heroCard.title}</HeadingComponent>
