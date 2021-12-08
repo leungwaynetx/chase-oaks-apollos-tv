@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { Dimensions } from 'react-native';
 
 import { apollosPropTypes } from 'shared/lib';
 import { Box, Loader } from 'shared/ui-kit';
@@ -27,9 +28,11 @@ function FeatureFeed(props = {}) {
     return (
       <Box
         display="flex"
+        flex={1}
         justifyContent="center"
         alignContent="center"
         alignItems="center"
+        height={Dimensions.get('window').height}
         width="100%"
         flexGrow={1}
       >

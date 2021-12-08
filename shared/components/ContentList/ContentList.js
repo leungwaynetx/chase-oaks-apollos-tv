@@ -1,4 +1,5 @@
 import React from 'react';
+import { Dimensions } from 'react-native';
 import PropTypes from 'prop-types';
 import { withTheme } from 'styled-components';
 
@@ -37,6 +38,8 @@ function ContentList(props = {}) {
     return (
       <Box
         display="flex"
+        flex={1}
+        height={Dimensions.get('window').height}
         justifyContent="center"
         alignContent="center"
         alignItems="center"
