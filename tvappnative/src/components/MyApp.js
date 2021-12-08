@@ -4,7 +4,12 @@ import { NavigationContainer } from '@react-navigation/native';
 
 import { AppProvider } from 'shared/providers';
 
-import { AuthScreen, HomeScreen, ContentItemSingleScreen } from '../../screens';
+import {
+  AuthScreen,
+  HomeScreen,
+  ContentItemSingleScreen,
+  ContentChannelScreen,
+} from '../../screens';
 
 const Stack = createNativeStackNavigator();
 
@@ -21,7 +26,7 @@ const MyApp = () => {
 
           <Stack.Screen name="/watch" component={ContentItemSingleScreen} />
 
-          <Stack.Screen name="/channel" component={ContentItemSingleScreen} />
+          <Stack.Screen name="/channel" component={ContentChannelScreen} />
         </Stack.Navigator>
       </NavigationContainer>
     </AppProvider>

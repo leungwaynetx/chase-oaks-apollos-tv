@@ -15,7 +15,16 @@ function ContentItemCard(props = {}) {
         <>
           <Card p="0" boxShadow="low" mb="xs" {...pressableStateProps}>
             <Styled.Image
-              source={props.image?.sources[0]}
+              source={
+                props.image?.sources[0]
+                  ? props.image?.sources[0]
+                  : [
+                      {
+                        __typename: 'ImageMediaSource',
+                        uri: `require('./imagePlaceholder.png')`,
+                      },
+                    ]
+              }
               defaultSource={require('./imagePlaceholder.png')}
               resizeMode="cover"
             />

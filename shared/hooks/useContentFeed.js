@@ -39,7 +39,7 @@ function useContentFeed(options = {}) {
   });
 
   return {
-    content: query?.data?.node?.childContentItemsConnection || [],
+    content: query?.data?.node?.childContentItemsConnection || {},
     ...query,
   };
 }
