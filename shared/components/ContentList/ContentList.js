@@ -14,8 +14,8 @@ const PAGE_SIZE = 20;
 function ContentList(props = {}) {
   const router = useNavigation();
 
-  const [scrollViewWidth, setScrollViewWidth] = React.useState(0);
-  const boxWidth = scrollViewWidth * 0.25 - 66;
+  const [viewWidth, setViewWidth] = React.useState(0);
+  const boxWidth = viewWidth * 0.25 - 66;
 
   const hasMorePages = props.data?.totalCount > props.data?.edges?.length;
 
@@ -43,7 +43,7 @@ function ContentList(props = {}) {
       horizontal={false}
       numColumns={4}
       contentContainerStyle={{
-        alignItems: 'center',
+        alignSelf: 'center',
         paddingVertical: 48,
         marginBottom: 66,
       }}
@@ -59,7 +59,7 @@ function ContentList(props = {}) {
       )}
       keyExtractor={(item) => item.node.id}
       onLayout={(e) => {
-        setScrollViewWidth(e.nativeEvent.layout.width);
+        setViewWidth(e.nativeEvent.layout.width);
       }}
     />
   );

@@ -10,7 +10,7 @@ const ContentChannel = (props) => {
   };
 
   return (
-    <Box backgroundColor="fill.paper">
+    <Box backgroundColor="fill.paper" flex={1}>
       <ContentFeedProvider Component={ContentList} options={options} />
     </Box>
   );
