@@ -1,12 +1,12 @@
 import React, { useState, useRef } from 'react';
 import PropTypes from 'prop-types';
-import { TextInput, Platform } from 'react-native';
+import { TextInput, Platform, TouchableHighlight } from 'react-native';
 
 import { Box, systemPropTypes, SystemText } from '../../ui-kit';
 import Styled from './TextField.styles';
 
 const TextField = (props = {}) => {
-  const textInput = useRef();
+  const textInputRef = useRef();
   const [hasValue, setHasValue] = useState(false);
   const [focused, setFocused] = useState(false);
 
@@ -39,14 +39,20 @@ const TextField = (props = {}) => {
   return (
     <Box>
       <Box position="relative">
-        <Styled.Input
-          onChangeText={handleChangeText}
+        <TouchableHighlight
           onFocus={handleFocus}
           onBlur={handleBlur}
-          ref={textInput}
-          {...interactionStateProps}
-          {...props}
-        />
+          onPress={() => textInputRef?.current?.focus()}
+        >
+          <Styled.Input
+            onFocus={handleFocus}
+            onBlur={handleBlur}
+            onChangeText={handleChangeText}
+            ref={textInputRef}
+            {...interactionStateProps}
+            {...props}
+          />
+        </TouchableHighlight>
         {Platform.OS === 'web' && (
           <Styled.Label {...interactionStateProps}>
             {props.placeholder}
