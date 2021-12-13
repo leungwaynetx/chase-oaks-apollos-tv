@@ -55,6 +55,8 @@ function ContentSingle(props = {}) {
     return (
       <Box
         display="flex"
+        flex={1}
+        height={Dimensions.get('window').height}
         justifyContent="center"
         alignContent="center"
         alignItems="center"
