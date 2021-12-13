@@ -6,7 +6,7 @@ export default function DemoNative() {
     <H3>
       Welcome to the{' '}
       <Box as="text" color="base.secondary">
-        Apollos+
+        Chase Oaks TV
       </Box>{' '}
       TV app.
     </H3>
