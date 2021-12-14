@@ -2,6 +2,7 @@ import React, { useEffect } from 'react';
 import PropTypes from 'prop-types';
 import DOMPurify from 'dompurify';
 import format from 'date-fns/format';
+import addMinutes from 'date-fns/addMinutes';
 
 import { apollosPropTypes } from 'shared/lib';
 import { initializeApollo } from 'shared/lib/apolloClient';
@@ -71,8 +72,12 @@ function ContentSingle(props = {}) {
   const edges = props?.data?.childContentItemsConnection?.edges;
   const htmlContent = props?.data?.htmlContent;
   const title = props?.data?.title;
-  const publishDate = props?.data?.publishDate
-    ? format(new Date(props?.data?.publishDate), 'MMMM do, yyyy')
+  const publishDate = new Date(props?.data?.publishDate);
+  const formatedPublishDate = props?.data?.publishDate
+    ? format(
+        addMinutes(publishDate, publishDate.getTimezoneOffset()),
+        'MMMM do, yyyy'
+      )
     : null;
 
   const sanitizedHTML = DOMPurify.sanitize(htmlContent);
@@ -136,7 +141,9 @@ function ContentSingle(props = {}) {
         </Box>
 
         <Box mx={outerPadding} mb="l">
-          {publishDate ? <H4 color="text.secondary">{publishDate}</H4> : null}
+          {formatedPublishDate ? (
+            <H4 color="text.secondary">{formatedPublishDate}</H4>
+          ) : null}
           {title ? <H2 mb="s">{title}</H2> : null}
           {htmlContent ? (
             <Longform dangerouslySetInnerHTML={{ __html: sanitizedHTML }} />
