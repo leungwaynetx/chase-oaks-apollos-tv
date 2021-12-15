@@ -1,11 +1,11 @@
+import { withTheme } from 'styled-components';
+
 import { useNavigation } from 'shared/router';
 import { getURLFromType } from 'shared/utils';
 
 import { useBreakpoint } from 'shared/providers/BreakpointProvider';
 import { apollosPropTypes } from 'shared/lib';
 import { Box, Button, H1, H2, H3, H4, systemPropTypes } from 'shared/ui-kit';
-
-import { Overlay } from 'shared/ui-kit/Card';
 
 function HeroListFeature(props = {}) {
   const router = useNavigation();
@@ -35,7 +35,13 @@ function HeroListFeature(props = {}) {
       {/* Background Image */}
       <Box position="absolute" top="0" left="0" right="0">
         <Box
-          backgroundImage={`url(${props.feature.heroCard.coverImage?.sources[0]?.uri})`}
+          backgroundImage={`linear-gradient(
+        4deg,
+        ${props.theme.colors.fill.paper} 15%,
+        ${props.theme.colors.material.thick} 20%,
+        ${props.theme.colors.material.thin} 45%,
+        transparent
+      ),url(${props.feature.heroCard.coverImage?.sources[0]?.uri})`}
           backgroundPosition="top center"
           backgroundSize="cover"
           width="100%"
@@ -45,7 +51,6 @@ function HeroListFeature(props = {}) {
           })}
           maxHeight="66vh"
         />
-        <Overlay p="xl" pb="xxl" variant="strong" />
       </Box>
 
       {/* Content */}
@@ -109,4 +114,4 @@ HeroListFeature.propTypes = {
   feature: apollosPropTypes.HeroListFeature,
 };
 
-export default HeroListFeature;
+export default withTheme(HeroListFeature);
