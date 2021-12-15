@@ -15,10 +15,6 @@ function ContentList(props = {}) {
   const router = useNavigation();
   const { responsive } = useBreakpoint();
 
-  const handleGoBack = () => {
-    router.push('/');
-  };
-
   const handleActionPress = (node) => {
     router.push(getURLFromType(node));
   };
@@ -58,15 +54,6 @@ function ContentList(props = {}) {
 
   return (
     <>
-      <Box px={responsive({ _: 'base', lg: 'xl' })} display="block" mb="xs">
-        <Button
-          title="← Back"
-          type="link"
-          onClick={handleGoBack}
-          display="inline-flex"
-          mx={mx}
-        />
-      </Box>
       <Box
         flexDirection="row"
         flexWrap="wrap"
