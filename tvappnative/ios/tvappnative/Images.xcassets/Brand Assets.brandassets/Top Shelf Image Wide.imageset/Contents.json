@@ -1,0 +1,18 @@
+{
+  "images" : [
+    {
+      "filename" : "Icon_Art2320x720.jpg",
+      "idiom" : "tv",
+      "scale" : "1x"
+    },
+    {
+      "filename" : "Icon_Art4640x1440.jpg",
+      "idiom" : "tv",
+      "scale" : "2x"
+    }
+  ],
+  "info" : {
+    "author" : "xcode",
+    "version" : 1
+  }
+}

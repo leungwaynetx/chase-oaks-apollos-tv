@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react';
 import PropTypes from 'prop-types';
 import format from 'date-fns/format';
+import addMinutes from 'date-fns/addMinutes';
 import { ImageBackground, Dimensions, FlatList, Animated } from 'react-native';
 import Video from 'react-native-video';
 import { themeGet } from '@styled-system/theme-get';
@@ -55,6 +56,8 @@ function ContentSingle(props = {}) {
     return (
       <Box
         display="flex"
+        flex={1}
+        height={Dimensions.get('window').height}
         justifyContent="center"
         alignContent="center"
         alignItems="center"
@@ -70,8 +73,13 @@ function ContentSingle(props = {}) {
   const edges = props?.data?.childContentItemsConnection?.edges;
 
   const title = props?.data?.title;
-  const publishDate = props?.data?.publishDate
-    ? format(new Date(props?.data?.publishDate), 'MMMM do, yyyy')
+
+  const publishDate = new Date(props?.data?.publishDate);
+  const formatedPublishDate = props?.data?.publishDate
+    ? format(
+        addMinutes(publishDate, publishDate.getTimezoneOffset()),
+        'MMMM do, yyyy'
+      )
     : null;
 
   const handleActionPress = (item) => {
@@ -139,7 +147,9 @@ function ContentSingle(props = {}) {
         />
         <Box py="s">
           <Box paddingLeft="xl" mb="xs">
-            {publishDate ? <H4 color="text.secondary">{publishDate}</H4> : null}
+            {formatedPublishDate ? (
+              <H4 color="text.secondary">{formatedPublishDate}</H4>
+            ) : null}
             {title ? <H2>{title}</H2> : null}
           </Box>
 

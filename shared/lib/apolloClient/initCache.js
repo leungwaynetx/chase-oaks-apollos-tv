@@ -18,11 +18,11 @@ const initCache = (initialState) => {
               if (!existing) {
                 return incoming;
               }
-
+              if (incoming.pageInfo.endCursor === existing.pageInfo.endCursor) {
+                return existing;
+              }
               return {
-                ...existing,
-                totalCount: incoming.totalCount,
-                pageInfo: incoming.pageInfo,
+                ...incoming,
                 edges: [...existing?.edges, ...incoming?.edges],
               };
             },

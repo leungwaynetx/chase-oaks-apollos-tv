@@ -1,6 +1,5 @@
 import React from 'react';
 import { useNavigation } from 'shared/router';
-import { useBreakpoint } from 'shared/providers/BreakpointProvider';
 import { FlatList, Animated } from 'react-native';
 import { themeGet } from '@styled-system/theme-get';
 import { withTheme } from 'styled-components';
@@ -34,14 +33,24 @@ function HorizontalCardListFeature(props = {}) {
     ${system};
   `);
 
+  const viewAllCard = {
+    ...props.feature.primaryAction,
+    title: 'View All',
+  };
+
+  const cards =
+    props?.feature?.cards.length >= 5
+      ? [...props.feature.cards, viewAllCard]
+      : props.feature.cards;
+
   return (
     <Box mb="base" {...props}>
-      <H3 px="xl" mb="xs">
+      <H3 ml="xl" mb="xs">
         {props.feature.title}
       </H3>
 
       <StyledFlatList
-        data={props.feature.cards}
+        data={cards}
         horizontal
         initialScrollIndex={0}
         contentContainerStyle={{ paddingVertical: 16 }}
@@ -54,7 +63,8 @@ function HorizontalCardListFeature(props = {}) {
             onPress={() => handleActionPress(item)}
             width={boxWidth}
             height="100%"
-            mx={16}
+            last={item?.last ?? false}
+            mr="base"
           />
         )}
         snapToInterval={boxWidth}

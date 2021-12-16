@@ -102,6 +102,7 @@ function CardCarousel(props = {}) {
   // ✂️ ----------------------------------------------
 
   const handleActionPress = (action, title) => {
+    console.log('action', action);
     router.push(getURLFromType(action.relatedNode, title));
   };
 
