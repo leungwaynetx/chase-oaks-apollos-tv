@@ -1,25 +1,20 @@
 import PropTypes from 'prop-types';
 import { AppProvider } from 'shared/providers';
 import '../styles/globals.css';
-import { IntercomProvider } from 'react-use-intercom';
 
 import { Footer } from 'shared/components';
 import { Layout } from 'shared/ui-kit';
 import { AppHead, Header } from '../components';
 
-const INTERCOM_APP_ID = 'o69wli5a';
-
 function App({ Component, pageProps }) {
   return (
     <AppProvider initialApolloState={pageProps.initialApolloState}>
-      <IntercomProvider appId={INTERCOM_APP_ID} autoBoot>
-        <AppHead />
-        <Layout>
-          <Header />
-          <Component {...pageProps} />
-          <Footer />
-        </Layout>
-      </IntercomProvider>
+      <AppHead />
+      <Layout>
+        <Header />
+        <Component {...pageProps} />
+        <Footer />
+      </Layout>
     </AppProvider>
   );
 }
