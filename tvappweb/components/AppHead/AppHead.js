@@ -10,10 +10,6 @@ function AppHead() {
   const { currentUser } = useCurrentUser();
   const router = useNavigation();
 
-  const fullName =
-    currentUser &&
-    `${currentUser?.profile?.firstName} ${currentUser?.profile?.lastName}`;
-
   useEffect(() => {
     let gtagValid = true;
 
