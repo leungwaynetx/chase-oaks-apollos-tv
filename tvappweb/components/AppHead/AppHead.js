@@ -6,17 +6,9 @@ import gtag from 'shared/lib/gtag';
 import { useCurrentUser } from 'shared/hooks';
 import { useNavigation } from 'shared/router';
 
-import { useIntercom } from 'react-use-intercom';
-
 function AppHead() {
   const { currentUser } = useCurrentUser();
   const router = useNavigation();
-
-  const fullName =
-    currentUser &&
-    `${currentUser?.profile?.firstName} ${currentUser?.profile?.lastName}`;
-
-  const intercom = useIntercom();
 
   useEffect(() => {
     let gtagValid = true;
@@ -67,21 +59,35 @@ function AppHead() {
   }, [router.events]);
 
   useEffect(() => {
-    if (fullName || currentUser?.profile?.email) {
-      window.Intercom('update', {
-        name: fullName, // Full name
-        email: currentUser?.profile?.email, // Email address
-        // created_at: currentUser.created_at, // Signup date as a Unix timestamp
-      });
-    }
+    window.$crisp = [];
+    window.CRISP_WEBSITE_ID = '624c16ea-96f3-4f9f-9938-b4955c39391e';
+    const d = document;
+    const s = d.createElement('script');
+    s.src = 'https://client.crisp.chat/l.js';
+    s.async = 1;
+    d.getElementsByTagName('head')[0].appendChild(s);
+  }, []);
 
-    intercom.update({
-      name: fullName,
-      email: currentUser?.profile?.email,
-    });
+  useEffect(() => {
+    window.$crisp.push(['set', 'user:email', [currentUser?.profile?.email]]);
+    window.$crisp.push([
+      'set',
+      'user:nickname',
+      [`${currentUser?.profile?.firstName} ${currentUser?.profile?.lastName}`],
+    ]);
+    window.$crisp.push([
+      'set',
+      'user:avatar',
+      [currentUser?.profile?.photo?.uri],
+    ]);
 
     return null;
-  }, [intercom, fullName, currentUser?.profile?.email]);
+  }, [
+    currentUser?.profile?.email,
+    currentUser?.profile?.firstName,
+    currentUser?.profile?.lastName,
+    currentUser?.profile?.photo,
+  ]);
 
   useEffect(() => {
     // Only run Amplitude Analytics in production
