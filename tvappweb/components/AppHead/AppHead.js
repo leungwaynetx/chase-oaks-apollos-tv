@@ -70,7 +70,7 @@ function AppHead() {
 
   useEffect(() => {
     // Feeding Chatbot with an initial event when website page loads.
-    window.$crisp.push(["set", "session:event", [[["chaseoakstv:page:loaded", {}, "red" ]]]] );
+    window.$crisp.push(['set', 'session:event', [[['chaseoakstv:page:loaded', {}, 'red']]]]);
   }, []);
   
   useEffect(() => {
