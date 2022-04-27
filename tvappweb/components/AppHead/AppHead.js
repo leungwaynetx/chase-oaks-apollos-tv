@@ -76,7 +76,6 @@ function AppHead() {
       [[['chaseoakstv:page:loaded', {}, 'red']]],
     ]);
   }, []);
-  
   useEffect(() => {
     window.$crisp.push(['set', 'user:email', [currentUser?.profile?.email]]);
     window.$crisp.push([
