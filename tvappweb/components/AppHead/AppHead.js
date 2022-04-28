@@ -69,12 +69,16 @@ function AppHead() {
   }, []);
 
   useEffect(() => {
-    // Feeding Chatbot with an initial event when website page loads.
-    window.$crisp.push([
-      'set',
-      'session:event',
-      [[['chaseoakstv:page:loaded', {}, 'red']]],
-    ]);
+    window.CRISP_READY_TRIGGER = function() {
+       if ($crisp.is("chat:opened") === true) {
+       // Feeding Chatbot with an initial event when website page loads.
+       window.$crisp.push([
+         'set',
+         'session:event',
+         [[['chaseoakstv:page:loaded', {}, 'red']]],
+       ]);
+      }
+    };
   }, []);
   useEffect(() => {
     window.$crisp.push(['set', 'user:email', [currentUser?.profile?.email]]);
